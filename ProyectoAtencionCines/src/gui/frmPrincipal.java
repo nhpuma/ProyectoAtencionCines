@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Frame;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,8 +10,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class frmPrincipal extends JFrame {
+public class frmPrincipal extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JMenuBar menuBar;
@@ -47,6 +50,7 @@ public class frmPrincipal extends JFrame {
 	public frmPrincipal() {
 		setTitle("Sistema de Atención de Cines");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setBounds(100, 100, 550, 370);
 		
 		menuBar = new JMenuBar();
@@ -65,6 +69,7 @@ public class frmPrincipal extends JFrame {
 		mnMantenimiento.add(mntmCines);
 		
 		mntmSalas = new JMenuItem("Salas");
+		mntmSalas.addActionListener(this);
 		mnMantenimiento.add(mntmSalas);
 		
 		mntmPelculas = new JMenuItem("Películas");
@@ -87,4 +92,13 @@ public class frmPrincipal extends JFrame {
 		setContentPane(contentPane);
 	}
 
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmSalas) {
+			mntmSalasActionPerformed(e);
+		}
+	}
+	protected void mntmSalasActionPerformed(ActionEvent e) {
+		frmSala mostrarSala = new frmSala();
+		mostrarSala.setVisible(true);
+	}
 }

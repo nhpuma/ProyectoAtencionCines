@@ -59,11 +59,11 @@ public class frmSala extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		lblSalas = new JLabel("Código Salas:");
+		lblSalas = new JLabel("C\u00F3digo Salas:");
 		lblSalas.setBounds(6, 21, 140, 16);
 		contentPane.add(lblSalas);
 		
-		lblCdigo = new JLabel("Código:");
+		lblCdigo = new JLabel("C\u00F3digo:");
 		lblCdigo.setBounds(6, 70, 140, 16);
 		contentPane.add(lblCdigo);
 		

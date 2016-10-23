@@ -72,7 +72,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		mntmSalas.addActionListener(this);
 		mnMantenimiento.add(mntmSalas);
 		
-		mntmPelculas = new JMenuItem("PelÃ­culas");
+		mntmPelculas = new JMenuItem("Películas");
 		mnMantenimiento.add(mntmPelculas);
 		
 		mntmFunciones = new JMenuItem("Funciones");

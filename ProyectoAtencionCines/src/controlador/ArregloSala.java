@@ -10,6 +10,10 @@ public class ArregloSala {
 	//Constructor
 
 	public ArregloSala() {
+		sala = new ArrayList<Sala>();
+		sala.add(new Sala(123, 1, 2, 5, 20));
+		sala.add(new Sala(124, 4, 3, 3, 12));
+		sala.add(new Sala(125, 7, 4, 4, 16));
 	}
 	//Operaciones públicas básicas
 	public int tamanho(){

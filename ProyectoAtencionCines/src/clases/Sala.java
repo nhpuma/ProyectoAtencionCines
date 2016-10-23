@@ -5,15 +5,15 @@ public class Sala {
 	private int codigo; //Autogenerado desde 10001
 	private int codCine; //Referencia a la Clase Cine
 	private int numSala; 
-	private int numFila;
-	private int numButaca;
+	private int numFilas;
+	private int numButacas;
 	//Constructor
 	public Sala(int codigo, int codCine, int numSala, int numFila, int numButaca) {		
 		this.codigo = codigo;
 		this.codCine = codCine;
 		this.numSala = numSala;
-		this.numFila = numFila;
-		this.numButaca = numButaca;
+		this.numFilas = numFila;
+		this.numButacas = numButaca;
 	}
 	//Getters y Setters
 	public int getCodigo() {
@@ -35,16 +35,16 @@ public class Sala {
 		this.numSala = numSala;
 	}
 	public int getNumFila() {
-		return numFila;
+		return numFilas;
 	}
 	public void setNumFila(int numFila) {
-		this.numFila = numFila;
+		this.numFilas = numFila;
 	}
 	public int getNumButaca() {
-		return numButaca;
+		return numButacas;
 	}
 	public void setNumButaca(int numButaca) {
-		this.numButaca = numButaca;
+		this.numButacas = numButaca;
 	}
 	//Métodos complementarios
 }

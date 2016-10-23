@@ -6,12 +6,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import clases.Sala;
+import controlador.ArregloSala;
+
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class frmSala extends JFrame {
+public class frmSala extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JLabel lblSalas;
@@ -84,6 +90,7 @@ public class frmSala extends JFrame {
 		contentPane.add(lblNmeroDeButacas);
 		
 		cmbCodigoSala = new JComboBox();
+		cmbCodigoSala.addActionListener(this);
 		cmbCodigoSala.setBounds(158, 17, 190, 27);
 		contentPane.add(cmbCodigoSala);
 		
@@ -113,6 +120,7 @@ public class frmSala extends JFrame {
 		txtNumbutacas.setColumns(10);
 		
 		btnIngresar = new JButton("Ingresar");
+		btnIngresar.addActionListener(this);
 		btnIngresar.setBounds(412, 65, 117, 29);
 		contentPane.add(btnIngresar);
 		
@@ -127,5 +135,56 @@ public class frmSala extends JFrame {
 		btnListar = new JButton("Listar");
 		btnListar.setBounds(412, 179, 117, 29);
 		contentPane.add(btnListar);
+		
+		listar();
+	}
+	
+	ArregloSala as = new ArregloSala();
+	
+	//Método de listar salas
+	void listar(){
+		//cmbCodigoSala.removeAllItems();
+		for(int i=0; i < as.tamanho(); i++){
+			cmbCodigoSala.addItem(as.obtener(i).getCodigo());
+		}
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnIngresar) {
+			btnIngresarActionPerformed(e);
+		}
+		if (e.getSource() == cmbCodigoSala) {
+			cmbCodigoSalaActionPerformed(e);
+		}
+	}
+	protected void cmbCodigoSalaActionPerformed(ActionEvent e) {
+		int i = cmbCodigoSala.getSelectedIndex();
+		txtCodsala.setText(""+as.obtener(i).getCodigo());
+		txtCodcine.setText(""+as.obtener(i).getCodCine());
+		txtNumsala.setText(""+as.obtener(i).getNumSala());
+		txtNumfilas.setText(""+as.obtener(i).getNumFila());
+		txtNumbutacas.setText(""+as.obtener(i).getNumButaca());
+	}
+	protected void btnIngresarActionPerformed(ActionEvent e) {
+		int codigo = Integer.parseInt(txtCodsala.getText().trim());
+		int codCine = Integer.parseInt(txtCodcine.getText().trim());
+		int numSala = Integer.parseInt(txtNumsala.getText().trim());
+		int numFilas = Integer.parseInt(txtNumfilas.getText().trim());
+		int numButacas = Integer.parseInt(txtNumbutacas.getText().trim());
+		
+		Sala snuevo = new Sala(codigo, codCine, numSala, numFilas, numButacas);
+		as.adicionar(snuevo);
+		
+		cmbCodigoSala.addItem(""+codigo);
+		
+		limpieza();
+	}
+	
+	void limpieza(){
+		txtCodsala.setText("");
+		txtCodcine.setText("");
+		txtNumsala.setText("");
+		txtNumfilas.setText("");
+		txtNumbutacas.setText("");
+		txtCodsala.requestFocus();
 	}
 }

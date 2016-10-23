@@ -15,7 +15,7 @@ public class ArregloSala {
 		sala.add(new Sala(124, 4, 3, 3, 12));
 		sala.add(new Sala(125, 7, 4, 4, 16));
 	}
-	//Operaciones pÃºblicas bÃ¡sicas
+	//Operaciones públicas básicas
 	public int tamanho(){
 		return sala.size();
 	}
@@ -27,5 +27,13 @@ public class ArregloSala {
 	}
 	public void eliminar(Sala x){
 		sala.remove(x);
+	}
+	//Operaciones complementarias
+	public Sala buscar(int cod){
+		for(int i=0; i<tamanho(); i++){
+			if(obtener(i).getCodigo()==cod)
+				return obtener(i);
+		}
+		return null;
 	}
 }

@@ -3,7 +3,6 @@ package controlador;
 import java.util.ArrayList;
 
 import clases.Cine;
-import clases.Sala;
 
 public class ArregloCine {
 	//atributo privado

@@ -41,6 +41,8 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 	private JButton btnIngresar;
 	private JButton btnSalir;
 	private JTable table;
+	//Agregando un modelo
+	private DefaultTableModel modelo;
 	
 
 	/**
@@ -148,6 +150,11 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 		
 		table = new JTable();
 		tblTabla.setViewportView(table);
+		
+		//Creando el modelo en la tabla
+		modelo = new DefaultTableModel();
+		modelo.addColumn("Código Cine");
+		table.setModel(modelo);
 	}
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == btnIngresar) {
@@ -185,8 +192,9 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 					ac.obtener(i).getFechaInicio(),
 					ac.obtener(i).getTipo()
 			};
-		modelo.addRow(fila);
+			modelo.addRow(fila);
 		}
+	}
 	void mensaje(String s) {
 		JOptionPane.showMessageDialog(this, s);
 	}		

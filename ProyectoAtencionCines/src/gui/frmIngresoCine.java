@@ -153,6 +153,7 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 		
 		//Creando el modelo en la tabla
 		modelo = new DefaultTableModel();
+		//Aquí agregas las columnas para tu tabla
 		modelo.addColumn("Código Cine");
 		table.setModel(modelo);
 	}

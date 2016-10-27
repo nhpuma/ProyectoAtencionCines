@@ -6,13 +6,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import controlador.ArregloCine;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class frmIngresoCine extends JFrame implements ActionListener {
 
@@ -31,9 +38,10 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 	private JTextField txtProv;
 	private JLabel lblTipo;
 	private JComboBox cmbTipo;
-	private JTextArea txtS;
 	private JButton btnIngresar;
 	private JButton btnSalir;
+	private JTable table;
+	
 
 	/**
 	 * Launch the application.
@@ -124,10 +132,6 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 		cmbTipo.setBounds(392, 8, 86, 20);
 		contentPane.add(cmbTipo);
 		
-		txtS = new JTextArea();
-		txtS.setBounds(10, 86, 600, 204);
-		contentPane.add(txtS);
-		
 		btnIngresar = new JButton("Ingresar");
 		btnIngresar.addActionListener(this);
 		btnIngresar.setBounds(521, 7, 89, 23);
@@ -137,6 +141,13 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 		btnSalir.addActionListener(this);
 		btnSalir.setBounds(521, 52, 89, 23);
 		contentPane.add(btnSalir);
+		
+		JScrollPane tblTabla = new JScrollPane();
+		tblTabla.setBounds(0, 81, 610, 209);
+		contentPane.add(tblTabla);
+		
+		table = new JTable();
+		tblTabla.setViewportView(table);
 	}
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == btnIngresar) {
@@ -146,6 +157,7 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 			do_btnSalir_actionPerformed(arg0);
 		}
 	}
+	ArregloCine ac=new ArregloCine();
 	protected void do_btnIngresar_actionPerformed(ActionEvent arg0) {
 		limpieza();
 	}
@@ -161,9 +173,41 @@ public class frmIngresoCine extends JFrame implements ActionListener {
    		txtDist.setText("");
    	}
 	//  Métodos tipo void (con parámetros)
-	void imprimir(String s) {
-		txtS.append(s + "\n");
+	void listar(){
+		modelo.setRowCount(0);
+		for (int i = 0; i < ac.tamanio(); i++) {
+			Object fila[] = {
+					ac.obtener(i).getCodCine(),
+					ac.obtener(i).getNombre(),
+					ac.obtener(i).getDepartamento(),
+					ac.obtener(i).getProvincia(),
+					ac.obtener(i).getDistrito(),
+					ac.obtener(i).getFechaInicio(),
+					ac.obtener(i).getTipo()
+			};
+		modelo.addRow(fila);
+		}
+	void mensaje(String s) {
+		JOptionPane.showMessageDialog(this, s);
+	}		
+	//  Métodos que retornan valor sin parámetros
+	int leerCodigo() {
+		return Integer.parseInt(txtCod.getText().trim());
 	}
-
+	String leerNombre() {
+		return txtNom.getText().trim();
+	}
+	String leerDepartamento() {
+		return txtDep.getText().trim();
+	}
+	String leerProvincia() {
+		return txtProv.getText().trim();
+	}
+	String leerDistrito() {
+		return txtProv.getText().trim();
+	}
+	int leerTipo(){
+		return cmbTipo.getSelectedIndex();
+	}
 	
 }

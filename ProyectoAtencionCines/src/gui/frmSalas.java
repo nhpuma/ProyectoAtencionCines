@@ -176,7 +176,7 @@ public class frmSalas extends JFrame implements ActionListener {
 			dgSalas.setModal(true);
 			dgSalas.setVisible(true);
 		}else{
-			JOptionPane.showMessageDialog(this, "Seleccione un dato");
+			JOptionPane.showMessageDialog(this, "Seleccione un dato.");
 		}
 	}
 }

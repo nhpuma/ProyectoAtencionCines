@@ -6,7 +6,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import clases.Cine;
+import controlador.ArregloCine;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
@@ -59,6 +64,7 @@ public class frmEliminarCine extends JFrame implements ActionListener {
 		txtCod.setColumns(10);
 		
 		btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(this);
 		btnEliminar.setBounds(165, 7, 89, 23);
 		contentPane.add(btnEliminar);
 		
@@ -73,11 +79,46 @@ public class frmEliminarCine extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
+		if (arg0.getSource() == btnEliminar) {
+			do_btnEliminar_actionPerformed(arg0);
+		}
 		if (arg0.getSource() == btnSalir) {
 			do_btnSalir_actionPerformed(arg0);
+		}
+	}
+	ArregloCine ac=new ArregloCine();
+	frmIngresoCine ic=new frmIngresoCine();
+	protected void do_btnEliminar_actionPerformed(ActionEvent arg0) {
+		try {
+			int codCine = leerCodigo();
+			Cine c= ac.buscar(codCine);
+			if (c == null)
+				ic.mensaje("el CODIGO no existe");
+			else {
+				ac.eliminar(c);
+				ic.listar();
+			}
+			txtCod.setText("");
+			txtCod.requestFocus();
+		}
+		catch (Exception e) {
+			ic.mensaje("ingrese CODIGO correcto");
+			txtCod.setText("");
+			txtCod.requestFocus();
 		}
 	}
 	protected void do_btnSalir_actionPerformed(ActionEvent arg0) {
 		dispose();
 	}
+//  Métodos tipo void (sin parámetros)
+  	void limpieza() {
+   		txtCod.setText("");
+   	
+   	}
+//  Métodos que retornan valor sin parámetros
+	int leerCodigo() {
+		return Integer.parseInt(txtCod.getText().trim());
+	}
+	
+	
 }

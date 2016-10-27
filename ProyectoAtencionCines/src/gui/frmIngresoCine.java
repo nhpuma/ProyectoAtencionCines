@@ -254,7 +254,7 @@ public class frmIngresoCine extends JFrame implements ActionListener {
    		txtFecha.setText("");
    	}
 	//  Métodos tipo void (con parámetros)
-	void listar(){
+	public void listar(){
 		modelo.setRowCount(0);
 		for (int i = 0; i < ac.tamanio(); i++) {
 			Object fila[] = {
@@ -269,7 +269,7 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 			modelo.addRow(fila);
 		}
 	}
-	void mensaje(String s) {
+	public  void mensaje(String s) {
 		JOptionPane.showMessageDialog(this, s);
 	}		
 	//  Métodos que retornan valor sin parámetros

@@ -22,6 +22,7 @@ public class ArregloCine {
 	public void adicionar(Cine x){
 		cine.add(x);
 	}
+
 	public void eliminar(Cine x){
 		cine.remove(x);
 	}

@@ -264,7 +264,7 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 					ac.obtener(i).getProvincia(),
 					ac.obtener(i).getDistrito(),
 					ac.obtener(i).getFechaInicio(),
-					ac.obtener(i).getTipo()
+					ac.obtener(i).tipoCine()
 			};
 			modelo.addRow(fila);
 		}

@@ -168,6 +168,90 @@ public class frmModificarCine extends JFrame implements ActionListener {
 	int leerCodigo() {
 		return Integer.parseInt(txtCod.getText().trim());
 	}
+	String leerNombre() {
+		return txtNom.getText().trim();
+	}
+	String leerDepartamento() {
+		return txtDep.getText().trim();
+	}
+	String leerProvincia() {
+		return txtProv.getText().trim();
+	}
+	String leerDistrito() {
+		return txtDist.getText().trim();
+	}
+	String leerFechaInicio() {
+		return txtFecha.getText().trim();
+	}
+	int leerTipo(){
+		return cmbTipo.getSelectedIndex();
+	}
+	//METODO MODIFICAR
+	void modificarPersona() {
+		try {
+			Cine x = ac.buscar(leerCodigo());
+			String nombre = leerNombre();
+			if (nombre.length() > 0)
+				try {
+					String departamento = leerDepartamento();
+					try {
+						String provincia = leerProvincia();
+						try{
+							String distrito = leerDistrito();
+							try{
+								String fechaInicio = leerFechaInicio();
+								try{
+									int tipo = leerTipo();
+									x.setNombre(nombre);
+									x.setDepartamento(departamento);
+									x.setProvincia(provincia);
+									x.setDistrito(distrito);
+									x.setFechaInicio(fechaInicio);
+									x.setTipo(tipo);
+									ic.listar();
+									txtCod.requestFocus();
+								}
+								catch (Exception e){
+									ic.mensaje("ingrese tipo correcta");
+									cmbTipo.requestFocus();
+								}
+							}
+								catch (Exception e){
+									ic.mensaje("ingrese FECHA correcta");
+									txtFecha.setText("");
+									txtFecha.requestFocus();
+								}
+							}
+								catch (Exception e){
+									ic.mensaje("ingrese DISTRITO correcta");
+									txtDist.setText("");
+									txtDist.requestFocus();
+								}
+							}
+					catch (Exception e) {
+						ic.mensaje("ingrese PROVINCIA correcta");
+						txtProv.setText("");
+						txtProv.requestFocus();
+					}	
+				}
+				catch (Exception e) {
+					ic.mensaje("ingrese DEPARTAMENTO correcto");
+					txtDep.setText("");
+					txtDep.requestFocus();
+				}
+			else {
+				ic.mensaje("ingrese NOMBRE correcto");
+				txtNom.setText("");
+				txtNom.requestFocus();
+			}
+		}
+		catch (Exception e) {
+			ic.mensaje("ingrese CÓDIGO correcto");
+			txtCod.setText("");
+			txtCod.requestFocus();
+		}
+	}
+	//CONSULTAR CINE
 	void consultarCine() {
 		try {
 			Cine x= ac.buscar(leerCodigo());

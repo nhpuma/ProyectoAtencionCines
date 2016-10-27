@@ -36,4 +36,11 @@ public class ArregloSala {
 		}
 		return null;
 	}
+	//Correlativo
+	public int codigoCorrelativo(){
+		if(tamanho() == 0)
+			return 10001;
+		else
+			return obtener(tamanho()-1).getCodigo()+1;
+	}
 }

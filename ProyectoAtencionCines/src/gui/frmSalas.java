@@ -14,9 +14,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class frmSalas extends JFrame {
+public class frmSalas extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -74,18 +77,22 @@ public class frmSalas extends JFrame {
 		tblSalas.setModel(modelo);
 		
 		btnIngresar = new JButton("Ingresar");
+		btnIngresar.addActionListener(this);
 		btnIngresar.setBounds(427, 55, 117, 23);
 		contentPane.add(btnIngresar);
 		
 		btnModificar = new JButton("Modificar");
+		btnModificar.addActionListener(this);
 		btnModificar.setBounds(427, 89, 117, 23);
 		contentPane.add(btnModificar);
 		
 		btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(this);
 		btnEliminar.setBounds(427, 123, 117, 23);
 		contentPane.add(btnEliminar);
 		
 		btnListado = new JButton("Listado");
+		btnListado.addActionListener(this);
 		btnListado.setBounds(427, 157, 117, 23);
 		contentPane.add(btnListado);
 		
@@ -102,7 +109,9 @@ public class frmSalas extends JFrame {
 	}
 	
 	//Declaración GLobal
-	ArregloSala as = new ArregloSala();
+	public static ArregloSala as = new ArregloSala();
+	public static int codEnv = 0;
+	
 	void listar(){
 		modelo.setRowCount(0);
 		for (int i = 0; i < as.tamanho(); i++) {
@@ -114,6 +123,60 @@ public class frmSalas extends JFrame {
 					as.obtener(i).getNumButaca()
 			};
 			modelo.addRow(fila);
+		}
+	}
+	public void actionPerformed(ActionEvent arg0) {
+		if (arg0.getSource() == btnModificar) {
+			actionPerformedBtnModificar(arg0);
+		}
+		if (arg0.getSource() == btnEliminar) {
+			actionPerformedBtnEliminar(arg0);
+		}
+		if (arg0.getSource() == btnListado) {
+			actionPerformedBtnListado(arg0);
+		}
+		if (arg0.getSource() == btnIngresar) {
+			actionPerformedBtnIngresar(arg0);
+		}
+	}
+	protected void actionPerformedBtnIngresar(ActionEvent arg0) {
+		//new dlgSalas(this).setVisible(true);
+		dlgSalas dgs = new dlgSalas();
+		dgs.setTitle("Ingresar");
+		dgs.setModal(true);
+		dgs.setLocationRelativeTo(this);
+		
+		dgs.setVisible(true);
+		listar();
+	}
+	protected void actionPerformedBtnListado(ActionEvent arg0) {
+		listar();
+	}
+	protected void actionPerformedBtnEliminar(ActionEvent arg0) {
+		if(tblSalas.getSelectedRow()!=-1){
+			int rpta = JOptionPane.showConfirmDialog(this, "Seguro que desea eliminar", "Eliminar", JOptionPane.YES_NO_OPTION);
+			if(rpta==JOptionPane.YES_OPTION){
+				int cod=Integer.parseInt(""+tblSalas.getValueAt(tblSalas.getSelectedRow(), 0));
+				//Sala bsala = as.buscar(cod);
+				as.eliminar(as.buscar(cod));
+				listar();
+			}
+		}else{
+			JOptionPane.showMessageDialog(this, "Seleccione un dato");
+		}
+	}
+	protected void actionPerformedBtnModificar(ActionEvent arg0) {
+		//Capturando la selección en la tabla
+		int fila = tblSalas.getSelectedRow();
+		//Si selecciona o no una FILA
+		if(fila!=-1){
+			codEnv = Integer.parseInt(""+ tblSalas.getValueAt(fila, 0));
+			dlgSalas dgSalas = new dlgSalas();
+			dgSalas.setTitle("Modificar");
+			dgSalas.setModal(true);
+			dgSalas.setVisible(true);
+		}else{
+			JOptionPane.showMessageDialog(this, "Seleccione un dato");
 		}
 	}
 }

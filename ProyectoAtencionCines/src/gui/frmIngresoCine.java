@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import clases.Cine;
 import controlador.ArregloCine;
 
 import javax.swing.JLabel;
@@ -20,6 +21,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.DefaultComboBoxModel;
 
 public class frmIngresoCine extends JFrame implements ActionListener {
 
@@ -131,6 +133,7 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 		contentPane.add(lblTipo);
 		
 		cmbTipo = new JComboBox();
+		cmbTipo.setModel(new DefaultComboBoxModel(new String[] {"Estandar", "Prime"}));
 		cmbTipo.setBounds(392, 8, 86, 20);
 		contentPane.add(cmbTipo);
 		
@@ -154,7 +157,13 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 		//Creando el modelo en la tabla
 		modelo = new DefaultTableModel();
 		//Aquí agregas las columnas para tu tabla
-		modelo.addColumn("Código Cine");
+		modelo.addColumn("Código");
+		modelo.addColumn("Nombre");
+		modelo.addColumn("Departamento");
+		modelo.addColumn("Provincia");
+		modelo.addColumn("Distrito");
+		modelo.addColumn("Fecha Inicio");
+		modelo.addColumn("Tipo");
 		table.setModel(modelo);
 	}
 	public void actionPerformed(ActionEvent arg0) {
@@ -167,8 +176,71 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 	}
 	ArregloCine ac=new ArregloCine();
 	protected void do_btnIngresar_actionPerformed(ActionEvent arg0) {
-		limpieza();
+		try {
+			int codCine = leerCodigo();
+			if (ac.buscar(codCine) == null) {
+				String nombre = leerNombre();
+				if (nombre.length() > 0)
+					try {
+						String departamento = leerDepartamento();
+						try {
+							String provincia = leerProvincia();
+							try{
+								String distrito = leerDistrito();
+							
+							try{
+								String fechaInicio = leerFechaInicio();
+								try{
+									int tipo = leerTipo();
+									Cine nuevo = new Cine(codCine, nombre, departamento,  provincia, distrito, fechaInicio,
+											 tipo);
+									ac.adicionar(nuevo);
+									listar();
+									limpieza();
+								}
+								catch(Exception e){
+									mensaje("ingrese tipo");
+								}
+								}
+							catch(Exception e){
+								mensaje("ingrese fecha");
+								
+							}
+								
+							}
+						catch (Exception e){
+							mensaje("ingrese distrito");
+						}
+							
+						}
+						catch (Exception e) {
+							mensaje("ingrese provincia");
+							
+						}
+					}
+					catch (Exception e) {
+						mensaje("ingrese departamento");
+						
+					}
+				else {
+					mensaje("ingrese NOMBRE");
+					txtNom.setText("");
+					txtNom.requestFocus();
+				}
+			}
+			else {
+				mensaje("el CODIGO ya existe");
+				txtCod.setText("");
+				txtCod.requestFocus();
+			}
+		}
+		catch (Exception e) {
+			mensaje("ingrese CODIGO correcto");
+			txtCod.setText("");
+			mensaje("ingrese fecha");
+		}
 	}
+				
 	protected void do_btnSalir_actionPerformed(ActionEvent arg0) {
 		dispose();
 	}
@@ -179,6 +251,7 @@ public class frmIngresoCine extends JFrame implements ActionListener {
    		txtDep.setText("");
    		txtProv.setText("");
    		txtDist.setText("");
+   		txtFecha.setText("");
    	}
 	//  Métodos tipo void (con parámetros)
 	void listar(){
@@ -213,7 +286,10 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 		return txtProv.getText().trim();
 	}
 	String leerDistrito() {
-		return txtProv.getText().trim();
+		return txtDist.getText().trim();
+	}
+	String leerFechaInicio() {
+		return txtFecha.getText().trim();
 	}
 	int leerTipo(){
 		return cmbTipo.getSelectedIndex();

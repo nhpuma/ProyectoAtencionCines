@@ -10,9 +10,7 @@ public class ArregloCine {
 	//constructor
 	public ArregloCine(){
 		cine= new ArrayList <Cine> ();
-		cine.add(new Cine(123,"Carlos","Lima","Lima","SJL","22/12/1998",0));
-		cine.add(new Cine(123,"Maria","Junin","Huancayo","Jauja","01/07/2007",1));
-		cine.add(new Cine(123,"Carlos","Lima","Lima","Lima","17/02/2001",0));
+
 	}
 	//operaciones publicas basicas
 	public int tamanio(){
@@ -26,6 +24,13 @@ public class ArregloCine {
 	}
 	public void eliminar(Cine x){
 		cine.remove(x);
+	}
+//  Operaciones públicas complementarias
+	public Cine buscar(int codigo) {
+		for (int i=0; i<tamanio(); i++)
+			if (obtener(i).getCodCine()== codigo)
+				return obtener(i);
+		return null;
 	}
 
 }

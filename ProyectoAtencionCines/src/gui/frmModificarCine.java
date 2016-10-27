@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import clases.Cine;
+import controlador.ArregloCine;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -32,6 +36,7 @@ public class frmModificarCine extends JFrame implements ActionListener {
 	private JComboBox cmbTipo;
 	private JButton btnModificar;
 	private JButton btnSalir;
+	private JButton btnBuscar;
 
 	/**
 	 * Launch the application.
@@ -54,7 +59,7 @@ public class frmModificarCine extends JFrame implements ActionListener {
 	 */
 	public frmModificarCine() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 404, 300);
+		setBounds(100, 100, 404, 235);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -123,21 +128,70 @@ public class frmModificarCine extends JFrame implements ActionListener {
 		contentPane.add(cmbTipo);
 		
 		btnModificar = new JButton("Modificar");
-		btnModificar.setBounds(145, 140, 89, 23);
+		btnModificar.addActionListener(this);
+		btnModificar.setBounds(147, 139, 89, 23);
 		contentPane.add(btnModificar);
 		
 		btnSalir = new JButton("salir");
 		btnSalir.addActionListener(this);
-		btnSalir.setBounds(145, 174, 89, 23);
+		btnSalir.setBounds(267, 139, 89, 23);
 		contentPane.add(btnSalir);
+		
+		btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(this);
+		btnBuscar.setBounds(23, 139, 89, 23);
+		contentPane.add(btnBuscar);
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
+		if (arg0.getSource() == btnBuscar) {
+			do_btnBuscar_actionPerformed(arg0);
+		}
+		if (arg0.getSource() == btnModificar) {
+			do_btnModificar_actionPerformed(arg0);
+		}
 		if (arg0.getSource() == btnSalir) {
 			do_btnSalir_actionPerformed(arg0);
 		}
 	}
+	ArregloCine ac = new ArregloCine();
+	frmIngresoCine ic=new frmIngresoCine();
+	protected void do_btnBuscar_actionPerformed(ActionEvent arg0) {
+		consultarCine();
+	}
+	protected void do_btnModificar_actionPerformed(ActionEvent arg0) {
+	}
 	protected void do_btnSalir_actionPerformed(ActionEvent arg0) {
 		dispose();
 	}
+//  Métodos que retornan valor sin parámetros
+	int leerCodigo() {
+		return Integer.parseInt(txtCod.getText().trim());
+	}
+	void consultarCine() {
+		try {
+			Cine x= ac.buscar(leerCodigo());
+			if (x != null) {
+				txtNom.setText(x.getNombre());
+				txtDep.setText(x.getDepartamento());
+				txtProv.setText(x.getProvincia());
+				txtDist.setText(x.getDistrito());
+				txtFecha.setText(x.getFechaInicio());
+				cmbTipo.setSelectedIndex(x.getTipo());
+			}
+			else {
+				ic.mensaje("El código " + leerCodigo() + " no existe");
+				txtCod.setText("");
+				txtCod.requestFocus();
+			}
+		}
+		catch (Exception e) {
+			ic.mensaje("ingrese CÓDIGO correcto");
+			txtCod.setText("");
+			txtCod.requestFocus();
+		}
+	}
+	
+	
+	
 }

@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class frmSalas extends JFrame implements ActionListener {
 
@@ -77,21 +78,25 @@ public class frmSalas extends JFrame implements ActionListener {
 		tblSalas.setModel(modelo);
 		
 		btnIngresar = new JButton("Ingresar");
+		btnIngresar.setIcon(new ImageIcon(frmSalas.class.getResource("/img/add2.png")));
 		btnIngresar.addActionListener(this);
 		btnIngresar.setBounds(427, 55, 117, 23);
 		contentPane.add(btnIngresar);
 		
 		btnModificar = new JButton("Modificar");
+		btnModificar.setIcon(new ImageIcon(frmSalas.class.getResource("/img/edit2.png")));
 		btnModificar.addActionListener(this);
 		btnModificar.setBounds(427, 89, 117, 23);
 		contentPane.add(btnModificar);
 		
 		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setIcon(new ImageIcon(frmSalas.class.getResource("/img/remove2.png")));
 		btnEliminar.addActionListener(this);
 		btnEliminar.setBounds(427, 123, 117, 23);
 		contentPane.add(btnEliminar);
 		
 		btnListado = new JButton("Listado");
+		btnListado.setIcon(new ImageIcon(frmSalas.class.getResource("/img/list2.png")));
 		btnListado.addActionListener(this);
 		btnListado.setBounds(427, 157, 117, 23);
 		contentPane.add(btnListado);
@@ -153,6 +158,7 @@ public class frmSalas extends JFrame implements ActionListener {
 		listar();
 	}
 	protected void actionPerformedBtnEliminar(ActionEvent arg0) {
+		//Si se selecciona una fila
 		if(tblSalas.getSelectedRow()!=-1){
 			int rpta = JOptionPane.showConfirmDialog(this, "Seguro que desea eliminar", "Eliminar", JOptionPane.YES_NO_OPTION);
 			if(rpta==JOptionPane.YES_OPTION){

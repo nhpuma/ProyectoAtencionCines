@@ -15,10 +15,9 @@ public class ArregloCine {
 	//constructor
 	public ArregloCine(){
 		cine= new ArrayList <Cine> ();
-		cine.add(new Cine(123,"cineplamnet","lima","tacna","Jauja","25/02/1998",0));
-		cine.add(new Cine(124,"cinemark","perene","huancayo","Jauja","25/02/2005",0));
-		cine.add(new Cine(125,"cinestar","arequipa","huancayo","angamos","25/02/2008",0));
-
+		this.archivo=archivo;
+		cargarCine();
+	
 	}
 	//operaciones publicas basicas
 	public int tamanio(){
@@ -41,7 +40,14 @@ public class ArregloCine {
 				return obtener(i);
 		return null;
 	}
-	public void grabarPersonas() {
+	public int codigoCorrelativo() {
+		if (tamanio() == 0)
+			return 10001;
+		else
+			return obtener(tamanio()-1).getCodCine() + 1;		
+	}
+	
+	public void grabarCine() {
 		try {
 			PrintWriter pw;
 			String linea;
@@ -63,14 +69,14 @@ public class ArregloCine {
 		catch (Exception e) {
 		}
 	}
-	public void cargarPersonas() {
+	public void cargarCine() {
 		try {
 			BufferedReader br;
 			String linea, nombre;
 			String s[];
 			int codCine;
 			String departamento, provincia, distrito, fechaInicio;
-			int tipo;
+			int tipo; 
 			br = new BufferedReader(new FileReader(archivo));
 			while ((linea = br.readLine()) != null) {
 				s = linea.split(";");

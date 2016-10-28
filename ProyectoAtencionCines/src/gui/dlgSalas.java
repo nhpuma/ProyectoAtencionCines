@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class dlgSalas extends JDialog implements ActionListener {
 
@@ -110,6 +111,7 @@ public class dlgSalas extends JDialog implements ActionListener {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				okButton = new JButton("OK");
+				okButton.setIcon(new ImageIcon(dlgSalas.class.getResource("/img/checked2.png")));
 				okButton.addActionListener(this);
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
@@ -117,11 +119,12 @@ public class dlgSalas extends JDialog implements ActionListener {
 			}
 			{
 				cancelButton = new JButton("Cancel");
+				cancelButton.setIcon(new ImageIcon(dlgSalas.class.getResource("/img/cancel2.png")));
 				cancelButton.addActionListener(this);
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
-		}
+		}		
 		
 		limpieza();
 		
@@ -141,9 +144,10 @@ public class dlgSalas extends JDialog implements ActionListener {
 		txtnumbutacas.setText("");
 	}
 	void verificacion(){
+		//Registrar Sala
 		if(frmSalas.codEnv == 0){
-			txtcodsala.setText(""+frmSalas.as.codigoCorrelativo());
-		}else {
+			txtcodsala.setText(""+frmSalas.as.codigoCorrelativo());			
+		}else { //Modificar Sala
 			int cod = frmSalas.codEnv;
 			Sala s = frmSalas.as.buscar(cod);
 			txtcodsala.setText(""+s.getCodigo());

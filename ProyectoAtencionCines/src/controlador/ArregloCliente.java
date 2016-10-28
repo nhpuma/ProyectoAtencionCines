@@ -37,4 +37,5 @@ public class ArregloCliente {
 		else
 			return obtener(tamanio()-1).getCodCliente()+1;
 	}
+	
 }

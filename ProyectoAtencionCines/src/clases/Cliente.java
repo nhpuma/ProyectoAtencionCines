@@ -101,5 +101,15 @@ public class Cliente {
 	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
+	public String tipocliente(){
+		switch(estadocivil){
+		case 0: return "soltero";
+		case 1: return "casado";
+		case 2: return "viudo";
+		case 3: return "divorciado";
+		default: return "error de eleccion";
+		}
+		
+	}
 	
 }

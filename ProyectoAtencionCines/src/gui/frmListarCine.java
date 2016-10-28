@@ -93,7 +93,7 @@ public class frmListarCine extends JFrame implements ActionListener {
 		}
 	}
 	
-	ArregloCine ac=new ArregloCine();
+	ArregloCine ac=new ArregloCine("cine.txt");
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == btnSalir) {
 			do_btnSalir_actionPerformed(arg0);

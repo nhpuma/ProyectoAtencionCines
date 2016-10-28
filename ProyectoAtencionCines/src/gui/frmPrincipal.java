@@ -33,7 +33,6 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	private JMenuItem mntmListar;
 	private JMenu mnEmpleado;
 	private JMenuItem mntmIngresar_1;
-	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application.
@@ -117,10 +116,6 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(0, 0, 1354, 673);
-		contentPane.add(lblNewLabel);
 	}
 
 	public void actionPerformed(ActionEvent e) {

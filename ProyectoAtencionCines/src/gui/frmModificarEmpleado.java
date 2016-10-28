@@ -47,7 +47,7 @@ public class frmModificarEmpleado extends JFrame {
 	 * Create the frame.
 	 */
 	
-	ArregloEmpleado aa= new ArregloEmpleado();
+	ArregloEmpleado aa= new ArregloEmpleado("Empleado.txt");
 	private JComboBox cbxTipo;
 	
 	

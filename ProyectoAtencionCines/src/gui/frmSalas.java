@@ -180,6 +180,7 @@ public class frmSalas extends JFrame implements ActionListener {
 			dlgSalas dgSalas = new dlgSalas();
 			dgSalas.setTitle("Modificar");
 			dgSalas.setModal(true);
+			dgSalas.setLocationRelativeTo(this);
 			dgSalas.setVisible(true);
 		}else{
 			JOptionPane.showMessageDialog(this, "Seleccione un dato.");

@@ -213,10 +213,8 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 	public  void mensaje(String s) {
 		JOptionPane.showMessageDialog(this, s);
 	}		
-	//  Métodos que retornan valor sin parámetros
-	int leerCodigo() {
-		return Integer.parseInt(txtCod.getText().trim());
-	}
+
+	
 	void adicionarPersona() {
 		int codigo = leerCodigo();
 		String nombre = leerNombre();
@@ -274,6 +272,10 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 			mensaje("ingrese NOMBRE correcto");
 		
 		}
+	}
+	//  Métodos que retornan valor sin parámetros
+	int leerCodigo() {
+		return Integer.parseInt(txtCod.getText().trim());
 	}
 	String leerNombre() {
 		return txtNom.getText().trim();

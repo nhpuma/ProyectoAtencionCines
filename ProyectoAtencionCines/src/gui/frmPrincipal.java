@@ -12,6 +12,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class frmPrincipal extends JFrame implements ActionListener {
 
@@ -21,7 +22,6 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	private JMenu mnRegistroDeReserva;
 	private JMenu mnControlDePago;
 	private JMenu mnReportes;
-	private JMenuItem mntmEmpleados;
 	private JMenuItem mntmClientes;
 	private JMenuItem mntmSalas;
 	private JMenuItem mntmPelculas;
@@ -31,6 +31,9 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	private JMenuItem mntmModificar;
 	private JMenuItem mntmEliminar;
 	private JMenuItem mntmListar;
+	private JMenu mnEmpleado;
+	private JMenuItem mntmIngresar_1;
+	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application.
@@ -63,8 +66,12 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		mnMantenimiento = new JMenu("Mantenimiento");
 		menuBar.add(mnMantenimiento);
 		
-		mntmEmpleados = new JMenuItem("Empleados");
-		mnMantenimiento.add(mntmEmpleados);
+		mnEmpleado = new JMenu("Empleado");
+		mnMantenimiento.add(mnEmpleado);
+		
+		mntmIngresar_1 = new JMenuItem("Ingresar");
+		mntmIngresar_1.addActionListener(this);
+		mnEmpleado.add(mntmIngresar_1);
 		
 		mntmClientes = new JMenuItem("Clientes");
 		mnMantenimiento.add(mntmClientes);
@@ -108,11 +115,18 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		menuBar.add(mnReportes);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(0, 0, 1354, 673);
+		contentPane.add(lblNewLabel);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmIngresar_1) {
+			do_mntmIngresar_1_actionPerformed(e);
+		}
 		if (e.getSource() == mntmListar) {
 			do_mntmListar_actionPerformed(e);
 		}
@@ -156,5 +170,11 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		flc = new frmListarCine();
 		flc.setLocationRelativeTo(this);
 		flc.setVisible(true);
+	}
+	protected void do_mntmIngresar_1_actionPerformed(ActionEvent e) {
+		frmIngresoEmpleado fle;
+		fle = new frmIngresoEmpleado ();
+		fle.setLocationRelativeTo(this);
+		fle.setVisible(true);
 	}
 }

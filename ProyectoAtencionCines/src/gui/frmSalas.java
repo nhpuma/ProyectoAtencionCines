@@ -31,7 +31,7 @@ public class frmSalas extends JFrame implements ActionListener {
 	private JButton btnListado;
 	private JLabel lblCdigoDeCine;
 	private JTextField txtCodcine;
-	private DefaultTableModel modelo;
+	private static DefaultTableModel modelo;
 
 	/**
 	 * Launch the application.
@@ -117,7 +117,7 @@ public class frmSalas extends JFrame implements ActionListener {
 	public static ArregloSala as = new ArregloSala();
 	public static int codEnv = 0;
 	
-	void listar(){
+	public static void listar(){
 		modelo.setRowCount(0);
 		for (int i = 0; i < as.tamanho(); i++) {
 			Object fila[] = {

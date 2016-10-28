@@ -167,15 +167,30 @@ public class dlgSalas extends JDialog implements ActionListener {
 		}
 	}
 	protected void actionPerformedOkButton(ActionEvent arg0) {
-		int codigo = Integer.parseInt(txtcodsala.getText());
-		int codCine = Integer.parseInt(txtcodcine.getText());
-		int numSala = Integer.parseInt(txtnumsala.getText());
-		int numFila = Integer.parseInt(txtnumfilas.getText());
-		int numButaca = Integer.parseInt(txtnumbutacas.getText());
-		
-		Sala sala = new Sala(codigo, codCine, numSala, numFila, numButaca);
-		frmSalas.as.adicionar(sala);
-		dispose();
+		Sala sala;
+		if(this.getTitle().equals("Modificar")){
+			int codigo = Integer.parseInt(txtcodsala.getText());
+			sala = frmSalas.as.buscar(codigo);
+			if(sala!=null){
+				sala.setCodCine(Integer.parseInt(txtcodcine.getText()));
+				sala.setNumSala(Integer.parseInt(txtnumsala.getText()));
+				sala.setNumFila(Integer.parseInt(txtnumfilas.getText()));
+				sala.setNumButaca(Integer.parseInt(txtnumbutacas.getText()));
+				dispose();				
+				frmSalas.listar();
+			}
+		}else{//Fin primer IF
+			//Ingresar uno nuevo
+			int codigo = Integer.parseInt(txtcodsala.getText());
+			int codCine = Integer.parseInt(txtcodcine.getText());
+			int numSala = Integer.parseInt(txtnumsala.getText());
+			int numFila = Integer.parseInt(txtnumfilas.getText());
+			int numButaca = Integer.parseInt(txtnumbutacas.getText());
+			
+			sala = new Sala(codigo, codCine, numSala, numFila, numButaca);
+			frmSalas.as.adicionar(sala);
+			dispose();
+		}
 	}
 	protected void actionPerformedCancelButton(ActionEvent arg0) {
 		dispose();

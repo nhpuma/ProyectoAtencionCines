@@ -23,10 +23,14 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	private JMenu mnReportes;
 	private JMenuItem mntmEmpleados;
 	private JMenuItem mntmClientes;
-	private JMenuItem mntmCines;
 	private JMenuItem mntmSalas;
 	private JMenuItem mntmPelculas;
 	private JMenuItem mntmFunciones;
+	private JMenu mnCines;
+	private JMenuItem mntmIngresar;
+	private JMenuItem mntmModificar;
+	private JMenuItem mntmEliminar;
+	private JMenuItem mntmListar;
 
 	/**
 	 * Launch the application.
@@ -65,11 +69,27 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		mntmClientes = new JMenuItem("Clientes");
 		mnMantenimiento.add(mntmClientes);
 		
-		mntmCines = new JMenuItem("Cines");
-		mnMantenimiento.add(mntmCines);
-		
 		mntmSalas = new JMenuItem("Salas");
 		mntmSalas.addActionListener(this);
+		
+		mnCines = new JMenu("Cines");
+		mnMantenimiento.add(mnCines);
+		
+		mntmIngresar = new JMenuItem("Ingresar");
+		mntmIngresar.addActionListener(this);
+		mnCines.add(mntmIngresar);
+		
+		mntmModificar = new JMenuItem("Modificar");
+		mntmModificar.addActionListener(this);
+		mnCines.add(mntmModificar);
+		
+		mntmEliminar = new JMenuItem("Eliminar");
+		mntmEliminar.addActionListener(this);
+		mnCines.add(mntmEliminar);
+		
+		mntmListar = new JMenuItem("Listar");
+		mntmListar.addActionListener(this);
+		mnCines.add(mntmListar);
 		mnMantenimiento.add(mntmSalas);
 		
 		mntmPelculas = new JMenuItem("Peliculas");
@@ -93,6 +113,18 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmListar) {
+			do_mntmListar_actionPerformed(e);
+		}
+		if (e.getSource() == mntmEliminar) {
+			do_mntmEliminar_actionPerformed(e);
+		}
+		if (e.getSource() == mntmModificar) {
+			do_mntmModificar_actionPerformed(e);
+		}
+		if (e.getSource() == mntmIngresar) {
+			do_mntmIngresar_actionPerformed(e);
+		}
 		if (e.getSource() == mntmSalas) {
 			mntmSalasActionPerformed(e);
 		}
@@ -100,5 +132,29 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	protected void mntmSalasActionPerformed(ActionEvent e) {
 //		frmSala mostrarSala = new frmSala();
 //		mostrarSala.setVisible(true);
+	}
+	protected void do_mntmIngresar_actionPerformed(ActionEvent e) {
+		frmIngresoCine fic;
+		fic = new frmIngresoCine();
+		fic.setLocationRelativeTo(this);
+		fic.setVisible(true);
+	}
+	protected void do_mntmModificar_actionPerformed(ActionEvent e) {
+		frmModificarCine fmc;
+		fmc = new frmModificarCine();
+		fmc.setLocationRelativeTo(this);
+		fmc.setVisible(true);
+	}
+	protected void do_mntmEliminar_actionPerformed(ActionEvent e) {
+		frmEliminarCine fec;
+		fec = new frmEliminarCine();
+		fec.setLocationRelativeTo(this);
+		fec.setVisible(true);
+	}
+	protected void do_mntmListar_actionPerformed(ActionEvent e) {
+		frmListarCine flc;
+		flc = new frmListarCine();
+		flc.setLocationRelativeTo(this);
+		flc.setVisible(true);
 	}
 }

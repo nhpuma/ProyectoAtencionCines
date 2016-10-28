@@ -13,7 +13,7 @@ public class ArregloCine {
 	private ArrayList <Cine> cine;
 	private String archivo;
 	//constructor
-	public ArregloCine(){
+	public ArregloCine(String archivo){
 		cine= new ArrayList <Cine> ();
 		this.archivo=archivo;
 		cargarCine();

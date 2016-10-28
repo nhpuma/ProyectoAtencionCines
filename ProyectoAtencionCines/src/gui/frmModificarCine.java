@@ -11,11 +11,13 @@ import clases.Cine;
 import controlador.ArregloCine;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.DefaultComboBoxModel;
 
 public class frmModificarCine extends JFrame implements ActionListener {
 
@@ -124,6 +126,7 @@ public class frmModificarCine extends JFrame implements ActionListener {
 		contentPane.add(lblTipo);
 		
 		cmbTipo = new JComboBox();
+		cmbTipo.setModel(new DefaultComboBoxModel(new String[] {"Estandar", "prime"}));
 		cmbTipo.setBounds(93, 89, 86, 20);
 		contentPane.add(cmbTipo);
 		
@@ -154,12 +157,13 @@ public class frmModificarCine extends JFrame implements ActionListener {
 			do_btnSalir_actionPerformed(arg0);
 		}
 	}
-	ArregloCine ac = new ArregloCine();
-	frmIngresoCine ic=new frmIngresoCine();
+	ArregloCine ac = new ArregloCine("cine.txt");
+	
 	protected void do_btnBuscar_actionPerformed(ActionEvent arg0) {
 		consultarCine();
 	}
 	protected void do_btnModificar_actionPerformed(ActionEvent arg0) {
+		modificarCine();
 	}
 	protected void do_btnSalir_actionPerformed(ActionEvent arg0) {
 		dispose();
@@ -187,7 +191,7 @@ public class frmModificarCine extends JFrame implements ActionListener {
 		return cmbTipo.getSelectedIndex();
 	}
 	//METODO MODIFICAR
-	void modificarPersona() {
+	void modificarCine() {
 		try {
 			Cine x = ac.buscar(leerCodigo());
 			String nombre = leerNombre();
@@ -208,48 +212,52 @@ public class frmModificarCine extends JFrame implements ActionListener {
 									x.setDistrito(distrito);
 									x.setFechaInicio(fechaInicio);
 									x.setTipo(tipo);
-									ic.listar();
+									ac.grabarCine();
+									
 									txtCod.requestFocus();
 								}
 								catch (Exception e){
-									ic.mensaje("ingrese tipo correcta");
+								 mensaje("ingrese tipo correcta");
 									cmbTipo.requestFocus();
 								}
 							}
 								catch (Exception e){
-									ic.mensaje("ingrese FECHA correcta");
+									mensaje("ingrese FECHA correcta");
 									txtFecha.setText("");
 									txtFecha.requestFocus();
 								}
 							}
 								catch (Exception e){
-									ic.mensaje("ingrese DISTRITO correcta");
+									mensaje("ingrese DISTRITO correcta");
 									txtDist.setText("");
 									txtDist.requestFocus();
 								}
 							}
 					catch (Exception e) {
-						ic.mensaje("ingrese PROVINCIA correcta");
+						mensaje("ingrese PROVINCIA correcta");
 						txtProv.setText("");
 						txtProv.requestFocus();
 					}	
 				}
 				catch (Exception e) {
-					ic.mensaje("ingrese DEPARTAMENTO correcto");
+					mensaje("ingrese DEPARTAMENTO correcto");
 					txtDep.setText("");
 					txtDep.requestFocus();
 				}
 			else {
-				ic.mensaje("ingrese NOMBRE correcto");
+				mensaje("ingrese NOMBRE correcto");
 				txtNom.setText("");
 				txtNom.requestFocus();
 			}
 		}
 		catch (Exception e) {
-			ic.mensaje("ingrese CÓDIGO correcto");
+			mensaje("ingrese CÓDIGO correcto");
 			txtCod.setText("");
 			txtCod.requestFocus();
 		}
+	}
+	public  void mensaje(String s) {
+		JOptionPane.showMessageDialog(this, s);
 	}
 	//CONSULTAR CINE
 	void consultarCine() {
@@ -264,13 +272,13 @@ public class frmModificarCine extends JFrame implements ActionListener {
 				cmbTipo.setSelectedIndex(x.getTipo());
 			}
 			else {
-				ic.mensaje("El código " + leerCodigo() + " no existe");
+				mensaje("El código " + leerCodigo() + " no existe");
 				txtCod.setText("");
 				txtCod.requestFocus();
 			}
 		}
 		catch (Exception e) {
-			ic.mensaje("ingrese CÓDIGO correcto");
+			mensaje("ingrese CÓDIGO correcto");
 			txtCod.setText("");
 			txtCod.requestFocus();
 		}

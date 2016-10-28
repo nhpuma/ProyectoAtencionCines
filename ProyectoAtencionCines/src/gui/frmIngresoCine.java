@@ -97,6 +97,7 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 		contentPane.add(txtNom);
 		
 		txtCod = new JTextField();
+		txtCod.setEditable(false);
 		txtCod.setColumns(10);
 		txtCod.setBounds(93, 8, 86, 20);
 		contentPane.add(txtCod);
@@ -165,6 +166,7 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 		modelo.addColumn("Fecha Inicio");
 		modelo.addColumn("Tipo");
 		table.setModel(modelo);
+		listar();
 	}
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == btnIngresar) {
@@ -174,71 +176,9 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 			do_btnSalir_actionPerformed(arg0);
 		}
 	}
-	ArregloCine ac=new ArregloCine();
+	ArregloCine ac=new ArregloCine("cine.txt");
 	protected void do_btnIngresar_actionPerformed(ActionEvent arg0) {
-		try {
-			int codCine = leerCodigo();
-			if (ac.buscar(codCine) == null) {
-				String nombre = leerNombre();
-				if (nombre.length() > 0)
-					try {
-						String departamento = leerDepartamento();
-						try {
-							String provincia = leerProvincia();
-							try{
-								String distrito = leerDistrito();
-							
-							try{
-								String fechaInicio = leerFechaInicio();
-								try{
-									int tipo = leerTipo();
-									Cine nuevo = new Cine(codCine, nombre, departamento,  provincia, distrito, fechaInicio,
-											 tipo);
-									ac.adicionar(nuevo);
-									listar();
-									limpieza();
-								}
-								catch(Exception e){
-									mensaje("ingrese tipo");
-								}
-								}
-							catch(Exception e){
-								mensaje("ingrese fecha");
-								
-							}
-								
-							}
-						catch (Exception e){
-							mensaje("ingrese distrito");
-						}
-							
-						}
-						catch (Exception e) {
-							mensaje("ingrese provincia");
-							
-						}
-					}
-					catch (Exception e) {
-						mensaje("ingrese departamento");
-						
-					}
-				else {
-					mensaje("ingrese NOMBRE");
-					txtNom.setText("");
-					txtNom.requestFocus();
-				}
-			}
-			else {
-				mensaje("el CODIGO ya existe");
-				txtCod.setText("");
-				txtCod.requestFocus();
-			}
-		}
-		catch (Exception e) {
-			mensaje("ingrese CODIGO correcto");
-			txtCod.setText("");
-			mensaje("ingrese fecha");
-		}
+		adicionarPersona();
 	}
 				
 	protected void do_btnSalir_actionPerformed(ActionEvent arg0) {
@@ -255,6 +195,7 @@ public class frmIngresoCine extends JFrame implements ActionListener {
    	}
 	//  Métodos tipo void (con parámetros)
 	public void listar(){
+		txtCod.setText(""+ac.codigoCorrelativo());
 		modelo.setRowCount(0);
 		for (int i = 0; i < ac.tamanio(); i++) {
 			Object fila[] = {
@@ -275,6 +216,64 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 	//  Métodos que retornan valor sin parámetros
 	int leerCodigo() {
 		return Integer.parseInt(txtCod.getText().trim());
+	}
+	void adicionarPersona() {
+		int codigo = leerCodigo();
+		String nombre = leerNombre();
+		if (nombre.length() > 0)
+			try {
+				String departamento = leerDepartamento();
+				try {
+					try{
+						String provincia = leerProvincia();
+						try{
+							String distrito = leerDistrito();
+							try{
+								String fechaInicio = leerFechaInicio();
+								try{
+									int tipo = leerTipo();
+									Cine nueva = new Cine(codigo, nombre, departamento, provincia,distrito,fechaInicio,tipo);
+							  		ac.adicionar(nueva);
+							  		ac.grabarCine();
+									listar();
+									txtCod.setText("" + ac.codigoCorrelativo());
+									txtNom.setText("");
+									txtDep.setText("");
+									txtProv.setText("");
+									txtDist.setText("");
+									txtFecha.setText("");
+									txtNom.requestFocus();
+								}
+								catch(Exception e){
+									mensaje("ingrese ESTATURA correcta");
+								}
+							}
+								catch(Exception e){
+									mensaje("ingrese ESTATURA correcta");
+								}
+						}
+								catch(Exception e){
+									mensaje("ingrese ESTATURA correcta");
+								}
+					}
+								catch(Exception e){
+									mensaje("ingrese ESTATURA correcta");
+								}
+				
+				}
+				catch (Exception e) {
+					mensaje("ingrese ESTATURA correcta");
+						
+				}
+			}
+			catch (Exception e) {
+				mensaje("ingrese PESO correcto");
+			
+			}
+		else {
+			mensaje("ingrese NOMBRE correcto");
+		
+		}
 	}
 	String leerNombre() {
 		return txtNom.getText().trim();

@@ -52,7 +52,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public frmPrincipal() {
-		setTitle("Sistema de Atención de Cines");
+		setTitle("Sistema de Atenci\u00F3n de Cines");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setBounds(100, 100, 550, 370);
@@ -130,8 +130,9 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		}
 	}
 	protected void mntmSalasActionPerformed(ActionEvent e) {
-//		frmSala mostrarSala = new frmSala();
-//		mostrarSala.setVisible(true);
+		frmSalas mostrarSala = new frmSalas();
+		mostrarSala.setLocationRelativeTo(this);
+		mostrarSala.setVisible(true);
 	}
 	protected void do_mntmIngresar_actionPerformed(ActionEvent e) {
 		frmIngresoCine fic;

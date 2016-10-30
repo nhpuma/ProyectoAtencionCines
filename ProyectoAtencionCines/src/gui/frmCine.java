@@ -22,8 +22,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 
-public class frmIngresoCine extends JFrame implements ActionListener {
+public class frmCine extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JLabel lblCodigo;
@@ -54,7 +55,7 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frmIngresoCine frame = new frmIngresoCine();
+					frmCine frame = new frmCine();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,90 +67,91 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public frmIngresoCine() {
+	public frmCine() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 636, 340);
+		setBounds(100, 100, 636, 430);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		lblCodigo = new JLabel("Codigo:");
-		lblCodigo.setBounds(10, 11, 46, 14);
+		lblCodigo.setBounds(10, 11, 91, 14);
 		contentPane.add(lblCodigo);
 		
 		lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(10, 36, 46, 14);
+		lblNombre.setBounds(10, 36, 91, 14);
 		contentPane.add(lblNombre);
 		
 		lblDepartamento = new JLabel("Departamento:");
-		lblDepartamento.setBounds(10, 61, 79, 14);
+		lblDepartamento.setBounds(10, 61, 91, 14);
 		contentPane.add(lblDepartamento);
 		
 		txtDep = new JTextField();
-		txtDep.setBounds(93, 58, 86, 20);
+		txtDep.setBounds(111, 61, 86, 20);
 		contentPane.add(txtDep);
 		txtDep.setColumns(10);
 		
 		txtNom = new JTextField();
 		txtNom.setColumns(10);
-		txtNom.setBounds(93, 33, 86, 20);
+		txtNom.setBounds(111, 36, 86, 20);
 		contentPane.add(txtNom);
 		
 		txtCod = new JTextField();
-		txtCod.setEditable(false);
 		txtCod.setColumns(10);
-		txtCod.setBounds(93, 8, 86, 20);
+		txtCod.setBounds(111, 11, 86, 20);
 		contentPane.add(txtCod);
 		
 		lblProvincia = new JLabel("Provincia:");
-		lblProvincia.setBounds(202, 11, 58, 14);
+		lblProvincia.setBounds(10, 89, 91, 14);
 		contentPane.add(lblProvincia);
 		
 		lblDistrito = new JLabel("Distrito:");
-		lblDistrito.setBounds(202, 36, 46, 14);
+		lblDistrito.setBounds(10, 114, 91, 14);
 		contentPane.add(lblDistrito);
 		
 		lblFechaInicio = new JLabel("Fecha Inicio:");
-		lblFechaInicio.setBounds(202, 61, 68, 14);
+		lblFechaInicio.setBounds(10, 139, 91, 14);
 		contentPane.add(lblFechaInicio);
 		
 		txtFecha = new JTextField();
 		txtFecha.setColumns(10);
-		txtFecha.setBounds(267, 58, 86, 20);
+		txtFecha.setBounds(111, 139, 86, 20);
 		contentPane.add(txtFecha);
 		
 		txtDist = new JTextField();
 		txtDist.setColumns(10);
-		txtDist.setBounds(267, 33, 86, 20);
+		txtDist.setBounds(111, 114, 86, 20);
 		contentPane.add(txtDist);
 		
 		txtProv = new JTextField();
 		txtProv.setColumns(10);
-		txtProv.setBounds(267, 8, 86, 20);
+		txtProv.setBounds(111, 89, 86, 20);
 		contentPane.add(txtProv);
 		
 		lblTipo = new JLabel("Tipo:");
-		lblTipo.setBounds(363, 11, 46, 14);
+		lblTipo.setBounds(225, 14, 40, 14);
 		contentPane.add(lblTipo);
 		
 		cmbTipo = new JComboBox();
 		cmbTipo.setModel(new DefaultComboBoxModel(new String[] {"Estandar", "Prime"}));
-		cmbTipo.setBounds(392, 8, 86, 20);
+		cmbTipo.setBounds(269, 11, 86, 20);
 		contentPane.add(cmbTipo);
 		
 		btnIngresar = new JButton("Ingresar");
+		btnIngresar.setIcon(new ImageIcon(frmCine.class.getResource("/img/add2.png")));
 		btnIngresar.addActionListener(this);
-		btnIngresar.setBounds(521, 7, 89, 23);
+		btnIngresar.setBounds(375, 7, 118, 23);
 		contentPane.add(btnIngresar);
 		
 		btnSalir = new JButton("Salir");
+		btnSalir.setIcon(new ImageIcon(frmCine.class.getResource("/img/cancel2.png")));
 		btnSalir.addActionListener(this);
-		btnSalir.setBounds(521, 52, 89, 23);
+		btnSalir.setBounds(503, 57, 107, 23);
 		contentPane.add(btnSalir);
 		
 		JScrollPane tblTabla = new JScrollPane();
-		tblTabla.setBounds(0, 81, 610, 209);
+		tblTabla.setBounds(0, 170, 610, 207);
 		contentPane.add(tblTabla);
 		
 		table = new JTable();
@@ -166,9 +168,35 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 		modelo.addColumn("Fecha Inicio");
 		modelo.addColumn("Tipo");
 		table.setModel(modelo);
+		
+		btnModificar = new JButton("Modificar");
+		btnModificar.setIcon(new ImageIcon(frmCine.class.getResource("/img/edit2.png")));
+		btnModificar.addActionListener(this);
+		btnModificar.setBounds(375, 36, 118, 23);
+		contentPane.add(btnModificar);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setIcon(new ImageIcon(frmCine.class.getResource("/img/remove2.png")));
+		btnEliminar.addActionListener(this);
+		btnEliminar.setBounds(375, 61, 118, 23);
+		contentPane.add(btnEliminar);
+		
+		btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(this);
+		btnBuscar.setBounds(266, 85, 89, 23);
+		contentPane.add(btnBuscar);
 		listar();
 	}
 	public void actionPerformed(ActionEvent arg0) {
+		if (arg0.getSource() == btnBuscar) {
+			actionPerformedBtnBuscar(arg0);
+		}
+		if (arg0.getSource() == btnModificar) {
+			actionPerformedBtnModificar(arg0);
+		}
+		if (arg0.getSource() == btnEliminar) {
+			actionPerformedBtnEliminar(arg0);
+		}
 		if (arg0.getSource() == btnIngresar) {
 			do_btnIngresar_actionPerformed(arg0);
 		}
@@ -177,16 +205,31 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 		}
 	}
 	ArregloCine ac=new ArregloCine("cine.txt");
+	private JButton btnModificar;
+	private JButton btnEliminar;
+	private JButton btnBuscar;
+	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
+		consultarCine();
+	}
 	protected void do_btnIngresar_actionPerformed(ActionEvent arg0) {
 		adicionarPersona();
+		
 	}
-				
+	
+	protected void actionPerformedBtnModificar(ActionEvent arg0) {
+		modificarCine();
+		limpieza();
+	}
+	protected void actionPerformedBtnEliminar(ActionEvent arg0) {
+		eliminarCine();
+		limpieza();
+	}
 	protected void do_btnSalir_actionPerformed(ActionEvent arg0) {
 		dispose();
 	}
 	//  Métodos tipo void (sin parámetros)
    	void limpieza() {
-   		txtCod.setText("");
+   	
    		txtNom.setText("");
    		txtDep.setText("");
    		txtProv.setText("");
@@ -214,7 +257,7 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 		JOptionPane.showMessageDialog(this, s);
 	}		
 
-	
+	//ingresar
 	void adicionarPersona() {
 		int codigo = leerCodigo();
 		String nombre = leerNombre();
@@ -273,6 +316,126 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 		
 		}
 	}
+	
+	//METODO MODIFICAR
+		void modificarCine() {
+			try {
+				Cine x = ac.buscar(leerCodigo());
+				String nombre = leerNombre();
+				if (nombre.length() > 0)
+					try {
+						String departamento = leerDepartamento();
+						try {
+							String provincia = leerProvincia();
+							try{
+								String distrito = leerDistrito();
+								try{
+									String fechaInicio = leerFechaInicio();
+									try{
+										int tipo = leerTipo();
+										x.setNombre(nombre);
+										x.setDepartamento(departamento);
+										x.setProvincia(provincia);
+										x.setDistrito(distrito);
+										x.setFechaInicio(fechaInicio);
+										x.setTipo(tipo);
+										ac.grabarCine();
+										listar();
+										txtCod.requestFocus();
+									}
+									catch (Exception e){
+									 mensaje("ingrese tipo correcta");
+										cmbTipo.requestFocus();
+									}
+								}
+									catch (Exception e){
+										mensaje("ingrese FECHA correcta");
+										txtFecha.setText("");
+										txtFecha.requestFocus();
+									}
+								}
+									catch (Exception e){
+										mensaje("ingrese DISTRITO correcta");
+										txtDist.setText("");
+										txtDist.requestFocus();
+									}
+								}
+						catch (Exception e) {
+							mensaje("ingrese PROVINCIA correcta");
+							txtProv.setText("");
+							txtProv.requestFocus();
+						}	
+					}
+					catch (Exception e) {
+						mensaje("ingrese DEPARTAMENTO correcto");
+						txtDep.setText("");
+						txtDep.requestFocus();
+					}
+				else {
+					mensaje("ingrese NOMBRE correcto");
+					txtNom.setText("");
+					txtNom.requestFocus();
+				}
+			}
+			catch (Exception e) {
+				mensaje("ingrese CÓDIGO correcto");
+				txtCod.setText("");
+				txtCod.requestFocus();
+			}
+		}
+		//METODO ELIMINAR
+		void eliminarCine() {
+			try {
+				Cine x = ac.buscar(leerCodigo());
+				if (x != null) {
+					ac.eliminar(x);
+					ac.grabarCine();
+					txtCod.setText("");
+					txtNom.setText("");
+					txtDep.setText("");
+					txtProv.setText("");
+					txtDist.setText("");
+					txtFecha.setText("");
+					cmbTipo.setToolTipText("");
+					txtCod.requestFocus();
+					listar();
+				}
+				else {
+					mensaje("El código " + leerCodigo() + " no existe");
+					txtCod.setText("");
+					txtCod.requestFocus();
+				}
+			}
+			catch (Exception e) {
+				mensaje("ingrese CÓDIGO correcto");
+				txtCod.setText("");
+				txtCod.requestFocus();
+			}	
+		}
+	//CONSULTAR CINE
+		void consultarCine() {
+			try {
+				Cine x= ac.buscar(leerCodigo());
+				if (x != null) {
+					txtNom.setText(x.getNombre());
+					txtDep.setText(x.getDepartamento());
+					txtProv.setText(x.getProvincia());
+					txtDist.setText(x.getDistrito());
+					txtFecha.setText(x.getFechaInicio());
+					cmbTipo.setSelectedIndex(x.getTipo());
+				}
+				else {
+					mensaje("El código " + leerCodigo() + " no existe");
+					txtCod.setText("");
+					txtCod.requestFocus();
+				}
+			}
+			catch (Exception e) {
+				mensaje("ingrese CÓDIGO correcto");
+				txtCod.setText("");
+				txtCod.requestFocus();
+			}
+		}
 	//  Métodos que retornan valor sin parámetros
 	int leerCodigo() {
 		return Integer.parseInt(txtCod.getText().trim());
@@ -295,5 +458,6 @@ public class frmIngresoCine extends JFrame implements ActionListener {
 	int leerTipo(){
 		return cmbTipo.getSelectedIndex();
 	}
+
 	
 }

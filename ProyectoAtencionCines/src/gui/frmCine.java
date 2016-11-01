@@ -218,7 +218,12 @@ public class frmCine extends JFrame implements ActionListener {
 	}
 	
 	protected void actionPerformedBtnModificar(ActionEvent arg0) {
-		modificarCine();
+		int rpta = JOptionPane.showConfirmDialog(this, "Seguro que desea modificar", "Modificar", JOptionPane.YES_NO_OPTION);
+		if(rpta==JOptionPane.YES_OPTION){
+			modificarCine();
+		}else{
+			
+		}
 		limpieza();
 	}
 	protected void actionPerformedBtnEliminar(ActionEvent arg0) {

@@ -182,8 +182,9 @@ public class frmCine extends JFrame implements ActionListener {
 		contentPane.add(btnEliminar);
 		
 		btnBuscar = new JButton("Buscar");
+		btnBuscar.setIcon(new ImageIcon(frmCine.class.getResource("/img/buscar.png")));
 		btnBuscar.addActionListener(this);
-		btnBuscar.setBounds(266, 85, 89, 23);
+		btnBuscar.setBounds(237, 85, 118, 23);
 		contentPane.add(btnBuscar);
 		listar();
 	}
@@ -221,7 +222,14 @@ public class frmCine extends JFrame implements ActionListener {
 		limpieza();
 	}
 	protected void actionPerformedBtnEliminar(ActionEvent arg0) {
-		eliminarCine();
+		
+		int rpta = JOptionPane.showConfirmDialog(this, "Seguro que desea eliminar", "Eliminar", JOptionPane.YES_NO_OPTION);
+		if(rpta==JOptionPane.YES_OPTION){
+			eliminarCine();
+		}else{
+			
+		}
+	
 		limpieza();
 	}
 	protected void do_btnSalir_actionPerformed(ActionEvent arg0) {
@@ -260,6 +268,7 @@ public class frmCine extends JFrame implements ActionListener {
 	//ingresar
 	void adicionarPersona() {
 		int codigo = leerCodigo();
+		if(ac.buscar(codigo)==null){
 		String nombre = leerNombre();
 		if (nombre.length() > 0)
 			try {
@@ -286,34 +295,38 @@ public class frmCine extends JFrame implements ActionListener {
 									txtNom.requestFocus();
 								}
 								catch(Exception e){
-									mensaje("ingrese ESTATURA correcta");
+									
 								}
 							}
 								catch(Exception e){
-									mensaje("ingrese ESTATURA correcta");
+									
 								}
 						}
 								catch(Exception e){
-									mensaje("ingrese ESTATURA correcta");
+									
 								}
 					}
 								catch(Exception e){
-									mensaje("ingrese ESTATURA correcta");
+									
 								}
 				
 				}
 				catch (Exception e) {
-					mensaje("ingrese ESTATURA correcta");
+				
 						
 				}
 			}
 			catch (Exception e) {
-				mensaje("ingrese PESO correcto");
+				
 			
 			}
 		else {
-			mensaje("ingrese NOMBRE correcto");
-		
+			mensaje("ingrese NOMBRE ");
+		}
+		}
+		else {
+			mensaje("El codigo ya existe");
+			limpieza();
 		}
 	}
 	

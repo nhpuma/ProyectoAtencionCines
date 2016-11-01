@@ -151,7 +151,7 @@ public class frmCine extends JFrame implements ActionListener {
 		contentPane.add(btnSalir);
 		
 		JScrollPane tblTabla = new JScrollPane();
-		tblTabla.setBounds(0, 170, 610, 207);
+		tblTabla.setBounds(0, 170, 620, 221);
 		contentPane.add(tblTabla);
 		
 		table = new JTable();
@@ -331,7 +331,7 @@ public class frmCine extends JFrame implements ActionListener {
 		}
 		else {
 			mensaje("El codigo ya existe");
-			limpieza();
+			
 		}
 	}
 	

@@ -18,13 +18,16 @@ import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import com.toedter.calendar.JDateChooser;
 
 public class frmCine extends JFrame implements ActionListener {
+	DateFormat df = DateFormat.getDateInstance();
 
 	private JPanel contentPane;
 	private JLabel lblCodigo;
@@ -36,7 +39,6 @@ public class frmCine extends JFrame implements ActionListener {
 	private JLabel lblProvincia;
 	private JLabel lblDistrito;
 	private JLabel lblFechaInicio;
-	private JTextField txtFecha;
 	private JTextField txtDist;
 	private JTextField txtProv;
 	private JLabel lblTipo;
@@ -114,11 +116,6 @@ public class frmCine extends JFrame implements ActionListener {
 		lblFechaInicio.setBounds(10, 139, 91, 14);
 		contentPane.add(lblFechaInicio);
 		
-		txtFecha = new JTextField();
-		txtFecha.setColumns(10);
-		txtFecha.setBounds(111, 139, 86, 20);
-		contentPane.add(txtFecha);
-		
 		txtDist = new JTextField();
 		txtDist.setColumns(10);
 		txtDist.setBounds(111, 114, 86, 20);
@@ -147,7 +144,7 @@ public class frmCine extends JFrame implements ActionListener {
 		btnSalir = new JButton("Salir");
 		btnSalir.setIcon(new ImageIcon(frmCine.class.getResource("/img/cancel2.png")));
 		btnSalir.addActionListener(this);
-		btnSalir.setBounds(503, 57, 107, 23);
+		btnSalir.setBounds(503, 85, 107, 23);
 		contentPane.add(btnSalir);
 		
 		JScrollPane tblTabla = new JScrollPane();
@@ -186,6 +183,10 @@ public class frmCine extends JFrame implements ActionListener {
 		btnBuscar.addActionListener(this);
 		btnBuscar.setBounds(237, 85, 118, 23);
 		contentPane.add(btnBuscar);
+		
+		txtFecha = new JDateChooser();
+		txtFecha.setBounds(111, 139, 107, 20);
+		contentPane.add(txtFecha);
 		listar();
 	}
 	public void actionPerformed(ActionEvent arg0) {
@@ -209,6 +210,7 @@ public class frmCine extends JFrame implements ActionListener {
 	private JButton btnModificar;
 	private JButton btnEliminar;
 	private JButton btnBuscar;
+	private JDateChooser txtFecha;
 	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
 		consultarCine();
 	}
@@ -247,7 +249,7 @@ public class frmCine extends JFrame implements ActionListener {
    		txtDep.setText("");
    		txtProv.setText("");
    		txtDist.setText("");
-   		txtFecha.setText("");
+   		txtFecha.setDateFormatString("");
    	}
 	//  Métodos tipo void (con parámetros)
 	public void listar(){
@@ -296,7 +298,7 @@ public class frmCine extends JFrame implements ActionListener {
 									txtDep.setText("");
 									txtProv.setText("");
 									txtDist.setText("");
-									txtFecha.setText("");
+									txtFecha.setDate(null);
 									txtNom.requestFocus();
 								}
 								catch(Exception e){
@@ -368,7 +370,7 @@ public class frmCine extends JFrame implements ActionListener {
 								}
 									catch (Exception e){
 										mensaje("ingrese FECHA correcta");
-										txtFecha.setText("");
+										txtFecha.setDateFormatString("");
 										txtFecha.requestFocus();
 									}
 								}
@@ -413,7 +415,7 @@ public class frmCine extends JFrame implements ActionListener {
 					txtDep.setText("");
 					txtProv.setText("");
 					txtDist.setText("");
-					txtFecha.setText("");
+					txtFecha.setDateFormatString("");
 					cmbTipo.setToolTipText("");
 					txtCod.requestFocus();
 					listar();
@@ -439,7 +441,7 @@ public class frmCine extends JFrame implements ActionListener {
 					txtDep.setText(x.getDepartamento());
 					txtProv.setText(x.getProvincia());
 					txtDist.setText(x.getDistrito());
-					txtFecha.setText(x.getFechaInicio());
+					txtFecha.getDateEditor();
 					cmbTipo.setSelectedIndex(x.getTipo());
 				}
 				else {
@@ -471,11 +473,9 @@ public class frmCine extends JFrame implements ActionListener {
 		return txtDist.getText().trim();
 	}
 	String leerFechaInicio() {
-		return txtFecha.getText().trim();
+		return df.format(txtFecha.getDate());
 	}
 	int leerTipo(){
 		return cmbTipo.getSelectedIndex();
 	}
-
-	
 }

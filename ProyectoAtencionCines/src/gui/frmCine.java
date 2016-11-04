@@ -247,7 +247,7 @@ public class frmCine extends JFrame implements ActionListener {
    		txtFecha.setDateFormatString("");
    	}
 	//  Métodos tipo void (con parámetros)
-	public void listar(){
+   	void listar(){
 		txtCod.setText(""+ac.codigoCorrelativo());
 		modelo.setRowCount(0);
 		for (int i = 0; i < ac.tamanio(); i++) {
@@ -263,7 +263,7 @@ public class frmCine extends JFrame implements ActionListener {
 			modelo.addRow(fila);
 		}
 	}
-	public  void mensaje(String s) {
+   	void mensaje(String s) {
 		JOptionPane.showMessageDialog(this, s);
 	}		
 

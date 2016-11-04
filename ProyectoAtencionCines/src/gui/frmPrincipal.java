@@ -26,9 +26,8 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	private JMenuItem mntmSalas;
 	private JMenuItem mntmPelculas;
 	private JMenuItem mntmFunciones;
-	private JMenu mnEmpleado;
-	private JMenuItem mntmIngresar_1;
 	private JMenuItem mntmCine;
+	private JMenuItem mntmEmpleado;
 
 	/**
 	 * Launch the application.
@@ -61,15 +60,12 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		mnMantenimiento = new JMenu("Mantenimiento");
 		menuBar.add(mnMantenimiento);
 		
-		mnEmpleado = new JMenu("Empleado");
-		mnMantenimiento.add(mnEmpleado);
-		
-		mntmIngresar_1 = new JMenuItem("Ingresar");
-		mntmIngresar_1.addActionListener(this);
-		mnEmpleado.add(mntmIngresar_1);
-		
 		mntmClientes = new JMenuItem("Clientes");
 		mntmClientes.addActionListener(this);
+		
+		mntmEmpleado = new JMenuItem("Empleado");
+		mntmEmpleado.addActionListener(this);
+		mnMantenimiento.add(mntmEmpleado);
 		mnMantenimiento.add(mntmClientes);
 		
 		mntmSalas = new JMenuItem("Salas");
@@ -101,14 +97,14 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmEmpleado) {
+			actionPerformedMntmEmpleado(e);
+		}
 		if (e.getSource() == mntmClientes) {
 			actionPerformedMntmClientes(e);
 		}
 		if (e.getSource() == mntmCine) {
 			actionPerformedMntmCine(e);
-		}
-		if (e.getSource() == mntmIngresar_1) {
-			do_mntmIngresar_1_actionPerformed(e);
 		}
 		if (e.getSource() == mntmSalas) {
 			mntmSalasActionPerformed(e);
@@ -118,12 +114,6 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		frmSalas mostrarSala = new frmSalas();
 		mostrarSala.setLocationRelativeTo(this);
 		mostrarSala.setVisible(true);
-	}
-	protected void do_mntmIngresar_1_actionPerformed(ActionEvent e) {
-		frmIngresoEmpleado fle;
-		fle = new frmIngresoEmpleado ();
-		fle.setLocationRelativeTo(this);
-		fle.setVisible(true);
 	}
 	protected void actionPerformedMntmCine(ActionEvent e) {
 		frmCine fc;
@@ -136,5 +126,11 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		f = new frmCliente ();
 		f.setLocationRelativeTo(this);
 		f.setVisible(true);
+	}
+	protected void actionPerformedMntmEmpleado(ActionEvent e) {
+		frmEmpleado fe;
+		fe = new frmEmpleado ();
+		fe.setLocationRelativeTo(this);
+		fe.setVisible(true);
 	}
 }

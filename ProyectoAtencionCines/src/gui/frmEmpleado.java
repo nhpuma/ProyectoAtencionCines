@@ -44,6 +44,10 @@ public class frmEmpleado extends JFrame implements ActionListener {
 	private JLabel lblContrasea;
 	private JButton btnIngresar;
 	private JButton btnSalir;
+	private JTable table;
+	private JButton btnBuscar;
+	private JButton btnModificar;
+	private JButton btnEliminar;
 	//Agregando un modelo
 	private DefaultTableModel modelo;
 
@@ -143,11 +147,14 @@ public class frmEmpleado extends JFrame implements ActionListener {
 		btnIngresar.setBounds(472, 10, 131, 23);
 		contentPane.add(btnIngresar);
 		
+		
 		btnSalir = new JButton("Salir");
 		btnSalir.setIcon(new ImageIcon(frmEmpleado.class.getResource("/img/cancel2.png")));
 		btnSalir.addActionListener(this);
 		btnSalir.setBounds(472, 100, 131, 23);
 		contentPane.add(btnSalir);
+		
+		JScrollPane tblTabla = new JScrollPane();
 		tblTabla.setBounds(0, 163, 629, 264);
 		contentPane.add(tblTabla);
 		
@@ -206,11 +213,7 @@ public class frmEmpleado extends JFrame implements ActionListener {
 		}
 	}
 	ArregloEmpleado ac=new ArregloEmpleado("Empleado.txt");
-	private final JScrollPane tblTabla = new JScrollPane();
-	private JTable table;
-	private JButton btnBuscar;
-	private JButton btnModificar;
-	private JButton btnEliminar;
+
 	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
 		consultarEmpleado();
 	}
@@ -284,7 +287,8 @@ public class frmEmpleado extends JFrame implements ActionListener {
 		}
 		//INGRESAR
 		void adicionarEmpleado() {
-			int codigoEmp= leerCodigo();
+			int codigo= leerCodigo();
+			if(ac.buscar(codigo)==null){
 			String nombres = leerNombre();
 			if (nombres.length() > 0)
 				try {
@@ -298,7 +302,7 @@ public class frmEmpleado extends JFrame implements ActionListener {
 									String  usuario = leerUsuario();
 									try{
 										String contrasena = leerContrasena();
-										Empleado nuevo = new Empleado( codigoEmp, tipo,nombres,  apellido_paterno, apellido_materno,
+										Empleado nuevo = new Empleado( codigo, tipo,nombres,  apellido_paterno, apellido_materno,
 												 usuario, contrasena);
 								  		ac.adicionar(nuevo);
 								  		ac.grabarEmpleado();
@@ -342,6 +346,10 @@ public class frmEmpleado extends JFrame implements ActionListener {
 			else {
 				mensaje("ingrese NOMBRE correcto");
 			
+			}
+			}
+			else{
+				mensaje("el codigo ya existe");
 			}
 		}
 		//MODIFICAR

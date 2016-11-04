@@ -46,6 +46,10 @@ public class frmCine extends JFrame implements ActionListener {
 	private JButton btnIngresar;
 	private JButton btnSalir;
 	private JTable table;
+	private JButton btnModificar;
+	private JButton btnEliminar;
+	private JButton btnBuscar;
+	private JDateChooser txtFecha;
 	//Agregando un modelo
 	private DefaultTableModel modelo;
 	
@@ -207,10 +211,7 @@ public class frmCine extends JFrame implements ActionListener {
 		}
 	}
 	ArregloCine ac=new ArregloCine("cine.txt");
-	private JButton btnModificar;
-	private JButton btnEliminar;
-	private JButton btnBuscar;
-	private JDateChooser txtFecha;
+
 	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
 		consultarCine();
 	}

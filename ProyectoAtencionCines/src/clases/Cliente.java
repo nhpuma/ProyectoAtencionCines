@@ -4,7 +4,7 @@ public class Cliente {
 	private int codCliente;
 	private String nombre;
 	private String apepat;
-	private String apermat;
+	private String apemat;
 	private String direccion;
 	private String fechanacimiento;
 	private String fechaafiliacion;
@@ -19,7 +19,7 @@ public class Cliente {
 		this.codCliente = codCliente;
 		this.nombre = nombre;
 		this.apepat = apepat;
-		this.apermat = apermat;
+		this.apemat = apermat;
 		this.direccion = direccion;
 		this.fechanacimiento = fechanacimiento;
 		this.fechaafiliacion = fechaafiliacion;
@@ -47,11 +47,11 @@ public class Cliente {
 	public void setApepat(String apepat) {
 		this.apepat = apepat;
 	}
-	public String getApermat() {
-		return apermat;
+	public String getApemat() {
+		return apemat;
 	}
 	public void setApermat(String apermat) {
-		this.apermat = apermat;
+		this.apemat = apermat;
 	}
 	public String getDireccion() {
 		return direccion;
@@ -101,7 +101,9 @@ public class Cliente {
 	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
-	public String tipocliente(){
+	
+	//operaciones publicas
+	public String estadoCliente(){
 		switch(estadocivil){
 		case 0: return "soltero";
 		case 1: return "casado";

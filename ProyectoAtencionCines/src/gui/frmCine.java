@@ -220,12 +220,7 @@ public class frmCine extends JFrame implements ActionListener {
 	}
 	
 	protected void actionPerformedBtnModificar(ActionEvent arg0) {
-		int rpta = JOptionPane.showConfirmDialog(this, "Seguro que desea modificar", "Modificar", JOptionPane.YES_NO_OPTION);
-		if(rpta==JOptionPane.YES_OPTION){
 			modificarCine();
-		}else{
-			
-		}
 		limpieza();
 	}
 	protected void actionPerformedBtnEliminar(ActionEvent arg0) {
@@ -359,9 +354,9 @@ public class frmCine extends JFrame implements ActionListener {
 										x.setDistrito(distrito);
 										x.setFechaInicio(fechaInicio);
 										x.setTipo(tipo);
+										txtCod.requestFocus();
 										ac.grabarCine();
 										listar();
-										txtCod.requestFocus();
 									}
 									catch (Exception e){
 									 mensaje("ingrese tipo correcta");

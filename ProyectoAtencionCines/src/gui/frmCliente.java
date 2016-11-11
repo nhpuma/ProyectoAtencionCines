@@ -292,10 +292,10 @@ public class frmCliente extends JFrame implements ActionListener {
 	
 	//  Métodos tipo void (sin parámetros)
    	void limpieza() {
-   		txtnom.setText("");
-   		txtapepat.setText("");
-   		txtapemat.setText("");
-   	 txtdirec.setText("");
+   	txtnom.setText("");
+   	txtapepat.setText("");
+   	txtapemat.setText("");
+   	txtdirec.setText("");
    	txtfechanaci.setText("");
    	txtfechaafi.setText("");
    	txttelefono.setText("");

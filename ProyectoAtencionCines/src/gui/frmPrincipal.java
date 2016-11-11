@@ -76,7 +76,8 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		mnMantenimiento.add(mntmCine);
 		mnMantenimiento.add(mntmSalas);
 		
-		mntmPelculas = new JMenuItem("Peliculas");
+		mntmPelculas = new JMenuItem("Pelicula");
+		mntmPelculas.addActionListener(this);
 		mnMantenimiento.add(mntmPelculas);
 		
 		mntmFunciones = new JMenuItem("Funciones");
@@ -97,6 +98,9 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmPelculas) {
+			actionPerformedMntmPelculas(e);
+		}
 		if (e.getSource() == mntmEmpleado) {
 			actionPerformedMntmEmpleado(e);
 		}
@@ -132,5 +136,11 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		fe = new frmEmpleado ();
 		fe.setLocationRelativeTo(this);
 		fe.setVisible(true);
+	}
+	protected void actionPerformedMntmPelculas(ActionEvent e) {
+		frmPelicula p;
+		p = new frmPelicula ();
+		p.setLocationRelativeTo(this);
+		p.setVisible(true);
 	}
 }

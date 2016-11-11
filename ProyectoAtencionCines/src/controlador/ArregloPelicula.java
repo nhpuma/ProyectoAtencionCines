@@ -35,6 +35,20 @@ public class ArregloPelicula {
 	public void eliminar(Cine x){
 		peli.remove(x);
 	}
+	//GENERADOR DE CODIGO CORRELATIVO
+	public int codigoCorrelativo() {
+		if (tamanio() == 0)
+			return 10001;
+		else
+			return obtener(tamanio()-1).getCodPeli() + 1;		
+	}
+	//METODO BUSACR
+	public Pelicula buscar(int codigo) {
+		for (int i=0; i<tamanio(); i++)
+			if (obtener(i).getCodPeli()== codigo)
+				return obtener(i);
+		return null;
+	}
 	//OPERACIONES PUBLICAS COMPLEMENTARIAS
 	public void grabarPelicula() {
 		try {

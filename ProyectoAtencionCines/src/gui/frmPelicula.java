@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import controlador.ArregloPelicula;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -290,6 +291,7 @@ public class frmPelicula extends JFrame implements ActionListener {
    	
    	//METODO LISTAR
    	void listar() {
+   		txtCodpelicula.setText(""+ap.codigoCorrelativo());
 		modelo.setRowCount(0);
 		for (int i=0; i<ap.tamanio(); i++) {
 			Object[] fila = { ap.obtener(i).getCodPeli(),
@@ -307,6 +309,12 @@ public class frmPelicula extends JFrame implements ActionListener {
 			modelo.addRow(fila);
 		}
 	}
+   	//MENSAJE
+  	void mensaje(String s) {
+		JOptionPane.showMessageDialog(this, s);
+	}
+  	
+  	
    	
 }
 

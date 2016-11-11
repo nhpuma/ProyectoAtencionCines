@@ -40,6 +40,7 @@ public class ArregloCine {
 				return obtener(i);
 		return null;
 	}
+	
 	public int codigoCorrelativo() {
 		if (tamanio() == 0)
 			return 10001;

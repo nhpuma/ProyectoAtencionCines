@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import clases.Pelicula;
 import controlador.ArregloPelicula;
 
 import javax.swing.JLabel;
@@ -244,6 +245,7 @@ public class frmPelicula extends JFrame implements ActionListener {
 		modelo.addColumn("Estado Proyeccion");
 		modelo.addColumn("Recaudacion");
 		table.setModel(modelo);
+		listar();
 	}
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == btnSalir) {
@@ -265,12 +267,17 @@ public class frmPelicula extends JFrame implements ActionListener {
 	ArregloPelicula ap = new ArregloPelicula("Pelicula.txt");
 	
 	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
+		buscarPelicula();
 	}
 	protected void actionPerformedBtnIngresa(ActionEvent arg0) {
+		ingresarPelicula();
 	}
 	protected void actionPerformedBtnModificar(ActionEvent arg0) {
+		 modificarPelicula();
+		 limpieza();
 	}
 	protected void actionPerformedBtnEliminar(ActionEvent arg0) {
+		eliminarPelicula();
 	}
 	protected void actionPerformedBtnSalir(ActionEvent arg0) {
 		dispose();
@@ -278,7 +285,6 @@ public class frmPelicula extends JFrame implements ActionListener {
 	
 //  Métodos tipo void (sin parámetros)
    	void limpieza() {
-	   	txtCodpelicula.setText("");
 	   	txtTitdistribucion.setText("");
 	   	txtTitoriginal.setText("");
 	   	txtFechaestreno.setText("");
@@ -302,7 +308,7 @@ public class frmPelicula extends JFrame implements ActionListener {
 					          ap.obtener(i).getGenero(),
 					          ap.obtener(i).getPaisOrigen(),
 					          ap.obtener(i).getSinopsis(),
-					          ap.obtener(i).getDuracion(),
+					          ap.obtener(i).getDuracion()+" min",
 					          ap.obtener(i).Censura(),
 					          ap.obtener(i).estado_proyeccion(),
 					          ap.obtener(i).getRecaudacion() };
@@ -313,9 +319,257 @@ public class frmPelicula extends JFrame implements ActionListener {
   	void mensaje(String s) {
 		JOptionPane.showMessageDialog(this, s);
 	}
-  	
-  	
-   	
+  	//METODOS LEER
+	int leerCodigo() {
+		return Integer.parseInt(txtCodpelicula.getText().trim());
+	}
+	String leertDistribucion() {
+		return txtTitdistribucion.getText().trim();
+	}
+	String leertOriginal() {
+		return txtTitoriginal.getText().trim();
+	}
+	String leerfechaEstreno() {
+		return txtFechaestreno.getText().trim();
+	}
+	int leertipoProyeccion(){
+		return cmbTipoproyeccion.getSelectedIndex();
+	}
+	String leerGenero() {
+		return txtGenero.getText().trim();
+	}
+	String leerpaisOrigen() {
+		return txtPaisorigen.getText().trim();
+	}
+	String leerSinopsis() {
+		return txtSinopsis.getText().trim();
+	}
+	int leerDuracion(){
+		return Integer.parseInt(txtDuracion.getText().trim());
+	}
+	int leertipoCensura(){
+		return cmbTipocensura.getSelectedIndex();
+	}
+	int leerestadoProyeccion(){
+		return cmbEstadoproyeccion.getSelectedIndex();
+	}
+	double leerRecaudacion(){
+		return Double.parseDouble(txtRecaudacion.getText().trim());
+	}
+	//BUSCAR
+	void buscarPelicula() {
+		try {
+			Pelicula x= ap.buscar(leerCodigo());
+			if (x != null) {
+			  	txtTitdistribucion.setText(x.getTitDistribucion());
+			   	txtTitoriginal.setText(x.getTitOriginal());
+			   	txtFechaestreno.setText(x.getFechaEstreno());
+			   	cmbTipoproyeccion.setSelectedIndex(x.getTipoProyeccion());
+			   	txtGenero.setText(x.getGenero());
+			   	txtPaisorigen.setText(x.getPaisOrigen());
+			   	txtSinopsis.setText(x.getSinopsis());
+			   	txtDuracion.setText(""+x.getDuracion());
+			   	cmbTipocensura.setSelectedIndex(x.getTipoCensura());
+			   	cmbEstadoproyeccion.setSelectedIndex(x.getEstadoProyeccion());
+				txtRecaudacion.setText(""+x.getRecaudacion());
+			}
+			else {
+				mensaje("El código " + leerCodigo() + " no existe");
+				txtCodpelicula.setText("");
+				txtCodpelicula.requestFocus();
+			}
+		}
+		catch (Exception e) {
+			mensaje("ingrese CÓDIGO correcto");
+			txtCodpelicula.setText("");
+			txtCodpelicula.requestFocus();
+		}
+	}
+	
+   	//INGRESAR
+	void ingresarPelicula() {
+		int codPeli = leerCodigo();
+		if(ap.buscar(codPeli)==null){
+		String titDistribucion = leertDistribucion();
+		if (titDistribucion.length() > 0)
+			try {
+				String titOriginal = leertOriginal();
+				try {
+					try{
+						String fechaEstreno = leerfechaEstreno();
+						try{
+							int tipoProyeccion = leertipoProyeccion();
+							try{
+								String genero = leerGenero();
+								try{
+									 String paisOrigen = leerpaisOrigen();
+									 try{
+										 String sinopsis = leerSinopsis();
+										 try{
+											int duracion = leerDuracion();
+											try{
+												int tipoCensura = leertipoCensura();
+												try{
+													int estadoProyeccion = leerestadoProyeccion();
+													try{
+													double recaudacion = leerRecaudacion();
+													Pelicula nueva = new Pelicula(codPeli,titDistribucion, titOriginal, 
+															fechaEstreno, tipoProyeccion,genero, paisOrigen,sinopsis,
+															duracion, tipoCensura, estadoProyeccion,recaudacion);
+											  		ap.adicionar(nueva);
+											  		ap.grabarPelicula();
+													listar();
+												  	limpieza();
+													}
+													catch (Exception e){
+													}
+												}
+												catch (Exception e){
+												}
+											}
+											catch (Exception e){
+											}
+										 }
+										 catch (Exception e){ 
+										 }
+								}	
+								catch(Exception e){
+								}
+							}
+							catch(Exception e){		
+							}
+						}
+						catch(Exception e){		
+							}
+						}
+					catch(Exception e){			
+					}
+				}
+				catch (Exception e) {
+				}
+				}
+			catch (Exception e) {
+			}
+			}
+		catch (Exception e){
+		}
+		else {
+		mensaje("ingrese NOMBRE ");
+		}
+		}
+	else {
+	mensaje("El codigo ya existe");			
+	}
+	}
+	//MODIFICAR
+	void modificarPelicula() {
+		try{
+			Pelicula x = ap.buscar(leerCodigo());
+		String titDistribucion = leertDistribucion();
+		if (titDistribucion.length() > 0)
+			try {
+				String titOriginal = leertOriginal();
+				try {
+					try{
+						String fechaEstreno = leerfechaEstreno();
+						try{
+							int tipoProyeccion = leertipoProyeccion();
+							try{
+								String genero = leerGenero();
+								try{
+									 String paisOrigen = leerpaisOrigen();
+									 try{
+										 String sinopsis = leerSinopsis();
+										 try{
+											int duracion = leerDuracion();
+											try{
+												int tipoCensura = leertipoCensura();
+												try{
+													int estadoProyeccion = leerestadoProyeccion();
+													try{
+													double recaudacion = leerRecaudacion();
+												  	x.setTitDistribucion(titDistribucion);
+												  	x.setTitOriginal(titOriginal);
+												  	x.setFechaEstreno(fechaEstreno);
+												  	x.setTipoProyeccion(tipoProyeccion);
+												  	x.setGenero(genero);
+												  	x.setPaisOrigen(paisOrigen);
+												  	x.setSinopsis(sinopsis);
+												  	x.setDuracion(duracion);
+												  	x.setTipoCensura(tipoCensura);
+												  	x.setEstadoProyeccion(estadoProyeccion);
+												  	x.setRecaudacion(recaudacion);
+												  	ap.grabarPelicula();
+												  	listar();
+													}
+													catch (Exception e){
+													}
+												}
+												catch (Exception e){
+												}
+											}
+											catch (Exception e){
+											}
+										 }
+										 catch (Exception e){ 
+										 }
+								}	
+								catch(Exception e){
+								}
+							}
+							catch(Exception e){		
+							}
+						}
+						catch(Exception e){		
+							}
+						}
+					catch(Exception e){			
+					}
+				}
+				catch (Exception e) {
+				}
+				}
+			catch (Exception e) {
+			}
+			}
+		catch (Exception e){
+		}
+		else {
+		mensaje("ingrese NOMBRE ");
+		}
+		}
+	catch (Exception e) {	
+	}
+	}
+	//ELIMINAR
+	void eliminarPelicula() {
+		try {
+			Pelicula x = ap.buscar(leerCodigo());
+			if (x != null) {
+				ap.eliminar(x);
+				ap.grabarPelicula();
+				txtCodpelicula.setText("");
+			  	txtTitdistribucion.setText("");
+			   	txtTitoriginal.setText("");
+			   	txtFechaestreno.setText("");
+			   	cmbTipoproyeccion.setToolTipText("");
+			   	txtGenero.setText("");
+			   	txtPaisorigen.setText("");
+			   	txtSinopsis.setText("");
+			   	txtDuracion.setText("");
+			   	cmbTipocensura.setToolTipText("");
+			   	cmbEstadoproyeccion.setToolTipText("");
+				txtRecaudacion.setText("");
+				txtCodpelicula.requestFocus();
+				listar();
+			}
+			else {
+			}
+		}
+		catch (Exception e) {
+		}	
+	}
+	
 }
 
 

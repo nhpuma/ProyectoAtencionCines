@@ -32,7 +32,7 @@ public class ArregloPelicula {
 		peli.add(x);
 	}
 
-	public void eliminar(Cine x){
+	public void eliminar(Pelicula x){
 		peli.remove(x);
 	}
 	//GENERADOR DE CODIGO CORRELATIVO

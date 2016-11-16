@@ -298,30 +298,21 @@ public class frmCine extends JFrame implements ActionListener {
 									txtNom.requestFocus();
 								}
 								catch(Exception e){
-									
 								}
 							}
-								catch(Exception e){
-									
-								}
+							catch(Exception e){
+							}
 						}
-								catch(Exception e){
-									
-								}
+						catch(Exception e){	
+						}
 					}
-								catch(Exception e){
-									
-								}
-				
+					catch(Exception e){
+					}
 				}
-				catch (Exception e) {
-				
-						
+				catch (Exception e) {	
 				}
 			}
 			catch (Exception e) {
-				
-			
 			}
 		else {
 			mensaje("ingrese NOMBRE ");
@@ -329,7 +320,6 @@ public class frmCine extends JFrame implements ActionListener {
 		}
 		else {
 			mensaje("El codigo ya existe");
-			
 		}
 	}
 	
@@ -360,43 +350,23 @@ public class frmCine extends JFrame implements ActionListener {
 										listar();
 									}
 									catch (Exception e){
-									 mensaje("ingrese tipo correcta");
-										cmbTipo.requestFocus();
 									}
 								}
 									catch (Exception e){
-										mensaje("ingrese FECHA correcta");
-										txtFecha.setDateFormatString("");
-										txtFecha.requestFocus();
 									}
 								}
-									catch (Exception e){
-										mensaje("ingrese DISTRITO correcta");
-										txtDist.setText("");
-										txtDist.requestFocus();
-									}
+								catch (Exception e){
 								}
+							}
 						catch (Exception e) {
-							mensaje("ingrese PROVINCIA correcta");
-							txtProv.setText("");
-							txtProv.requestFocus();
 						}	
 					}
 					catch (Exception e) {
-						mensaje("ingrese DEPARTAMENTO correcto");
-						txtDep.setText("");
-						txtDep.requestFocus();
 					}
 				else {
-					mensaje("ingrese NOMBRE correcto");
-					txtNom.setText("");
-					txtNom.requestFocus();
 				}
 			}
 			catch (Exception e) {
-				mensaje("ingrese CÓDIGO correcto");
-				txtCod.setText("");
-				txtCod.requestFocus();
 			}
 		}
 		//METODO ELIMINAR
@@ -417,15 +387,9 @@ public class frmCine extends JFrame implements ActionListener {
 					listar();
 				}
 				else {
-					mensaje("El código " + leerCodigo() + " no existe");
-					txtCod.setText("");
-					txtCod.requestFocus();
 				}
 			}
 			catch (Exception e) {
-				mensaje("ingrese CÓDIGO correcto");
-				txtCod.setText("");
-				txtCod.requestFocus();
 			}	
 		}
 	//CONSULTAR CINE

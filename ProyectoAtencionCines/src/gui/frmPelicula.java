@@ -22,6 +22,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JSpinner;
+import javax.swing.JTextPane;
+import javax.swing.JList;
+import java.awt.TextArea;
 
 public class frmPelicula extends JFrame implements ActionListener {
 
@@ -197,13 +201,13 @@ public class frmPelicula extends JFrame implements ActionListener {
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(this);
 		btnBuscar.setIcon(new ImageIcon(frmPelicula.class.getResource("/img/buscar.png")));
-		btnBuscar.setBounds(818, 32, 120, 23);
+		btnBuscar.setBounds(820, 36, 120, 23);
 		contentPane.add(btnBuscar);
 		
 		btnIngresa = new JButton("Ingresar");
 		btnIngresa.addActionListener(this);
 		btnIngresa.setIcon(new ImageIcon(frmPelicula.class.getResource("/img/add2.png")));
-		btnIngresa.setBounds(818, 61, 120, 23);
+		btnIngresa.setBounds(820, 65, 120, 23);
 		contentPane.add(btnIngresa);
 		
 		btnModificar = new JButton("Modificar");
@@ -569,7 +573,6 @@ public class frmPelicula extends JFrame implements ActionListener {
 		catch (Exception e) {
 		}	
 	}
-	
 }
 
 

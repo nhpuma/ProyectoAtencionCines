@@ -52,7 +52,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		setTitle("Sistema de Atenci\u00F3n de Cines");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(Frame.MAXIMIZED_BOTH);
-		setBounds(100, 100, 550, 370);
+		setBounds(100, 100, 877, 744);
 		
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -132,10 +132,10 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		f.setVisible(true);
 	}
 	protected void actionPerformedMntmEmpleado(ActionEvent e) {
-		frmEmpleado fe;
-		fe = new frmEmpleado ();
-		fe.setLocationRelativeTo(this);
-		fe.setVisible(true);
+		frmEmpleado m;
+		m = new frmEmpleado  ();
+		m.setLocationRelativeTo(this);
+		m.setVisible(true);
 	}
 	protected void actionPerformedMntmPelculas(ActionEvent e) {
 		frmPelicula p;

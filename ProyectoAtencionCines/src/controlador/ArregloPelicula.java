@@ -42,7 +42,7 @@ public class ArregloPelicula {
 		else
 			return obtener(tamanio()-1).getCodPeli() + 1;		
 	}
-	//METODO BUSACR
+	//METODO BUSCAR
 	public Pelicula buscar(int codigo) {
 		for (int i=0; i<tamanio(); i++)
 			if (obtener(i).getCodPeli()== codigo)
@@ -114,27 +114,3 @@ public class ArregloPelicula {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

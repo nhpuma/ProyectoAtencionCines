@@ -86,11 +86,11 @@ public class frmSala extends JFrame implements ActionListener {
 		contentPane.add(lblNmeroSala);
 		
 		lblNmeroFila = new JLabel("N\u00FAmero Fila:");
-		lblNmeroFila.setBounds(189, 14, 93, 14);
+		lblNmeroFila.setBounds(10, 95, 93, 14);
 		contentPane.add(lblNmeroFila);
 		
 		lblNmeroButacas = new JLabel("N\u00FAmero Butacas:");
-		lblNmeroButacas.setBounds(189, 39, 104, 14);
+		lblNmeroButacas.setBounds(187, 11, 104, 14);
 		contentPane.add(lblNmeroButacas);
 		
 		txtCodSala = new JTextField();
@@ -110,46 +110,47 @@ public class frmSala extends JFrame implements ActionListener {
 		
 		txtNumFila = new JTextField();
 		txtNumFila.setColumns(10);
-		txtNumFila.setBounds(316, 8, 86, 20);
+		txtNumFila.setBounds(96, 92, 86, 20);
 		contentPane.add(txtNumFila);
 		
 		txtNumButaca = new JTextField();
 		txtNumButaca.setColumns(10);
-		txtNumButaca.setBounds(316, 33, 86, 20);
+		txtNumButaca.setBounds(289, 8, 86, 20);
 		contentPane.add(txtNumButaca);
 		
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(this);
 		btnBuscar.setIcon(new ImageIcon(frmSala.class.getResource("/img/buscar.png")));
-		btnBuscar.setBounds(289, 60, 113, 23);
+		btnBuscar.setBounds(289, 32, 113, 23);
 		contentPane.add(btnBuscar);
 		
 		btnIngresar = new JButton("Ingresar");
 		btnIngresar.addActionListener(this);
 		btnIngresar.setIcon(new ImageIcon(frmSala.class.getResource("/img/add2.png")));
-		btnIngresar.setBounds(441, 7, 113, 23);
+		btnIngresar.setBounds(289, 60, 113, 23);
 		contentPane.add(btnIngresar);
 		
 		btnModificar = new JButton("Modificar");
 		btnModificar.addActionListener(this);
 		btnModificar.setIcon(new ImageIcon(frmSala.class.getResource("/img/edit2.png")));
-		btnModificar.setBounds(441, 35, 113, 23);
+		btnModificar.setBounds(441, 7, 113, 23);
 		contentPane.add(btnModificar);
 		
 		btnSalir = new JButton("Eliminar");
 		btnSalir.addActionListener(this);
 		btnSalir.setIcon(new ImageIcon(frmSala.class.getResource("/img/remove2.png")));
-		btnSalir.setBounds(441, 60, 113, 23);
+		btnSalir.setBounds(441, 32, 113, 23);
 		contentPane.add(btnSalir);
 		
 		tblTabla = new JScrollPane();
-		tblTabla.setBounds(10, 103, 587, 182);
+		tblTabla.setBounds(10, 120, 587, 165);
 		contentPane.add(tblTabla);
 		
 		table = new JTable();
 		tblTabla.setViewportView(table);
 		
-		btnNewButton = new JButton("New button");
+		btnNewButton = new JButton("");
+		btnNewButton.setIcon(new ImageIcon(frmSala.class.getResource("/img/play.png")));
 		btnNewButton.addActionListener(this);
 		btnNewButton.setBounds(162, 32, 21, 23);
 		contentPane.add(btnNewButton);
@@ -161,9 +162,18 @@ public class frmSala extends JFrame implements ActionListener {
 		m.addColumn("Numero Fila");
 		m.addColumn("Numero Butaca");
 		table.setModel(m);
+		
+		btnSalir_1 = new JButton("Salir");
+		btnSalir_1.addActionListener(this);
+		btnSalir_1.setIcon(new ImageIcon(frmSala.class.getResource("/img/cancel2.png")));
+		btnSalir_1.setBounds(441, 60, 113, 23);
+		contentPane.add(btnSalir_1);
 		listar();
 	}
 	public void actionPerformed(ActionEvent arg0) {
+		if (arg0.getSource() == btnSalir_1) {
+			actionPerformedBtnSalir_1(arg0);
+		}
 		if (arg0.getSource() == btnNewButton) {
 			actionPerformedBtnNewButton(arg0);
 		}
@@ -182,6 +192,7 @@ public class frmSala extends JFrame implements ActionListener {
 	}
 	ArregloSala as = new ArregloSala("Sala.txt");
 	ArregloCine ac = new ArregloCine("cine.txt");
+	private JButton btnSalir_1;
 	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
 		buscarSala();
 	}
@@ -193,6 +204,9 @@ public class frmSala extends JFrame implements ActionListener {
 	}
 	protected void actionPerformedBtnSalir(ActionEvent arg0) {
 		eliminarSala();
+	}
+	protected void actionPerformedBtnSalir_1(ActionEvent arg0) {
+		dispose();
 	}
 	//REFERENCIA
 	protected void actionPerformedBtnNewButton(ActionEvent arg0) {
@@ -348,8 +362,7 @@ public class frmSala extends JFrame implements ActionListener {
 				catch (Exception e) {
 				}	
 			}
-  	
-   	
+  
 }
 
 

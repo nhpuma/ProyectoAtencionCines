@@ -149,35 +149,35 @@ public class frmEmpleado extends JFrame implements ActionListener {
 		contentPane.add(txtContrasena);
 		
 		btnNewButton = new JButton("Buscar");
-		btnNewButton.setFont(new Font("Century751 No2 BT", Font.BOLD | Font.ITALIC, 11));
+		btnNewButton.setFont(new Font("Century751 No2 BT", Font.BOLD, 11));
 		btnNewButton.addActionListener(this);
 		btnNewButton.setIcon(new ImageIcon(frmEmpleado.class.getResource("/img/buscar.png")));
 		btnNewButton.setBounds(392, 82, 107, 23);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton_1 = new JButton("Ingresar");
-		btnNewButton_1.setFont(new Font("Century751 No2 BT", Font.BOLD | Font.ITALIC, 11));
+		btnNewButton_1.setFont(new Font("Century751 No2 BT", Font.BOLD, 11));
 		btnNewButton_1.addActionListener(this);
 		btnNewButton_1.setIcon(new ImageIcon(frmEmpleado.class.getResource("/img/add2.png")));
 		btnNewButton_1.setBounds(392, 110, 107, 23);
 		contentPane.add(btnNewButton_1);
 		
 		btnModificar = new JButton("Modificar");
-		btnModificar.setFont(new Font("Century751 No2 BT", Font.BOLD | Font.ITALIC, 11));
+		btnModificar.setFont(new Font("Century751 No2 BT", Font.BOLD, 11));
 		btnModificar.addActionListener(this);
 		btnModificar.setIcon(new ImageIcon(frmEmpleado.class.getResource("/img/edit2.png")));
 		btnModificar.setBounds(537, 11, 107, 23);
 		contentPane.add(btnModificar);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setFont(new Font("Century751 No2 BT", Font.BOLD | Font.ITALIC, 11));
+		btnEliminar.setFont(new Font("Century751 No2 BT", Font.BOLD, 11));
 		btnEliminar.addActionListener(this);
 		btnEliminar.setIcon(new ImageIcon(frmEmpleado.class.getResource("/img/remove2.png")));
 		btnEliminar.setBounds(537, 40, 107, 23);
 		contentPane.add(btnEliminar);
 		
 		btnNewButton_2 = new JButton("Salir");
-		btnNewButton_2.setFont(new Font("Century751 No2 BT", Font.BOLD | Font.ITALIC, 11));
+		btnNewButton_2.setFont(new Font("Century751 No2 BT", Font.BOLD, 11));
 		btnNewButton_2.addActionListener(this);
 		btnNewButton_2.setIcon(new ImageIcon(frmEmpleado.class.getResource("/img/cancel2.png")));
 		btnNewButton_2.setBounds(537, 114, 107, 23);

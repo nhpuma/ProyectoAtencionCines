@@ -77,6 +77,20 @@ public class Reserva {
 			this.horaReserva = horaReserva;
 		}
 		
+		//operacion publica
+		
+		public String estado_Reserva(){
+			switch(estado){
+			case 0:
+				return "Reservada";
+			case 1:
+				return "Reserva usada";
+			case 2:
+				return "Reserva cancelada";
+			default:
+				return "Reserva caducada";
+			}
+		}
 		
 		
 		

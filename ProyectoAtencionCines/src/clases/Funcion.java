@@ -50,7 +50,8 @@ public class Funcion {
 	public void setHora(String hora) {
 		this.hora = hora;
 	}
-
+	
+	
 	
 
 }

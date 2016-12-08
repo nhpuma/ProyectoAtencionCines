@@ -2,12 +2,13 @@ package clases;
 
 public class Funcion {
 	//ATRIBUTOS PRIVADOS
-	private int codFuncion, codCine, codPeli;
+	private int codFuncion, codCine, codSala, codPeli;
 	private String fecha, hora;
 	//CONSTRUCTOR
-	public Funcion(int codFuncion, int codCine, int codPeli, String fecha, String hora) {
+	public Funcion(int codFuncion, int codCine, int codSala, int codPeli, String fecha, String hora) {
 		this.codFuncion = codFuncion;
 		this.codCine = codCine;
+		this.codSala = codSala;
 		this.codPeli = codPeli;
 		this.fecha = fecha;
 		this.hora = hora;
@@ -18,6 +19,9 @@ public class Funcion {
 	}
 	public int getCodCine() {
 		return codCine;
+	}
+	public int getCodSala() {
+		return codSala;
 	}
 	public int getCodPeli() {
 		return codPeli;
@@ -34,6 +38,9 @@ public class Funcion {
 	public void setCodCine(int codCine) {
 		this.codCine = codCine;
 	}
+	public void setCodSala(int codSala) {
+		this.codSala = codSala;
+	}
 	public void setCodPeli(int codPeli) {
 		this.codPeli = codPeli;
 	}
@@ -43,6 +50,7 @@ public class Funcion {
 	public void setHora(String hora) {
 		this.hora = hora;
 	}
+
 	
 
 }

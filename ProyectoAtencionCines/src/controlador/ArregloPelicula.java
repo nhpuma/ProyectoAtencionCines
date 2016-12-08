@@ -96,9 +96,9 @@ public class ArregloPelicula {
 	public void cargarPelicula() {
 		try {
 			BufferedReader br;
-			String linea, titDistribucion,titOriginal, fechaEstreno, genero, paisOrigen, sinopsis ;
+			String linea, titDistribucion,titOriginal, fechaEstreno, paisOrigen, sinopsis ;
 			String s[];
-			int codPeli, tipoProyeccion, duracion, tipoCensura, estadoProyeccion;
+			int codPeli, tipoProyeccion, duracion, tipoCensura, estadoProyeccion,genero;
 			double recaudacion;
 			br = new BufferedReader(new FileReader(archivo));
 			while ((linea = br.readLine()) != null) {
@@ -108,7 +108,7 @@ public class ArregloPelicula {
 				titOriginal = s[2].trim();
 				fechaEstreno = s[3].trim();
 				tipoProyeccion = Integer.parseInt(s[4].trim());
-				genero= s[5].trim();
+				genero= Integer.parseInt(s[5].trim());
 				paisOrigen= s[6].trim();
 				sinopsis= s[7].trim();
 				duracion = Integer.parseInt(s[8].trim());

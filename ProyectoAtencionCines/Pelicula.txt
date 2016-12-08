@@ -1,2 +1,2 @@
-10001;Advengers;Advengers;12/12/2016;1;Accion;EEUU;un grupo de super heroes;120;0;1;20000.0
-10002;Trasformesr;Trasformesr;19/03/2017;0;Accion;EEUU;Unos robots provenientes de otros planetas;90;0;0;240000.0
+10001;Advengers;Advengers;12/12/2016;0;0;EE.UU;Un grupo de superHumanos lucharan por la justicia humana;120;0;1;240000.0
+10002;Transformer 5;Transformer 5 la extincion;12/03/2017;0;3;Canadá;Unas maquinas lucharan por proteger la tierra de la invacion;90;2;1;30000.0

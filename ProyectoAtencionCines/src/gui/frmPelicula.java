@@ -43,7 +43,6 @@ public class frmPelicula extends JFrame implements ActionListener {
 	private JLabel lblPaisOrigen;
 	private JLabel lblSinopsis;
 	private JComboBox cmbTipoproyeccion;
-	private JTextField txtGenero;
 	private JTextField txtPaisorigen;
 	private JTextField txtSinopsis;
 	private JLabel lblDuracion;
@@ -147,11 +146,6 @@ public class frmPelicula extends JFrame implements ActionListener {
 		cmbTipoproyeccion.setBounds(402, 11, 123, 20);
 		contentPane.add(cmbTipoproyeccion);
 		
-		txtGenero = new JTextField();
-		txtGenero.setBounds(402, 36, 123, 20);
-		contentPane.add(txtGenero);
-		txtGenero.setColumns(10);
-		
 		txtPaisorigen = new JTextField();
 		txtPaisorigen.setColumns(10);
 		txtPaisorigen.setBounds(402, 61, 123, 20);
@@ -249,6 +243,11 @@ public class frmPelicula extends JFrame implements ActionListener {
 		modelo.addColumn("Estado Proyeccion");
 		modelo.addColumn("Recaudacion");
 		table.setModel(modelo);
+		
+		cmbGenero = new JComboBox();
+		cmbGenero.setModel(new DefaultComboBoxModel(new String[] {"Accion", "Animacion", "Aventura", "Ciencia ficcion", "Comedia", "Drama", "Musical", "Rom\u00E1ntico", "Terror"}));
+		cmbGenero.setBounds(402, 33, 123, 20);
+		contentPane.add(cmbGenero);
 		listar();
 	}
 	public void actionPerformed(ActionEvent arg0) {
@@ -269,6 +268,7 @@ public class frmPelicula extends JFrame implements ActionListener {
 		}
 	}
 	ArregloPelicula ap = new ArregloPelicula("Pelicula.txt");
+	private JComboBox cmbGenero;
 	
 	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
 		buscarPelicula();
@@ -292,7 +292,6 @@ public class frmPelicula extends JFrame implements ActionListener {
 	   	txtTitdistribucion.setText("");
 	   	txtTitoriginal.setText("");
 	   	txtFechaestreno.setText("");
-	   	txtGenero.setText("");
 	   	txtPaisorigen.setText("");
 	   	txtSinopsis.setText("");
 	   	txtDuracion.setText("");
@@ -301,7 +300,7 @@ public class frmPelicula extends JFrame implements ActionListener {
    	
    	//METODO LISTAR
    	void listar() {
-   		txtCodpelicula.setText(""+ap.codigoCorrelativo());
+   		txtCodpelicula.setText(ap.codigoCorrelativo()+"");
 		modelo.setRowCount(0);
 		for (int i=0; i<ap.tamanio(); i++) {
 			Object[] fila = { ap.obtener(i).getCodPeli(),
@@ -309,7 +308,7 @@ public class frmPelicula extends JFrame implements ActionListener {
 					          ap.obtener(i).getTitOriginal(),
 					          ap.obtener(i).getFechaEstreno(),
 					          ap.obtener(i).tipo_Proyeccion(),
-					          ap.obtener(i).getGenero(),
+					          ap.obtener(i).GeneroPelicula(),
 					          ap.obtener(i).getPaisOrigen(),
 					          ap.obtener(i).getSinopsis(),
 					          ap.obtener(i).getDuracion()+" min",
@@ -339,8 +338,8 @@ public class frmPelicula extends JFrame implements ActionListener {
 	int leertipoProyeccion(){
 		return cmbTipoproyeccion.getSelectedIndex();
 	}
-	String leerGenero() {
-		return txtGenero.getText().trim();
+	int leerGenero() {
+		return cmbGenero.getSelectedIndex();
 	}
 	String leerpaisOrigen() {
 		return txtPaisorigen.getText().trim();
@@ -369,7 +368,7 @@ public class frmPelicula extends JFrame implements ActionListener {
 			   	txtTitoriginal.setText(x.getTitOriginal());
 			   	txtFechaestreno.setText(x.getFechaEstreno());
 			   	cmbTipoproyeccion.setSelectedIndex(x.getTipoProyeccion());
-			   	txtGenero.setText(x.getGenero());
+			   	cmbGenero.setSelectedIndex(x.getGenero());
 			   	txtPaisorigen.setText(x.getPaisOrigen());
 			   	txtSinopsis.setText(x.getSinopsis());
 			   	txtDuracion.setText(""+x.getDuracion());
@@ -404,7 +403,7 @@ public class frmPelicula extends JFrame implements ActionListener {
 						try{
 							int tipoProyeccion = leertipoProyeccion();
 							try{
-								String genero = leerGenero();
+								int genero = leerGenero();
 								try{
 									 String paisOrigen = leerpaisOrigen();
 									 try{
@@ -479,7 +478,7 @@ public class frmPelicula extends JFrame implements ActionListener {
 						try{
 							int tipoProyeccion = leertipoProyeccion();
 							try{
-								String genero = leerGenero();
+								int genero = leerGenero();
 								try{
 									 String paisOrigen = leerpaisOrigen();
 									 try{
@@ -557,7 +556,7 @@ public class frmPelicula extends JFrame implements ActionListener {
 			   	txtTitoriginal.setText("");
 			   	txtFechaestreno.setText("");
 			   	cmbTipoproyeccion.setToolTipText("");
-			   	txtGenero.setText("");
+			   	cmbGenero.setToolTipText("");
 			   	txtPaisorigen.setText("");
 			   	txtSinopsis.setText("");
 			   	txtDuracion.setText("");

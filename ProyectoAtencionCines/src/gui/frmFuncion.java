@@ -241,6 +241,10 @@ public class frmFuncion extends JFrame implements ActionListener {
 		if(!txtCine.getText().trim().equals("")){
 			String cod = txtCine.getText().trim();
 			cod = d.getSelect().substring(0,cod.indexOf("-"));
+			
+			/*Te faltaba asignarle al TXT*/
+			txtCine.setText(cod);
+			/*Fin te faltaba asignarle al TXT*/
 		}
 	}
 	protected void actionPerformedBtnNewButton_1(ActionEvent arg0) {

@@ -19,7 +19,24 @@ public class ArregloCine {
 		cargarCine();
 	
 	}
-	//operaciones publicas basicas
+	//METODOS SET /GET
+	public ArrayList<Cine> getCine() {
+		return cine;
+	}
+
+	public String getArchivo() {
+		return archivo;
+	}
+
+	public void setCine(ArrayList<Cine> cine) {
+		this.cine = cine;
+	}
+
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
+	}
+
+	//OPERACIONES BASICAS
 	public int tamanio(){
 		return cine.size();
 	}

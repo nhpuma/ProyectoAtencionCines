@@ -229,15 +229,15 @@ public class frmFuncion extends JFrame implements ActionListener {
 	   }	
 	   	
 	   int leerCodigoSala(){
-		   return Integer.parseInt(txtFuncion.getText().trim());
+		   return Integer.parseInt(txtSala.getText().trim());
 	   }	
 	   
 	   int leerCodigoPelicula(){
-		   return Integer.parseInt(txtFuncion.getText().trim());
+		   return Integer.parseInt(txtPelicula.getText().trim());
 	   }	
 	   
 	   int leerCodigoCine(){
-		   return Integer.parseInt(txtFuncion.getText().trim());
+		   return Integer.parseInt(txtCine.getText().trim());
 	   }	
 	   
 	   String leerhora(){

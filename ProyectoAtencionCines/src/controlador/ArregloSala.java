@@ -15,9 +15,10 @@ public class ArregloSala {
 	private String archivo;
 	//Constructor
 
-	public ArregloSala() {
+	public ArregloSala(String archivo) {
 		sala = new ArrayList<Sala>();
 		this.archivo = archivo;
+		cargarSala();
 	}
 	//METODOS SET/GET
 	public ArrayList<Sala> getSala() {

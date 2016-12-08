@@ -20,7 +20,23 @@ public class ArregloPelicula {
 		this.archivo = archivo;
 		cargarPelicula();
 	}
-	
+	//METODOS SET/GET
+	public ArrayList<Pelicula> getPeli() {
+		return peli;
+	}
+
+	public String getArchivo() {
+		return archivo;
+	}
+
+	public void setPeli(ArrayList<Pelicula> peli) {
+		this.peli = peli;
+	}
+
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
+	}
+
 	//operaciones publicas basicas
 	public int tamanio(){
 		return peli.size();

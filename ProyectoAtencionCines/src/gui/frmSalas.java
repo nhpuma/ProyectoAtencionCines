@@ -114,7 +114,7 @@ public class frmSalas extends JFrame implements ActionListener {
 	}
 	
 	//Declaración GLobal
-	public static ArregloSala as = new ArregloSala();
+	public static ArregloSala as = new ArregloSala("Sala.txt");
 	public static int codEnv = 0;
 	
 	public static void listar(){

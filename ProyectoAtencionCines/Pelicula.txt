@@ -1,0 +1,2 @@
+10001;Advengers;Advengers;12/12/2016;1;Accion;EEUU;un grupo de super heroes;120;0;1;20000.0
+10002;Trasformesr;Trasformesr;19/03/2017;0;Accion;EEUU;Unos robots provenientes de otros planetas;90;0;0;240000.0

@@ -17,6 +17,7 @@ public class ArregloFuncion {
 	public ArregloFuncion(String archivo) {
 		fu= new ArrayList <Funcion> ();
 		this.archivo = archivo;
+		cargarFuncion();
 	}
 	
 	public int tamaño(){

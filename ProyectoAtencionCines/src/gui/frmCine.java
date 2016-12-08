@@ -216,7 +216,7 @@ public class frmCine extends JFrame implements ActionListener {
 		consultarCine();
 	}
 	protected void do_btnIngresar_actionPerformed(ActionEvent arg0) {
-		adicionarPersona();
+		adicionarCine();
 		
 	}
 	
@@ -269,7 +269,7 @@ public class frmCine extends JFrame implements ActionListener {
 	}		
 
 	//ingresar
-	void adicionarPersona() {
+	void adicionarCine() {
 		int codigo = leerCodigo();
 		if(ac.buscar(codigo)==null){
 		String nombre = leerNombre();

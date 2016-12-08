@@ -8,8 +8,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import Vistas.Dialogo;
+import clases.Cine;
 import clases.Empleado;
 import clases.Funcion;
+import controlador.ArregloCine;
 import controlador.ArregloFuncion;
 
 import javax.swing.JLabel;
@@ -39,6 +42,9 @@ public class frmFuncion extends JFrame implements ActionListener {
 	private DefaultTableModel m;
 	private JScrollPane tblTabla;
 	private JTable table;
+	private JButton btnNewButton;
+	private JButton btnNewButton_1;
+	private JButton btnNewButton_2;
 
 	/**
 	 * Launch the application.
@@ -97,17 +103,17 @@ public class frmFuncion extends JFrame implements ActionListener {
 		txtFuncion.setColumns(10);
 		
 		txtCine = new JTextField();
-		txtCine.setBounds(108, 56, 117, 20);
+		txtCine.setBounds(108, 56, 86, 20);
 		contentPane.add(txtCine);
 		txtCine.setColumns(10);
 		
 		txtSala = new JTextField();
-		txtSala.setBounds(108, 84, 117, 20);
+		txtSala.setBounds(108, 84, 86, 20);
 		contentPane.add(txtSala);
 		txtSala.setColumns(10);
 		
 		txtPelicula = new JTextField();
-		txtPelicula.setBounds(342, 31, 117, 20);
+		txtPelicula.setBounds(342, 31, 86, 20);
 		contentPane.add(txtPelicula);
 		txtPelicula.setColumns(10);
 		
@@ -158,6 +164,21 @@ public class frmFuncion extends JFrame implements ActionListener {
 		table = new JTable();
 		tblTabla.setViewportView(table);
 		
+		btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(this);
+		btnNewButton.setBounds(198, 55, 27, 23);
+		contentPane.add(btnNewButton);
+		
+		btnNewButton_1 = new JButton("New button");
+		btnNewButton_1.addActionListener(this);
+		btnNewButton_1.setBounds(198, 82, 27, 23);
+		contentPane.add(btnNewButton_1);
+		
+		btnNewButton_2 = new JButton("New button");
+		btnNewButton_2.addActionListener(this);
+		btnNewButton_2.setBounds(431, 30, 27, 23);
+		contentPane.add(btnNewButton_2);
+		
 		m = new DefaultTableModel();
 		m.addColumn("Codigo Funcion");
 		m.addColumn("Codigo Cine");
@@ -166,9 +187,19 @@ public class frmFuncion extends JFrame implements ActionListener {
 		m.addColumn("fecha funcion");
 		m.addColumn("Hora Funcion");
 		table.setModel(m);
+		listar();
 		
 	}
 	public void actionPerformed(ActionEvent arg0) {
+		if (arg0.getSource() == btnNewButton_2) {
+			actionPerformedBtnNewButton_2(arg0);
+		}
+		if (arg0.getSource() == btnNewButton_1) {
+			actionPerformedBtnNewButton_1(arg0);
+		}
+		if (arg0.getSource() == btnNewButton) {
+			actionPerformedBtnNewButton(arg0);
+		}
 		if (arg0.getSource() == btnSalir) {
 			actionPerformedBtnSalir(arg0);
 		}
@@ -186,21 +217,39 @@ public class frmFuncion extends JFrame implements ActionListener {
 		}
 	}
 	ArregloFuncion ae=new ArregloFuncion("Funcion.txt");
+	ArregloCine ac = new ArregloCine("cine.txt");
 	protected void actionPerformedBtnIngresar(ActionEvent arg0) {
+		ingresarFuncion();
 	}
 	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
+		buscarFuncion();
 	}
 	protected void actionPerformedBtnModificar(ActionEvent arg0) {
+		modificarFuncion();
 	}
 	protected void actionPerformedBtnEliminar(ActionEvent arg0) {
+		eliminarFuncion();
 	}
 	protected void actionPerformedBtnSalir(ActionEvent arg0) {
 	dispose();
 	}
+	//REFERENCIAS
+	protected void actionPerformedBtnNewButton(ActionEvent arg0) {
+		Dialogo <Cine> d = new Dialogo <> (ac.getCine());
+		d.mostrar();
+		txtCine.setText(d.getSelect());
+		if(!txtCine.getText().trim().equals("")){
+			String cod = txtCine.getText().trim();
+			cod = txtCine.getText().trim().substring(0,cod.indexOf(""));
+		}
+	}
+	protected void actionPerformedBtnNewButton_1(ActionEvent arg0) {
+	}
+	protected void actionPerformedBtnNewButton_2(ActionEvent arg0) {
+	}
 	
 	//Limpieza
 		void limpieza(){
-			txtFuncion.setText("");
 			txtCine.setText("");
 			txtSala.setText("");
 			txtPelicula.setText("");
@@ -208,6 +257,35 @@ public class frmFuncion extends JFrame implements ActionListener {
 			txtHora.setText("");
 			
 		}
+		
+		//METODO LEER
+		   int leerCodigoFuncion(){
+			   return Integer.parseInt(txtFuncion.getText().trim());
+		   }	
+		   	
+		   int leerCodigoSala(){
+			   return Integer.parseInt(txtSala.getText().trim());
+		   }	
+		   
+		   int leerCodigoPelicula(){
+			   return Integer.parseInt(txtPelicula.getText().trim());
+		   }	
+		   
+		   int leerCodigoCine(){
+			   return Integer.parseInt(txtCine.getText().trim());
+		   }	
+		   
+		   String leerhora(){
+			   return txtHora.getText().trim();
+		   }
+		   String leerfecha(){
+			   return txtFecha.getText().trim();
+		   }
+		   	
+			//MENSAJE
+		  	void mensaje(String s) {
+				JOptionPane.showMessageDialog(this, s);
+			}
 		
 	  	//METODO LISTAR
 	   	void listar() {
@@ -223,35 +301,103 @@ public class frmFuncion extends JFrame implements ActionListener {
 				m.addRow(fila);
 			}
 		}
-	   	
-	   int leerCodigoFuncion(){
-		   return Integer.parseInt(txtFuncion.getText().trim());
-	   }	
-	   	
-	   int leerCodigoSala(){
-		   return Integer.parseInt(txtSala.getText().trim());
-	   }	
-	   
-	   int leerCodigoPelicula(){
-		   return Integer.parseInt(txtPelicula.getText().trim());
-	   }	
-	   
-	   int leerCodigoCine(){
-		   return Integer.parseInt(txtCine.getText().trim());
-	   }	
-	   
-	   String leerhora(){
-		   return txtHora.getText().trim();
-	   }
-	   String leerfecha(){
-		   return txtFecha.getText().trim();
-	   }
-	   	
-		//MENSAJE
-	  	void mensaje(String s) {
-			JOptionPane.showMessageDialog(this, s);
+	  	
+	  //BUSCAR
+	  	void buscarFuncion() {
+	  		try {
+	  			Funcion x= ae.buscar(leerCodigoFuncion());
+	  			if (x != null) {
+	  			  	txtCine.setText(x.getCodCine()+"");
+	  			   	txtSala.setText(x.getCodSala()+"");
+	  			   	txtPelicula.setText(x.getCodPeli()+"");
+	  			   	txtFecha.setText(x.getFecha());
+	  			   	txtHora.setText(x.getHora());
+	  			}
+	  			else {
+	  				mensaje("El código " + leerCodigoFuncion() + " no existe");
+	  				txtFuncion.setText("");
+	  				txtFuncion.requestFocus();
+	  			}
+	  		}
+	  		catch (Exception e) {
+	  			mensaje("ingrese CÓDIGO correcto");
+	  			txtFuncion.setText("");
+	  			txtFuncion.requestFocus();
+	  		}
+	  	}
+	  	
+	  //INGRESAR
+		void ingresarFuncion() {
+			int codFuncion = leerCodigoFuncion();
+			if(ae.buscar(codFuncion)==null){
+			int codCine = leerCodigoCine();
+				try {
+					int codSala = leerCodigoSala();
+						try{
+							int codPeli = leerCodigoPelicula();
+							try{
+								String  fecha = leerfecha();
+								try{
+									String hora = leerhora();
+											Funcion nueva = new Funcion(codFuncion,  codCine,  codSala,  codPeli,  fecha,  hora);
+												 ae.adicionar(nueva);
+												  ae.grabarFuncion();;
+														listar();
+													  	limpieza();
+													}
+													catch (Exception e){
+													}
+												}
+											catch (Exception e){
+											}
+											}
+									catch (Exception e){ 
+								}
+							}	
+					catch(Exception e){
+				}
+			}
+		else {
+		mensaje("El codigo ya existe");			
 		}
-	
+		}
+	//MODIFICAR
+		void modificarFuncion() {
+			try{
+			Funcion x = ae.buscar(leerCodigoFuncion());
+			int codCine = leerCodigoCine();
+				try {
+					int codSala = leerCodigoSala();
+						try{
+							int codPeli = leerCodigoPelicula();
+							try{
+								String  fecha = leerfecha();
+								try{
+									String hora = leerhora();
+										x.setCodCine(codCine);
+										x.setCodSala(codSala);
+										x.setCodPeli(codPeli);
+										x.setFecha(fecha);
+										x.setHora(hora);
+											ae.grabarFuncion();;
+											listar();
+											limpieza();
+												}
+												catch (Exception e){
+												}
+												}
+											catch (Exception e){
+											}
+											}
+									catch (Exception e){ 
+								}
+							}	
+					catch(Exception e){
+				}
+			}
+		catch (Exception e) {	
+		}
+	}
 	//ELIMINAR
 			void eliminarFuncion() {
 				try {
@@ -274,7 +420,5 @@ public class frmFuncion extends JFrame implements ActionListener {
 				catch (Exception e) {
 				}	
 			}
-	
-	
-	
+
 }

@@ -54,7 +54,7 @@ public class Dialogo<T> extends JDialog {
 				m.addElement(p.getCodCliente()+"-"+p.getNombre()+", "+p.getApepat()+" "+p.getApemat());				
 			}else if(lista.get(i) instanceof Cine){
 				Cine p=(Cine)lista.get(i);
-				m.addElement(p.getCodCine()+"-"+p.getNombre()+"-"+p.getTipo()+"-"+p.getDepartamento());
+				m.addElement(p.getCodCine()+"-"+p.getNombre()+"-"+p.tipoCine()+"-"+p.getDepartamento());
 			}else if(lista.get(i) instanceof Pelicula){
 				Pelicula p=(Pelicula)lista.get(i);
 				m.addElement(p.getCodPeli()+"-"+p.getTitOriginal());

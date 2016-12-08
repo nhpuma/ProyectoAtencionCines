@@ -1,1 +1,3 @@
-10001;REYDER;LIMA;LIMA;AYACUCHO;20-nov-2016;1
+10001;CineMark;Lima;Lima;SJL;24-dic-2016;0
+10002;CinePlanet;Lima;Lima;Chorrillos;31-dic-2016;1
+10003;CineStar;Lima;Lima;La victoria;24-dic-2016;0

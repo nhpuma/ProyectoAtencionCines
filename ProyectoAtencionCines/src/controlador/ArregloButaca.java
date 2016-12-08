@@ -70,7 +70,7 @@ public class ArregloButaca {
 				}
 			}
 		
-			public void cargarEmpleado() {
+			public void cargarButaca() {
 				try {
 					BufferedReader br;
 					String linea;

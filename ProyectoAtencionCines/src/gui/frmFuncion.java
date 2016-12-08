@@ -7,7 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+
+import clases.Empleado;
+import clases.Funcion;
+import controlador.ArregloFuncion;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -179,6 +185,7 @@ public class frmFuncion extends JFrame implements ActionListener {
 			actionPerformedBtnIngresar(arg0);
 		}
 	}
+	ArregloFuncion ae=new ArregloFuncion("Funcion.txt");
 	protected void actionPerformedBtnIngresar(ActionEvent arg0) {
 	}
 	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
@@ -188,5 +195,86 @@ public class frmFuncion extends JFrame implements ActionListener {
 	protected void actionPerformedBtnEliminar(ActionEvent arg0) {
 	}
 	protected void actionPerformedBtnSalir(ActionEvent arg0) {
+	dispose();
 	}
+	
+	//Limpieza
+		void limpieza(){
+			txtFuncion.setText("");
+			txtCine.setText("");
+			txtSala.setText("");
+			txtPelicula.setText("");
+			txtFecha.setText("");
+			txtHora.setText("");
+			
+		}
+		
+	  	//METODO LISTAR
+	   	void listar() {
+	   		txtFuncion.setText(""+ae.codigoCorrelativo());
+			m.setRowCount(0);
+			for (int i=0; i<ae.tamaño(); i++) {
+				Object[] fila = { ae.obtener(i).getCodFuncion(),
+						          ae.obtener(i).getCodCine(),
+						          ae.obtener(i).getCodSala(),
+						          ae.obtener(i).getCodPeli(),
+						          ae.obtener(i).getFecha(),
+						          ae.obtener(i).getHora()};
+				m.addRow(fila);
+			}
+		}
+	   	
+	   int leerCodigoFuncion(){
+		   return Integer.parseInt(txtFuncion.getText().trim());
+	   }	
+	   	
+	   int leerCodigoSala(){
+		   return Integer.parseInt(txtFuncion.getText().trim());
+	   }	
+	   
+	   int leerCodigoPelicula(){
+		   return Integer.parseInt(txtFuncion.getText().trim());
+	   }	
+	   
+	   int leerCodigoCine(){
+		   return Integer.parseInt(txtFuncion.getText().trim());
+	   }	
+	   
+	   String leerhora(){
+		   return txtHora.getText().trim();
+	   }
+	   String leerfecha(){
+		   return txtFecha.getText().trim();
+	   }
+	   	
+		//MENSAJE
+	  	void mensaje(String s) {
+			JOptionPane.showMessageDialog(this, s);
+		}
+	
+	//ELIMINAR
+			void eliminarFuncion() {
+				try {
+					Funcion x = ae.buscar(leerCodigoFuncion());
+					if (x != null) {
+						ae.eliminar(x);
+						ae.grabarFuncion();
+						txtCine.setText("");
+						txtFecha.setText("");
+						txtFuncion.setText("");
+						txtHora.setText("");
+						txtPelicula.setText("");
+						txtSala.setText("");
+						
+						listar();
+					}
+					else {
+					}
+				}
+				catch (Exception e) {
+				}	
+			}
+	
+	
+	
 }

@@ -240,7 +240,7 @@ public class frmFuncion extends JFrame implements ActionListener {
 		txtCine.setText(d.getSelect());
 		if(!txtCine.getText().trim().equals("")){
 			String cod = txtCine.getText().trim();
-			cod = txtCine.getText().trim().substring(0,cod.indexOf(""));
+			cod = d.getSelect().substring(0,cod.indexOf("-"));
 		}
 	}
 	protected void actionPerformedBtnNewButton_1(ActionEvent arg0) {

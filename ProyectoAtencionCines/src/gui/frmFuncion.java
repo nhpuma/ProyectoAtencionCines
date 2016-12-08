@@ -12,8 +12,12 @@ import Vistas.Dialogo;
 import clases.Cine;
 import clases.Empleado;
 import clases.Funcion;
+import clases.Pelicula;
+import clases.Sala;
 import controlador.ArregloCine;
 import controlador.ArregloFuncion;
+import controlador.ArregloPelicula;
+import controlador.ArregloSala;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -218,6 +222,8 @@ public class frmFuncion extends JFrame implements ActionListener {
 	}
 	ArregloFuncion ae=new ArregloFuncion("Funcion.txt");
 	ArregloCine ac = new ArregloCine("cine.txt");
+	ArregloSala as = new ArregloSala("Sala.txt");
+	ArregloPelicula ap = new ArregloPelicula("Pelicula.txt");
 	protected void actionPerformedBtnIngresar(ActionEvent arg0) {
 		ingresarFuncion();
 	}
@@ -245,8 +251,24 @@ public class frmFuncion extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnNewButton_1(ActionEvent arg0) {
+		Dialogo <Sala> s = new Dialogo <> (as.getSala());
+		s.mostrar();
+		txtSala.setText(s.getSelect());
+		if(!txtSala.getText().trim().equals("")){
+			String cod = txtSala.getText().trim();
+			cod = s.getSelect().substring(0,cod.indexOf("-"));
+			txtSala.setText(cod);
+		}
 	}
 	protected void actionPerformedBtnNewButton_2(ActionEvent arg0) {
+		Dialogo <Pelicula> p = new Dialogo <> (ap.getPeli());
+		p.mostrar();
+		txtPelicula.setText(p.getSelect());
+		if(!txtPelicula.getText().trim().equals("")){
+			String cod = txtPelicula.getText().trim();
+			cod = p.getSelect().substring(0,cod.indexOf("-"));
+			txtPelicula.setText(cod);
+		}
 	}
 	
 	//Limpieza

@@ -6,14 +6,17 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class frmFuncion extends JFrame {
+public class frmFuncion extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField txtFuncion;
@@ -22,11 +25,14 @@ public class frmFuncion extends JFrame {
 	private JTextField txtPelicula;
 	private JTextField txtFecha;
 	private JTextField txtHora;
-	private JTable tblTabla;
 	private JButton btnBuscar;
 	private JButton btnModificar;
 	private JButton btnEliminar;
 	private JButton btnSalir;
+	private JButton btnIngresar;
+	private DefaultTableModel m;
+	private JScrollPane tblTabla;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -49,7 +55,7 @@ public class frmFuncion extends JFrame {
 	 */
 	public frmFuncion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 803, 350);
+		setBounds(100, 100, 754, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -109,36 +115,78 @@ public class frmFuncion extends JFrame {
 		contentPane.add(txtHora);
 		txtHora.setColumns(10);
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(10, 126, 715, 174);
-		contentPane.add(scrollPane_1);
-		
-		tblTabla = new JTable();
-		scrollPane_1.setViewportView(tblTabla);
-		
-		JButton btnIngresar = new JButton("INGRESAR");
+		btnIngresar = new JButton("INGRESAR");
+		btnIngresar.addActionListener(this);
 		btnIngresar.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/add2.png")));
 		btnIngresar.setBounds(501, 11, 113, 33);
 		contentPane.add(btnIngresar);
 		
 		btnBuscar = new JButton("BUSCAR");
+		btnBuscar.addActionListener(this);
 		btnBuscar.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/buscar.png")));
 		btnBuscar.setBounds(501, 45, 113, 33);
 		contentPane.add(btnBuscar);
 		
 		btnModificar = new JButton("MODIFICAR");
+		btnModificar.addActionListener(this);
 		btnModificar.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/edit2.png")));
 		btnModificar.setBounds(501, 82, 113, 33);
 		contentPane.add(btnModificar);
 		
 		btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.addActionListener(this);
 		btnEliminar.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/remove2.png")));
 		btnEliminar.setBounds(624, 11, 101, 33);
 		contentPane.add(btnEliminar);
 		
 		btnSalir = new JButton("SALIR");
+		btnSalir.addActionListener(this);
 		btnSalir.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/cancel2.png")));
 		btnSalir.setBounds(624, 50, 101, 33);
 		contentPane.add(btnSalir);
+		
+		tblTabla = new JScrollPane();
+		tblTabla.setBounds(10, 121, 715, 179);
+		contentPane.add(tblTabla);
+		
+		table = new JTable();
+		tblTabla.setViewportView(table);
+		
+		m = new DefaultTableModel();
+		m.addColumn("Codigo Funcion");
+		m.addColumn("Codigo Cine");
+		m.addColumn("Codigo Sala");
+		m.addColumn("Codigo pelicula");
+		m.addColumn("fecha funcion");
+		m.addColumn("Hora Funcion");
+		table.setModel(m);
+		
+	}
+	public void actionPerformed(ActionEvent arg0) {
+		if (arg0.getSource() == btnSalir) {
+			actionPerformedBtnSalir(arg0);
+		}
+		if (arg0.getSource() == btnEliminar) {
+			actionPerformedBtnEliminar(arg0);
+		}
+		if (arg0.getSource() == btnModificar) {
+			actionPerformedBtnModificar(arg0);
+		}
+		if (arg0.getSource() == btnBuscar) {
+			actionPerformedBtnBuscar(arg0);
+		}
+		if (arg0.getSource() == btnIngresar) {
+			actionPerformedBtnIngresar(arg0);
+		}
+	}
+	protected void actionPerformedBtnIngresar(ActionEvent arg0) {
+	}
+	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
+	}
+	protected void actionPerformedBtnModificar(ActionEvent arg0) {
+	}
+	protected void actionPerformedBtnEliminar(ActionEvent arg0) {
+	}
+	protected void actionPerformedBtnSalir(ActionEvent arg0) {
 	}
 }

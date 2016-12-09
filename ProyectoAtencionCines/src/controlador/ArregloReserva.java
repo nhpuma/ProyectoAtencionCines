@@ -1,5 +1,4 @@
 package controlador;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -7,50 +6,61 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import clases.Funcion;
 import clases.Reserva;
+
 public class ArregloReserva {
 	//ATRIBUTO PRIVADO
-		private ArrayList <Reserva> re;
-		private String archivo;
+	private ArrayList <Reserva> re;
+	private String archivo;
+	//CONSTRUCTOR
+	public ArregloReserva(String archivo){
+		re = new ArrayList <Reserva> ();
+		this.archivo = archivo;
+		cargarReserva();
+	}
+	//MEDOTOS SET/GET
+	public ArrayList<Reserva> getRe() {
+		return re;
+	}
+	public String getArchivo() {
+		return archivo;
+	}
+	public void setRe(ArrayList<Reserva> re) {
+		this.re = re;
+	}
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
+	}
+	//OPERACIONES
+	public int tamaño(){
+		return re.size();
+	}
+	public Reserva obtener(int pos){
+		return re.get(pos);
+	}
+	public void adicionar(Reserva x){
+		re.add(x);
 		
-	//constructor
-		public ArregloReserva(String archivo) {
-			re= new ArrayList <Reserva> ();
-			this.archivo = archivo;
-			cargarReserva();
-		}
-		
-		public int tamaño(){
-			return re.size();
-		}
-		public Reserva obtener(int pos){
-			return re.get(pos);
-		}
-		public void adicionar(Reserva x){
-			re.add(x);
-		}
-		public void eliminar(Reserva x){
-			re.remove(x);
-		}
-		
+	}
+	public void eliminar(Reserva x){
+		re.remove(x);
+	}
 	//GENERADOR DE CODIGO CORRELATIVO
 		public int codigoCorrelativo() {
 			if (tamaño() == 0)
 				return 10001;
 			else
-			return obtener(tamaño()-1).getCodReserva()+ 1;		
+			return obtener(tamaño()-1).getCodFuncion()+ 1;		
 		}
-		
-	//METODO BUSCAR
+		//METODO BUSCAR
 		public Reserva buscar(int codigo) {
 			for (int i=0; i<tamaño(); i++)
 				if (obtener(i).getCodReserva()== codigo)
 					return obtener(i);
 			return null;
-		}	
-		
-		
-	//OPERACIONES PUBLICAS COMPLEMENTARIAS
+		}
+		//OPERACIONES PUBLICAS COMPLEMENTARIAS
 		public void grabarReserva() {
 			try {
 				PrintWriter pw;
@@ -63,9 +73,9 @@ public class ArregloReserva {
 						    x.getCodCliente()+ ";" +
 							x.getCodEmpleado() + ";" +
 							x.getCodFuncion() + ";" +
-							x.getEstado() + ";" +
 							x.getFechaReserva()+ ";" +
-							x.getHoraReserva();
+							x.getHoraReserva()+ ";" +
+							x.getEstado();
 					pw.println(linea);
 				}
 				pw.close();
@@ -73,14 +83,11 @@ public class ArregloReserva {
 			catch (Exception e) {
 			}
 		}
-		
-		
-	//OPERACIONES PUBLICAS COMPLEMENTARIAS	
-		
+	
 		public void cargarReserva() {
 			try {
 				BufferedReader br;
-				String linea, fechareserva, horareserva;
+				String linea, fechaReserva, horaReserva;
 				String s[];
 				int codReserva, codCliente, codEmpleado, codFuncion, estado;
 				br = new BufferedReader(new FileReader(archivo));
@@ -91,9 +98,10 @@ public class ArregloReserva {
 					codEmpleado = Integer.parseInt(s[2].trim());
 					codFuncion = Integer.parseInt(s[3].trim());
 					estado = Integer.parseInt(s[4].trim());
-					fechareserva = s[5].trim();
-					horareserva = s[6].trim();
-					adicionar(new Reserva( codReserva,  codCliente,  codEmpleado,  codFuncion, estado, fechareserva , horareserva));
+					fechaReserva = s[5].trim();
+					horaReserva = s[6].trim();
+					adicionar(new Reserva(  codReserva,  codCliente,  codEmpleado,  codFuncion,  estado,  fechaReserva,
+							 horaReserva));
 				}
 				br.close();
 			}
@@ -104,7 +112,4 @@ public class ArregloReserva {
 			File f = new File(archivo);
 			return f.exists();
 		}	
-		
-	
-		
 }

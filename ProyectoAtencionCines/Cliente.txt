@@ -1,0 +1,5 @@
+10001;Carlos;Toledo;Pedregales;Av. Ciruelos 687 - SJL - Lima;23/09/1987;20/09/2015;0;995647893;25478932;C20001;T789C345
+10002;Margarita;Patiño;Castañeda;Jr. los higos - La victoria - Lima;02/10/1990;30/09/2016;1;2345635;77536473;C20002;J5673544
+10003;Freddy;Palomino;Iman;Av. union - Miraflores - Lima;15/10/1991;15/08/2016;0;998746578;56748736;C20003;I3772656
+10004;Alejandra;Muñoz;Meza;Jr. amazonas - Lima - Lima;09/01/1999;10/10/2016;3;7687465;45623453;C20004;L27836475
+10005;Pablo;Joaquin;Amaya;Calle los perales - Chorrillos - Lima;28/07/2000;07/09/2016;0;900897764;25477832;C20005;M2798764

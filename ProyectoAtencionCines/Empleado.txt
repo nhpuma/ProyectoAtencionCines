@@ -1,0 +1,5 @@
+10001;Tomás;Robles;Sanchez;2;T2016201;T200676T
+10002;Robin;Perales;Manrique;0;R2016202;35426RT2
+10003;Melissa;Santiago;Perez;2;M2016203;5647P23M
+10004;Fabiola;Suarez;Mantilla;0;F2016204;12547S7F
+10005;Enrique;Figueroa;Huana;1;E2016205;78765H6E

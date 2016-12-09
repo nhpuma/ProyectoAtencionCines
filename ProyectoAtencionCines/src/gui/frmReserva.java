@@ -143,72 +143,79 @@ public class frmReserva extends JFrame {
 		tblTable.setModel(m);
 		listar();
 		
+		JComboBox cmbEstado = new JComboBox();
+		cmbEstado.setModel(new DefaultComboBoxModel(new String[] {"Reservada", "Reserva usada", "Reserva cancelada", "Reserva caducada"}));
+		cmbEstado.setBounds(473, 77, 103, 20);
+		contentPane.add(cmbEstado);
 		
 		JButton btnIngresar = new JButton("INGRESAR");
+		btnIngresar.setIcon(new ImageIcon(frmReserva.class.getResource("/img/add2.png")));
 		btnIngresar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				ingresarReserva();
 			}
 		});
-		btnIngresar.setIcon(new ImageIcon(frmReserva.class.getResource("/img/add2.png")));
-		btnIngresar.setBounds(627, 23, 114, 31);
+		btnIngresar.setBounds(615, 27, 116, 28);
 		contentPane.add(btnIngresar);
 		
 		JButton btnBuscar = new JButton("BUSCAR");
+		btnBuscar.setIcon(new ImageIcon(frmReserva.class.getResource("/img/buscar.png")));
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				buscarReserva();
 			}
 		});
-		btnBuscar.setIcon(new ImageIcon(frmReserva.class.getResource("/img/buscar.png")));
-		btnBuscar.setBounds(627, 68, 114, 31);
+		btnBuscar.setBounds(615, 66, 116, 28);
 		contentPane.add(btnBuscar);
 		
 		JButton btnModificar = new JButton("MODIFICAR");
+		btnModificar.setIcon(new ImageIcon(frmReserva.class.getResource("/img/edit2.png")));
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				modificarReserva();
 			}
 		});
-		btnModificar.setIcon(new ImageIcon(frmReserva.class.getResource("/img/edit2.png")));
-		btnModificar.setBounds(627, 110, 114, 31);
+		btnModificar.setBounds(615, 100, 116, 28);
 		contentPane.add(btnModificar);
 		
 		JButton btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.setIcon(new ImageIcon(frmReserva.class.getResource("/img/remove2.png")));
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				eliminarReserva();
 			}
 		});
-		btnEliminar.setIcon(new ImageIcon(frmReserva.class.getResource("/img/remove2.png")));
-		btnEliminar.setBounds(763, 23, 114, 31);
+		btnEliminar.setBounds(742, 28, 116, 28);
 		contentPane.add(btnEliminar);
 		
 		JButton btnSalir = new JButton("SALIR");
+		btnSalir.setIcon(new ImageIcon(frmReserva.class.getResource("/img/cancel2.png")));
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		btnSalir.setIcon(new ImageIcon(frmReserva.class.getResource("/img/cancel2.png")));
-		btnSalir.setBounds(763, 65, 114, 31);
+		btnSalir.setBounds(741, 66, 117, 28);
 		contentPane.add(btnSalir);
-		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setIcon(new ImageIcon(frmReserva.class.getResource("/img/play.png")));
-		btnNewButton.setBounds(268, 51, 32, 23);
-		contentPane.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("");
-		btnNewButton_1.setIcon(new ImageIcon(frmReserva.class.getResource("/img/play.png")));
-		btnNewButton_1.setBounds(268, 76, 32, 23);
-		contentPane.add(btnNewButton_1);
 		
 		JButton button = new JButton("");
 		button.setIcon(new ImageIcon(frmReserva.class.getResource("/img/play.png")));
-		button.setBounds(268, 100, 32, 23);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		button.setBounds(268, 51, 41, 23);
 		contentPane.add(button);
 		
-		JComboBox cmbEstado = new JComboBox();
-		cmbEstado.setModel(new DefaultComboBoxModel(new String[] {"Reservada", "Reserva usada", "Reserva cancelada", "Reserva caducada"}));
-		cmbEstado.setBounds(473, 77, 103, 20);
-		contentPane.add(cmbEstado);
+		JButton button_1 = new JButton("");
+		button_1.setIcon(new ImageIcon(frmReserva.class.getResource("/img/play.png")));
+		button_1.setBounds(268, 76, 41, 23);
+		contentPane.add(button_1);
+		
+		JButton button_2 = new JButton("");
+		button_2.setIcon(new ImageIcon(frmReserva.class.getResource("/img/play.png")));
+		button_2.setBounds(268, 100, 41, 23);
+		contentPane.add(button_2);
 		
 		
 	}
@@ -298,7 +305,7 @@ public class frmReserva extends JFrame {
 			  	}
 	
 			  	 //INGRESAR
-				void ingresarFuncion() {
+				void ingresarReserva() {
 					int codReserva = leerCodigoReserva();
 					if(ae.buscar(codReserva)==null){
 					int codCliente = leerCodigoCliente();
@@ -315,7 +322,7 @@ public class frmReserva extends JFrame {
 /*aqui te faltaba el estado*/					Reserva nueva = new Reserva( codReserva, codCliente, codEmpleado, codFuncion, estado, fechaReserva,
 														 horaReserva);
 														 ae.adicionar(nueva);
-														  ae.grabarFuncion();;
+														  ae.grabarReserva();;
 																listar();
 															  	limpieza();
 															}
@@ -339,7 +346,53 @@ public class frmReserva extends JFrame {
 				mensaje("El codigo ya existe");			
 				}
 				}
-	
+				
+				
+				//MODIFICAR
+				void modificarReserva() {
+					try{
+					Reserva x = ae.buscar(leerCodigoReserva());
+					int codCliente = leerCodigoCliente();
+						try{
+							int codEmpleado = leerCodigoEmpleado();
+								try{
+									int codFuncion = leerCodigoCliente();
+										try{
+											int estado= leerEstado();
+												try{
+													String  fechareserva = leerfecha_reserva();
+													try{
+														String horareserva = leerhora_reserva();
+														x.setCodCliente(codCliente);
+														x.setCodEmpleado(codEmpleado);
+														x.setCodFuncion(codFuncion);
+														x.setEstado(estado);
+														x.setFechaReserva(fechareserva);
+														x.setHoraReserva(horareserva);
+														ae.grabarReserva();;
+														listar();
+														limpieza();
+														}
+														catch (Exception e){
+														}
+														}
+													catch (Exception e){
+													}
+													}
+											catch (Exception e){ 
+										}
+									}	
+							catch(Exception e){
+						}
+					}
+						catch(Exception e){
+						}
+					}
+				catch (Exception e) {
+				}
+			}
+				
+				
 
 				//ELIMINAR
 				void eliminarReserva() {
@@ -347,7 +400,7 @@ public class frmReserva extends JFrame {
 						Reserva x = ae.buscar(leerCodigoReserva());
 						if (x != null) {
 							ae.eliminar(x);
-							ae.grabarFuncion();
+							ae.grabarReserva();
 							txtCliente.setText("");
 							txtEmpleado.setText("");
 							txtFuncion.setText("");

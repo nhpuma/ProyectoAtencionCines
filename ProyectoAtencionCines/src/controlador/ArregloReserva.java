@@ -50,7 +50,7 @@ public class ArregloReserva {
 		
 		
 	//OPERACIONES PUBLICAS COMPLEMENTARIAS
-		public void grabarFuncion() {
+		public void grabarReserva() {
 			try {
 				PrintWriter pw;
 				String linea;

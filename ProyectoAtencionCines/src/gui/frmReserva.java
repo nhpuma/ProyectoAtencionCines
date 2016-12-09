@@ -80,7 +80,7 @@ public class frmReserva extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public frmReserva() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 659, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -329,7 +329,7 @@ public class frmReserva extends JFrame implements ActionListener {
   	}
   	//METODO LISTAR
    	void listar() {
-   		txtcodReserva.setText(""+ar.codigoCorrelativo());
+   		txtcodReserva.setText(ar.codigoCorrelativo()+"");
 		m.setRowCount(0);
 		for (int i=0; i<ar.tamaño(); i++) {
 			Object[] fila = { ar.obtener(i).getCodReserva(),

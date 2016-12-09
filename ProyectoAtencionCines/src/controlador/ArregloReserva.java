@@ -15,8 +15,9 @@ public class ArregloReserva {
 		
 	//constructor
 		public ArregloReserva(String archivo) {
-			re= new ArrayList<Reserva>();
+			re= new ArrayList <Reserva> ();
 			this.archivo = archivo;
+			cargarReserva();
 		}
 		
 		public int tamaño(){

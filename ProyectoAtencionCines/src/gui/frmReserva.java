@@ -242,7 +242,7 @@ public class frmReserva extends JFrame implements ActionListener {
 		}
 	}
 	
-	ArregloReserva ae=new ArregloReserva("Reserva.txt");
+	ArregloReserva ar=new ArregloReserva("Reserva.txt");
 	ArregloCliente ab=new ArregloCliente("Cliente.txt");
 	ArregloEmpleado ac=new ArregloEmpleado("Empleado.txt");
 	ArregloFuncion ad=new ArregloFuncion("Funcion.txt");
@@ -337,23 +337,23 @@ public class frmReserva extends JFrame implements ActionListener {
 
 	  //METODO LISTAR
 	   	void listar() {
-	   		txtReserva.setText(""+ae.codigoCorrelativo());
+	   		txtReserva.setText(""+ar.codigoCorrelativo());
 			m.setRowCount(0);
-			for (int i=0; i<ae.tamaño(); i++) {
-				Object[] fila = { ae.obtener(i).getCodReserva(),
-						          ae.obtener(i).getCodCliente(),
-						          ae.obtener(i).getCodEmpleado(),
-						          ae.obtener(i).getCodFuncion(),
-						          ae.obtener(i).getEstado(),
-						          ae.obtener(i).getFechaReserva(),
-						          ae.obtener(i).getHoraReserva()};
+			for (int i=0; i<ar.tamaño(); i++) {
+				Object[] fila = { ar.obtener(i).getCodReserva(),
+						          ar.obtener(i).getCodCliente(),
+						          ar.obtener(i).getCodEmpleado(),
+						          ar.obtener(i).getCodFuncion(),
+						          ar.obtener(i).getFechaReserva(),
+						          ar.obtener(i).getHoraReserva(),
+						          ar.obtener(i).estado_Reserva()};
 				m.addRow(fila);
 			}
 		}
 	   	//BUSCAR
 	   	void buscarReserva() {
 	  		try {
-	  			Reserva x= ae.buscar(leerCodigoReserva());
+	  			Reserva x= ar.buscar(leerCodigoReserva());
 	  			if (x != null) {
 	  			  	txtReserva.setText(x.getCodReserva()+"");
 	  			   	txtCliente.setText(x.getCodCliente()+"");
@@ -376,7 +376,7 @@ public class frmReserva extends JFrame implements ActionListener {
 	  	 //INGRESAR
 			void ingresarReserva() {
 				int codReserva = leerCodigoReserva();
-				if(ae.buscar(codReserva)==null){
+				if(ar.buscar(codReserva)==null){
 				int codCliente = leerCodigoCliente();
 					try {
 						int codEmpleado = leerCodigoEmpleado();
@@ -390,8 +390,8 @@ public class frmReserva extends JFrame implements ActionListener {
 										String horaReserva = leerhora_reserva();
 										Reserva nueva = new Reserva( codReserva, codCliente, codEmpleado, codFuncion, estado, fechaReserva,
 													 horaReserva);
-													 ae.adicionar(nueva);
-													  ae.grabarReserva();;
+													 ar.adicionar(nueva);
+													  ar.grabarReserva();;
 															listar();
 														  	limpieza();
 														}
@@ -418,7 +418,7 @@ public class frmReserva extends JFrame implements ActionListener {
 	//MODIFICAR
 		void modificarReserva() {
 			try{
-			Reserva x = ae.buscar(leerCodigoReserva());
+			Reserva x = ar.buscar(leerCodigoReserva());
 				int codCliente = leerCodigoCliente();
 					try{
 						int codEmpleado = leerCodigoEmpleado();
@@ -436,7 +436,7 @@ public class frmReserva extends JFrame implements ActionListener {
 													x.setEstado(estado);
 													x.setFechaReserva(fechareserva);
 													x.setHoraReserva(horareserva);
-													ae.grabarReserva();;
+													ar.grabarReserva();;
 													listar();
 													limpieza();
 													}
@@ -461,10 +461,10 @@ public class frmReserva extends JFrame implements ActionListener {
 		//ELIMINAR
 		void eliminarReserva() {
 			try {
-				Reserva x = ae.buscar(leerCodigoReserva());
+				Reserva x = ar.buscar(leerCodigoReserva());
 				if (x != null) {
-					ae.eliminar(x);
-					ae.grabarReserva();
+					ar.eliminar(x);
+					ar.grabarReserva();
 					txtCliente.setText("");
 					txtEmpleado.setText("");
 					txtFuncion.setText("");

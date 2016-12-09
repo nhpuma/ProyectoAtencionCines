@@ -32,6 +32,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	private JMenuItem mntmEmpleado;
 	private JMenuItem mntmReserva;
 	private JLabel label;
+	private JMenuItem mntmBoleta;
 
 	/**
 	 * Launch the application.
@@ -85,6 +86,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		mnMantenimiento.add(mntmPelculas);
 		
 		mntmFunciones = new JMenuItem("Funciones");
+		mntmFunciones.addActionListener(this);
 		mnMantenimiento.add(mntmFunciones);
 		
 		mnRegistroDeReserva = new JMenu("Registro de Reserva");
@@ -97,6 +99,10 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		
 		mnControlDePago = new JMenu("Control de Pago");
 		menuBar.add(mnControlDePago);
+		
+		mntmBoleta = new JMenuItem("Boleta");
+		mntmBoleta.addActionListener(this);
+		mnControlDePago.add(mntmBoleta);
 		
 		mnReportes = new JMenu("Reportes");
 		menuBar.add(mnReportes);
@@ -112,6 +118,12 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmFunciones) {
+			actionPerformedMntmFunciones(e);
+		}
+		if (e.getSource() == mntmBoleta) {
+			actionPerformedMntmBoleta(e);
+		}
 		if (e.getSource() == mntmReserva) {
 			actionPerformedMntmReserva(e);
 		}
@@ -135,7 +147,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		}
 	}
 	protected void mntmSalasActionPerformed(ActionEvent e) {
-		frmSalas mostrarSala = new frmSalas();
+		frmSala mostrarSala = new frmSala();
 		mostrarSala.setLocationRelativeTo(this);
 		mostrarSala.setVisible(true);
 	}
@@ -176,6 +188,27 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		ventana=new frmResgistroReserva2();
 		ventana.setLocationRelativeTo(this);
 		ventana.setVisible(true);
+		
+	}
+	protected void actionPerformedMntmBoleta(ActionEvent e) {
+		
+		frmControlPago ventana;
+		ventana=new frmControlPago();
+		ventana.setLocationRelativeTo(this);
+		ventana.setVisible(true);
+		
+		
+		
+	}
+	protected void actionPerformedMntmFunciones(ActionEvent e) {
+		
+		
+		frmFuncion ventana;
+		ventana=new frmFuncion();
+		ventana.setLocationRelativeTo(this);
+		ventana.setVisible(true);
+		
+		
 		
 	}
 }

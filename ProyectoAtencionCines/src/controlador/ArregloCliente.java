@@ -18,6 +18,20 @@ public class ArregloCliente {
 		this.archivo=archivo;
 		cargarCliente();
 		} 
+	//METODOS SET/GET
+	public ArrayList<Cliente> getCliente() {
+		return cliente;
+	}
+	public String getArchivo() {
+		return archivo;
+	}
+	public void setCliente(ArrayList<Cliente> cliente) {
+		this.cliente = cliente;
+	}
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
+	}
+	//OPERACIONES
 	public int tamanio(){
 		return cliente.size();
 	}

@@ -19,7 +19,20 @@ public class ArregloEmpleado {
 		this.archivo = archivo;
 		cargarEmpleado();
 	}
-	
+	//METODOS SET/ GET
+	public ArrayList<Empleado> getEmp() {
+		return emp;
+	}
+	public String getArchivo() {
+		return archivo;
+	}
+	public void setEmp(ArrayList<Empleado> emp) {
+		this.emp = emp;
+	}
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
+	}
+
 	//OPERACIONES PUBLICAS
 	public int tamanio(){
 		return emp.size();

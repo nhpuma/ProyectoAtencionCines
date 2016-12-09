@@ -19,7 +19,20 @@ public class ArregloFuncion {
 		this.archivo = archivo;
 		cargarFuncion();
 	}
-	
+	//METODOS SET/GET
+	public ArrayList<Funcion> getFu() {
+		return fu;
+	}
+	public String getArchivo() {
+		return archivo;
+	}
+	public void setFu(ArrayList<Funcion> fu) {
+		this.fu = fu;
+	}
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
+	}
+	//OPERACIONES
 	public int tamaño(){
 		return fu.size();
 	}

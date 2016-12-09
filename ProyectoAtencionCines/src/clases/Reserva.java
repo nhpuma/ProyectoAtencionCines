@@ -9,7 +9,6 @@ public class Reserva {
 		
 		public Reserva(int codReserva, int codCliente, int codEmpleado, int codFuncion, int estado, String fechaReserva,
 				String horaReserva) {
-			super();
 			this.codReserva = codReserva;
 			this.codCliente = codCliente;
 			this.codEmpleado = codEmpleado;

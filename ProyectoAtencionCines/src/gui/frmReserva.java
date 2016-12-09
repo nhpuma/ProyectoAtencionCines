@@ -34,6 +34,7 @@ public class frmReserva extends JFrame {
 	private JTextField txtFechaReserv;
 	private JTextField txtHoraReserv;
 	private JTable tblTable;
+	private JComboBox cmbEstado; //el problema estaba aqui nomas te faltaba crear esta variable o como se llame
 	private DefaultTableModel m;
 
 
@@ -123,11 +124,6 @@ public class frmReserva extends JFrame {
 		txtHoraReserv.setBounds(473, 52, 103, 20);
 		contentPane.add(txtHoraReserv);
 		
-		JComboBox cbmEstado = new JComboBox();
-		cbmEstado.setModel(new DefaultComboBoxModel(new String[] {"Reservada", "Reserva usada", "Reserva cancelada", "Reserva caducada"}));
-		cbmEstado.setBounds(473, 76, 103, 23);
-		contentPane.add(cbmEstado);
-		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(41, 161, 836, 256);
 		contentPane.add(scrollPane);
@@ -209,8 +205,11 @@ public class frmReserva extends JFrame {
 		button.setBounds(268, 100, 32, 23);
 		contentPane.add(button);
 		
+		JComboBox cmbEstado = new JComboBox();
+		cmbEstado.setModel(new DefaultComboBoxModel(new String[] {"Reservada", "Reserva usada", "Reserva cancelada", "Reserva caducada"}));
+		cmbEstado.setBounds(473, 77, 103, 20);
+		contentPane.add(cmbEstado);
 		
-	
 		
 	}
 	
@@ -241,13 +240,10 @@ public class frmReserva extends JFrame {
 			   
 			   int leerCodigoFuncion(){
 				   return Integer.parseInt(txtFuncion.getText().trim());
-			   }	
-			   
-			   //no puedo ver mi error , que horror!!!!!
+			   }
 			   int leerEstado(){
-					return cmbEstado.getSelectedIndex();
+				  return cmbEstado.getSelectedIndex();
 				}
-			   
 			   String leerhora_reserva(){
 				   return txtHoraReserv.getText().trim();
 			   }
@@ -301,7 +297,6 @@ public class frmReserva extends JFrame {
 			  		}
 			  	}
 	
-	
 			  	 //INGRESAR
 				void ingresarFuncion() {
 					int codReserva = leerCodigoReserva();
@@ -312,10 +307,13 @@ public class frmReserva extends JFrame {
 								try{
 									int codFuncion = leerCodigoFuncion();
 									try{
-										String  fechareserva = leerfecha_reserva();
+										int estado = leerEstado();
 										try{
-											String horareserva = leerhora_reserva();
-													Reserva nueva = new Reserva(codReserva,  codCliente,  codEmpleado,  codFuncion,  fechareserva,  horareserva);
+											String  fechaReserva = leerfecha_reserva();
+											try{
+											String horaReserva = leerhora_reserva();
+/*aqui te faltaba el estado*/					Reserva nueva = new Reserva( codReserva, codCliente, codEmpleado, codFuncion, estado, fechaReserva,
+														 horaReserva);
 														 ae.adicionar(nueva);
 														  ae.grabarFuncion();;
 																listar();
@@ -332,15 +330,17 @@ public class frmReserva extends JFrame {
 									}	
 							catch(Exception e){
 						}
+						}
+						catch (Exception e){
+							
+						}
 					}
 				else {
 				mensaje("El codigo ya existe");			
 				}
 				}
 	
-	
-				
-				
+
 				//ELIMINAR
 				void eliminarReserva() {
 					try {

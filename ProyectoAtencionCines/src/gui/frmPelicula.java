@@ -60,6 +60,7 @@ public class frmPelicula extends JFrame implements ActionListener {
 	private JButton btnSalir;
 	private JScrollPane tblTabla;
 	private JTable table;
+	private JComboBox cmbGenero;
 	private DefaultTableModel modelo;
 
 	/**
@@ -268,7 +269,7 @@ public class frmPelicula extends JFrame implements ActionListener {
 		}
 	}
 	ArregloPelicula ap = new ArregloPelicula("Pelicula.txt");
-	private JComboBox cmbGenero;
+	
 	
 	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
 		buscarPelicula();

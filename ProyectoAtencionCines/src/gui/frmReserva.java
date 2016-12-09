@@ -8,8 +8,16 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import Vistas.Dialogo;
+import clases.Cine;
+import clases.Empleado;
 import clases.Funcion;
+import clases.Pelicula;
 import clases.Reserva;
+import clases.Sala;
+import controlador.ArregloCliente;
+import controlador.ArregloEmpleado;
+import controlador.ArregloFuncion;
 import controlador.ArregloReserva;
 
 import javax.swing.JLabel;
@@ -202,17 +210,56 @@ public class frmReserva extends JFrame {
 		button.setIcon(new ImageIcon(frmReserva.class.getResource("/img/play.png")));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Dialogo <Cliente> b = new Dialogo <> (ab.getCliente);
+				b.mostrar();
+				txtCliente.setText(b.getSelect());
+				if(!txtCliente.getText().trim().equals("")){
+					String cod = txtCliente.getText().trim();
+					cod = b.getSelect().substring(0,cod.indexOf("-"));
+					txtCliente.setText(cod);
+				}
 			}
 		});
 		button.setBounds(268, 51, 41, 23);
 		contentPane.add(button);
 		
 		JButton button_1 = new JButton("");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Dialogo <Empleado> c = new Dialogo <> (ac.getEmpleado);
+				c.mostrar();
+				txtEmpleado.setText(c.getSelect());
+				if(!txtEmpleado.getText().trim().equals("")){
+					String cod = txtEmpleado.getText().trim();
+					cod = c.getSelect().substring(0,cod.indexOf("-"));
+					txtEmpleado.setText(cod);
+				}
+			}
+		});
 		button_1.setIcon(new ImageIcon(frmReserva.class.getResource("/img/play.png")));
 		button_1.setBounds(268, 76, 41, 23);
 		contentPane.add(button_1);
 		
 		JButton button_2 = new JButton("");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				Dialogo <Funcion> c = new Dialogo <> (ac.getFuncion);
+				c.mostrar();
+				txtFuncion.setText(c.getSelect());
+				if(!txtFuncion.getText().trim().equals("")){
+					String cod = txtFuncion.getText().trim();
+					cod = c.getSelect().substring(0,cod.indexOf("-"));
+					txtFuncion.setText(cod);
+				}
+				
+				
+				
+				
+				
+			}
+		});
 		button_2.setIcon(new ImageIcon(frmReserva.class.getResource("/img/play.png")));
 		button_2.setBounds(268, 100, 41, 23);
 		contentPane.add(button_2);
@@ -220,7 +267,17 @@ public class frmReserva extends JFrame {
 		
 	}
 	
+	
+	
 	ArregloReserva ae=new ArregloReserva("Reserva.txt");
+	ArregloCliente ab=new ArregloCliente("Cliente.txt");
+	ArregloEmpleado ac=new ArregloEmpleado("Empleado.txt");
+	ArregloFuncion ad=new ArregloFuncion("Funcion.txt");
+	
+	
+	
+	
+	
 	
 	//Limpieza
 			void limpieza(){

@@ -1,2 +1,5 @@
 10001;Advengers;Advengers;12/12/2016;0;0;EE.UU;Un grupo de superHumanos lucharan por la justicia humana;120;0;1;240000.0
 10002;Transformer 5;Transformer 5 la extincion;12/03/2017;0;3;Canadá;Unas maquinas lucharan por proteger la tierra de la invacion;90;2;1;30000.0
+10003;Tortugas Ninja;Tortugas Ninja;29/08/2017;1;0;EE.UU;Cuatro hermanos tortuga fueron entrenados para combatir el mal;150;1;1;230000.0
+10004;Ungallo con muchos huevos;Ungallo con muchos huevos;23/12/2016;1;1;México;Un gallo decidira luvhar para poder salvar la granja en donde vive;80;0;1;120000.0
+10005;El Conjuro 2;El Conjuro 2;20/03/2017;0;8;EE.UU;La pelicula estaba basada en la historia de un niña que es atormentada por un;134;2;0;155600.0

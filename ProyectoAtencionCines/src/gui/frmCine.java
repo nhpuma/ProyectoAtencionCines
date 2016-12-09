@@ -75,7 +75,7 @@ public class frmCine extends JFrame implements ActionListener {
 	 */
 	public frmCine() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 636, 430);
+		setBounds(100, 100, 636, 385);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -113,16 +113,16 @@ public class frmCine extends JFrame implements ActionListener {
 		contentPane.add(lblProvincia);
 		
 		lblDistrito = new JLabel("Distrito:");
-		lblDistrito.setBounds(10, 114, 91, 14);
+		lblDistrito.setBounds(225, 36, 91, 14);
 		contentPane.add(lblDistrito);
 		
 		lblFechaInicio = new JLabel("Fecha Inicio:");
-		lblFechaInicio.setBounds(10, 139, 91, 14);
+		lblFechaInicio.setBounds(225, 61, 91, 14);
 		contentPane.add(lblFechaInicio);
 		
 		txtDist = new JTextField();
 		txtDist.setColumns(10);
-		txtDist.setBounds(111, 114, 86, 20);
+		txtDist.setBounds(326, 36, 107, 20);
 		contentPane.add(txtDist);
 		
 		txtProv = new JTextField();
@@ -131,28 +131,28 @@ public class frmCine extends JFrame implements ActionListener {
 		contentPane.add(txtProv);
 		
 		lblTipo = new JLabel("Tipo:");
-		lblTipo.setBounds(225, 14, 40, 14);
+		lblTipo.setBounds(225, 14, 91, 14);
 		contentPane.add(lblTipo);
 		
 		cmbTipo = new JComboBox();
 		cmbTipo.setModel(new DefaultComboBoxModel(new String[] {"Estandar", "Prime"}));
-		cmbTipo.setBounds(269, 11, 86, 20);
+		cmbTipo.setBounds(326, 8, 107, 20);
 		contentPane.add(cmbTipo);
 		
 		btnIngresar = new JButton("Ingresar");
 		btnIngresar.setIcon(new ImageIcon(frmCine.class.getResource("/img/add2.png")));
 		btnIngresar.addActionListener(this);
-		btnIngresar.setBounds(375, 7, 118, 23);
+		btnIngresar.setBounds(492, 4, 118, 23);
 		contentPane.add(btnIngresar);
 		
 		btnSalir = new JButton("Salir");
 		btnSalir.setIcon(new ImageIcon(frmCine.class.getResource("/img/cancel2.png")));
 		btnSalir.addActionListener(this);
-		btnSalir.setBounds(503, 85, 107, 23);
+		btnSalir.setBounds(492, 85, 118, 23);
 		contentPane.add(btnSalir);
 		
 		JScrollPane tblTabla = new JScrollPane();
-		tblTabla.setBounds(0, 170, 620, 221);
+		tblTabla.setBounds(0, 120, 620, 220);
 		contentPane.add(tblTabla);
 		
 		table = new JTable();
@@ -173,23 +173,23 @@ public class frmCine extends JFrame implements ActionListener {
 		btnModificar = new JButton("Modificar");
 		btnModificar.setIcon(new ImageIcon(frmCine.class.getResource("/img/edit2.png")));
 		btnModificar.addActionListener(this);
-		btnModificar.setBounds(375, 36, 118, 23);
+		btnModificar.setBounds(492, 33, 118, 23);
 		contentPane.add(btnModificar);
 		
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setIcon(new ImageIcon(frmCine.class.getResource("/img/remove2.png")));
 		btnEliminar.addActionListener(this);
-		btnEliminar.setBounds(375, 61, 118, 23);
+		btnEliminar.setBounds(492, 58, 118, 23);
 		contentPane.add(btnEliminar);
 		
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.setIcon(new ImageIcon(frmCine.class.getResource("/img/buscar.png")));
 		btnBuscar.addActionListener(this);
-		btnBuscar.setBounds(237, 85, 118, 23);
+		btnBuscar.setBounds(326, 85, 107, 23);
 		contentPane.add(btnBuscar);
 		
 		txtFecha = new JDateChooser();
-		txtFecha.setBounds(111, 139, 107, 20);
+		txtFecha.setBounds(326, 61, 107, 20);
 		contentPane.add(txtFecha);
 		listar();
 	}

@@ -12,6 +12,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class frmControlPago extends JFrame {
 
@@ -62,6 +64,10 @@ public class frmControlPago extends JFrame {
 		scrollPane.setViewportView(textArea);
 		
 		JButton btnProcesar = new JButton("PROCESAR");
+		btnProcesar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnProcesar.setIcon(new ImageIcon(frmControlPago.class.getResource("/img/checked2.png")));
 		btnProcesar.setBounds(434, 65, 123, 30);
 		contentPane.add(btnProcesar);

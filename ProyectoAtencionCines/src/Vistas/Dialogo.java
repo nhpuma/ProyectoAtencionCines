@@ -16,6 +16,7 @@ import javax.swing.event.ListSelectionListener;
 import clases.Cine;
 import clases.Cliente;
 import clases.Empleado;
+import clases.Funcion;
 import clases.Pelicula;
 import clases.Sala;
 
@@ -64,6 +65,9 @@ public class Dialogo<T> extends JDialog {
 			} else if(lista.get(i) instanceof Empleado){
 				Empleado p=(Empleado)lista.get(i);
 				m.addElement(p.getCodEmpleado()+"-"+p.getNombre()+", "+p.getApePater()+" "+p.getApeMater());
+			} else if(lista.get(i) instanceof Funcion){
+				Funcion p=(Funcion)lista.get(i);
+				m.addElement(p.getCodFuncion()+"-"+p.getCodCine()+", "+p.getCodSala()+" "+p.getCodPeli()+"-"+p.getFecha()+"-"+p.getHora());
 			}  
 		} 
 	}

@@ -78,7 +78,7 @@ public class frmFuncion extends JFrame implements ActionListener {
 		contentPane.setLayout(null);
 		
 		JLabel lblCdigoDePelicula = new JLabel("C\u00F3digo de pel\u00EDcula:");
-		lblCdigoDePelicula.setBounds(235, 34, 113, 14);
+		lblCdigoDePelicula.setBounds(235, 34, 143, 14);
 		contentPane.add(lblCdigoDePelicula);
 		
 		JLabel lblCdigoDeCine = new JLabel("C\u00F3digo de cine :");
@@ -94,11 +94,11 @@ public class frmFuncion extends JFrame implements ActionListener {
 		contentPane.add(lblCdigoDeFuncin);
 		
 		JLabel lblFechaDeLa = new JLabel("Fecha de la funci\u00F3n:");
-		lblFechaDeLa.setBounds(235, 59, 113, 14);
+		lblFechaDeLa.setBounds(235, 59, 143, 14);
 		contentPane.add(lblFechaDeLa);
 		
 		JLabel lblHoraDeLa = new JLabel("Hora de la funci\u00F3n:");
-		lblHoraDeLa.setBounds(235, 86, 95, 14);
+		lblHoraDeLa.setBounds(235, 86, 143, 14);
 		contentPane.add(lblHoraDeLa);
 		
 		txtFuncion = new JTextField();
@@ -117,36 +117,36 @@ public class frmFuncion extends JFrame implements ActionListener {
 		txtSala.setColumns(10);
 		
 		txtPelicula = new JTextField();
-		txtPelicula.setBounds(342, 31, 86, 20);
+		txtPelicula.setBounds(367, 26, 86, 20);
 		contentPane.add(txtPelicula);
 		txtPelicula.setColumns(10);
 		
 		txtFecha = new JTextField();
-		txtFecha.setBounds(342, 56, 117, 20);
+		txtFecha.setBounds(368, 56, 115, 20);
 		contentPane.add(txtFecha);
 		txtFecha.setColumns(10);
 		
 		txtHora = new JTextField();
-		txtHora.setBounds(342, 83, 117, 20);
+		txtHora.setBounds(367, 83, 117, 20);
 		contentPane.add(txtHora);
 		txtHora.setColumns(10);
 		
 		btnIngresar = new JButton("INGRESAR");
 		btnIngresar.addActionListener(this);
 		btnIngresar.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/add2.png")));
-		btnIngresar.setBounds(501, 11, 113, 33);
+		btnIngresar.setBounds(493, 11, 121, 33);
 		contentPane.add(btnIngresar);
 		
 		btnBuscar = new JButton("BUSCAR");
 		btnBuscar.addActionListener(this);
 		btnBuscar.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/buscar.png")));
-		btnBuscar.setBounds(501, 45, 113, 33);
+		btnBuscar.setBounds(493, 45, 121, 33);
 		contentPane.add(btnBuscar);
 		
 		btnModificar = new JButton("MODIFICAR");
 		btnModificar.addActionListener(this);
 		btnModificar.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/edit2.png")));
-		btnModificar.setBounds(501, 82, 113, 33);
+		btnModificar.setBounds(494, 82, 120, 33);
 		contentPane.add(btnModificar);
 		
 		btnEliminar = new JButton("ELIMINAR");
@@ -183,7 +183,7 @@ public class frmFuncion extends JFrame implements ActionListener {
 		btnNewButton_2 = new JButton("");
 		btnNewButton_2.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/play.png")));
 		btnNewButton_2.addActionListener(this);
-		btnNewButton_2.setBounds(431, 30, 27, 23);
+		btnNewButton_2.setBounds(456, 25, 27, 23);
 		contentPane.add(btnNewButton_2);
 		
 		m = new DefaultTableModel();

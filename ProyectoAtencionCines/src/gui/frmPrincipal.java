@@ -13,6 +13,8 @@ import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import java.awt.Label;
+import javax.swing.ImageIcon;
 
 public class frmPrincipal extends JFrame implements ActionListener {
 
@@ -29,6 +31,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	private JMenuItem mntmCine;
 	private JMenuItem mntmEmpleado;
 	private JMenuItem mntmReserva;
+	private JLabel label;
 
 	/**
 	 * Launch the application.
@@ -53,7 +56,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		setTitle("Sistema de Atenci\u00F3n de Cines");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(Frame.MAXIMIZED_BOTH);
-		setBounds(100, 100, 877, 744);
+		setBounds(100, 100, 1292, 780);
 		
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -101,6 +104,11 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		label = new JLabel("");
+		label.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/fondo.jpg")));
+		label.setBounds(0, 0, 1280, 720);
+		contentPane.add(label);
 	}
 
 	public void actionPerformed(ActionEvent e) {

@@ -28,6 +28,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	private JMenuItem mntmFunciones;
 	private JMenuItem mntmCine;
 	private JMenuItem mntmEmpleado;
+	private JMenuItem mntmReserva;
 
 	/**
 	 * Launch the application.
@@ -84,7 +85,12 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		mnMantenimiento.add(mntmFunciones);
 		
 		mnRegistroDeReserva = new JMenu("Registro de Reserva");
+		mnRegistroDeReserva.addActionListener(this);
 		menuBar.add(mnRegistroDeReserva);
+		
+		mntmReserva = new JMenuItem("Reserva");
+		mntmReserva.addActionListener(this);
+		mnRegistroDeReserva.add(mntmReserva);
 		
 		mnControlDePago = new JMenu("Control de Pago");
 		menuBar.add(mnControlDePago);
@@ -98,6 +104,12 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmReserva) {
+			actionPerformedMntmReserva(e);
+		}
+		if (e.getSource() == mnRegistroDeReserva) {
+			actionPerformedMnRegistroDeReserva(e);
+		}
 		if (e.getSource() == mntmPelculas) {
 			actionPerformedMntmPelculas(e);
 		}
@@ -142,5 +154,20 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		p = new frmPelicula ();
 		p.setLocationRelativeTo(this);
 		p.setVisible(true);
+	}
+	protected void actionPerformedMnRegistroDeReserva(ActionEvent e) {
+		
+		
+		
+		
+		
+	}
+	protected void actionPerformedMntmReserva(ActionEvent e) {
+		
+		frmResgistroReserva2 ventana;
+		ventana=new frmResgistroReserva2();
+		ventana.setLocationRelativeTo(this);
+		ventana.setVisible(true);
+		
 	}
 }

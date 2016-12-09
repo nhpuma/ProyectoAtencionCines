@@ -15,11 +15,17 @@ public class ArregloButaca {
 	private String archivo;
 	
 	//CONSTRUCTOR
-	public ArregloButaca(){
+	
+	public ArregloButaca(String archivo){
 		but = new ArrayList <Butaca> ();
 		this.archivo = archivo;
+		cargarButaca();
 	}
 	
+	public ArregloButaca() {
+		but = new ArrayList <Butaca> ();
+	}
+
 	public int tamaño(){
 		return but.size();
 	}

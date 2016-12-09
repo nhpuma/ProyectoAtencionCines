@@ -9,8 +9,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import Vistas.Dialogo;
+import clases.Butaca;
 import clases.Cine;
 import clases.Sala;
+import controlador.ArregloButaca;
 import controlador.ArregloCine;
 import controlador.ArregloSala;
 
@@ -220,6 +222,28 @@ public class frmSala extends JFrame implements ActionListener {
 		}
 	}
 	
+	//Generando las butacas
+		ArregloButaca ab = new ArregloButaca("Butacas.txt");
+		void generarButacas(int numButacas, int numFilas, int codSala){
+			Butaca b;
+			//Operando las butacas
+			int col = numButacas/numFilas;
+			int resto = numButacas%numFilas;
+			if(resto != 0 || resto <= numFilas)
+				col++;
+			//Fin operando las butacas
+			int numCol = col;
+		
+			for (int i = 0; i < numFilas; i++) {
+				for (int j = 0; j < numCol; j++) {
+					b = new Butaca(ab.codigoCorrelativo(), codSala, i, j, 1);
+					ab.adicionar(b);
+				}
+			}//Fin último for
+			ab.grabarButaca();
+		}
+		
+	
 	//LIMPIEZA
 	void limpieza(){
 		txtCodCine.setText("");
@@ -298,6 +322,8 @@ public class frmSala extends JFrame implements ActionListener {
   										as.grabarSala();;
   										listar();
   										limpieza();
+  										//Generando las Butacas
+  										generarButacas(numButaca, numFila, codigo);
   										}
   										catch (Exception e){
   										}

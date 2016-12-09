@@ -229,7 +229,7 @@ public class frmSala extends JFrame implements ActionListener {
 			//Operando las butacas
 			int col = numButacas/numFilas;
 			int resto = numButacas%numFilas;
-			if(resto != 0 || resto <= numFilas)
+			if(resto != 0 && resto < numFilas)
 				col++;
 			//Fin operando las butacas
 			int numCol = col;

@@ -77,7 +77,6 @@ public class Reserva {
 		}
 		
 		//operacion publica
-		
 		public String estado_Reserva(){
 			switch(estado){
 			case 0:
@@ -89,8 +88,5 @@ public class Reserva {
 			default:
 				return "Reserva caducada";
 			}
-		}
-		
-		
-		
+		}		
 }

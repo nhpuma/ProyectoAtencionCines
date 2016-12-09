@@ -391,7 +391,7 @@ public class frmReserva extends JFrame implements ActionListener {
 										Reserva nueva = new Reserva( codReserva, codCliente, codEmpleado, codFuncion, estado, fechaReserva,
 													 horaReserva);
 													 ar.adicionar(nueva);
-													  ar.grabarReserva();;
+													  ar.grabarReserva();
 															listar();
 														  	limpieza();
 														}

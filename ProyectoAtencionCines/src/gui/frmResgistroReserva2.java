@@ -33,6 +33,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.io.ObjectStreamException;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
 
@@ -260,7 +261,7 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 	ArregloFuncion af = new ArregloFuncion("Funcion.txt");
 	ArregloCine aCine = new ArregloCine("cine.txt");
 	ArregloSala aSala = new ArregloSala("Sala.txt");
-	ArregloButaca aBut = new ArregloButaca("Butaca.txt");
+	ArregloButaca aBut = new ArregloButaca("Butacas.txt");
 	int codFuncion;
 	//Métodos complementarios
 	void listarCiudades(){
@@ -297,6 +298,17 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		}
 	}
 	//Obteniendo de las componentes
+	int obtEstado(){
+		return 0;
+	}
+	String obtHoraReserva(){
+		Date hora = new Date();
+		return hora.getHours()+":"+hora.getMinutes()+" h";
+	}
+	String obtFechaReserva(){
+		Date fecha = new Date();
+		return fecha.getDay()+"/"+fecha.getMonth()+"/"+fecha.getYear();
+	}
 	int obtCodFuncion(){
 		String f = ""+cmbFecha.getSelectedItem();
 		f = f.substring(f.indexOf("-"), f.length()-1);
@@ -346,8 +358,24 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		int codRes = Integer.parseInt(txtCodreserva.getText());
 		
 		Object fila[] = {
-				
+				/*obtCodReserva(),
+				obtCodCliente(),
+				obtCodEmpleado(),
+				obtCodFuncion(),
+				obtFechaReserva(),
+				obtHoraReserva(),
+				obtEstado()*/
+				obtCodReserva(),
+				obtCodEmpleado(),
+				cmbSala.getSelectedItem(),
+				obtCodCliente(),
+				cmbCiudad.getSelectedItem(),
+				obtHoraReserva(),
+				obtFechaReserva(),
+				cmbTipoEntrada.getSelectedItem(),
+				cmbButaca.getSelectedItem()
 		};
+		modelo.addRow(fila);
 	}
 	protected void actionPerformedCmbPeliculas(ActionEvent arg0) {
 		cmbHora.removeAllItems();
@@ -383,7 +411,8 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		for (int i = 0; i < aBut.tamaño(); i++) {
 			b = aBut.obtener(i);
 			if(b.getCodSala() == Integer.parseInt(codSala)){
-				cmbButaca.addItem(b.getCodButaca()+"-("+b.getNumFila()+","+b.getNumColumna()+")-"+b.getEstado());
+			//if(true){
+				cmbButaca.addItem(b.getCodButaca()+"-("+b.getNumFila()+","+b.getNumColumna()+")-"+b.estadoButaca());
 			}
 		}
 	}

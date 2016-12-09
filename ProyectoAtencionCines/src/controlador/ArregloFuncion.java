@@ -18,8 +18,6 @@ public class ArregloFuncion {
 		fu= new ArrayList <Funcion> ();
 		this.archivo = archivo;
 		cargarFuncion();
-	}public ArregloFuncion() {
-		fu= new ArrayList <Funcion> ();		
 	}
 	//METODOS SET/GET
 	public ArrayList<Funcion> getFu() {

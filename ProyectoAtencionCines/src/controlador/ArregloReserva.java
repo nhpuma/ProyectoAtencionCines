@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import clases.Funcion;
 import clases.Reserva;
 
 public class ArregloReserva {
@@ -51,7 +50,7 @@ public class ArregloReserva {
 			if (tamaño() == 0)
 				return 10001;
 			else
-			return obtener(tamaño()-1).getCodFuncion()+ 1;		
+			return obtener(tamaño()-1).getCodReserva()+ 1;		
 		}
 		//METODO BUSCAR
 		public Reserva buscar(int codigo) {

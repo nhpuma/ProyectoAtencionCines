@@ -432,12 +432,10 @@ public class frmFuncion extends JFrame implements ActionListener {
 						ae.eliminar(x);
 						ae.grabarFuncion();
 						txtCine.setText("");
-						txtFecha.setText("");
-						txtFuncion.setText("");
-						txtHora.setText("");
-						txtPelicula.setText("");
 						txtSala.setText("");
-						
+						txtPelicula.setText("");
+						txtFecha.setText("");
+						txtHora.setText("");
 						listar();
 					}
 					else {

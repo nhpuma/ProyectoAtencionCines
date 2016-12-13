@@ -12,8 +12,8 @@ import Vistas.Dialogo;
 import clases.Cliente;
 import clases.Empleado;
 import clases.Funcion;
+import clases.Pelicula;
 import clases.Reserva;
-import clases.Sala;
 import controlador.ArregloCliente;
 import controlador.ArregloEmpleado;
 import controlador.ArregloFuncion;
@@ -23,13 +23,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class frmReserva extends JFrame implements ActionListener {
 
@@ -38,26 +38,26 @@ public class frmReserva extends JFrame implements ActionListener {
 	private JLabel lblCodigoCliente;
 	private JLabel lblCodigoEmpleado;
 	private JLabel lblCodigoFuncion;
-	private JLabel lblNewLabel;
-	private JTextField txtcodReserva;
-	private JTextField txtcodCliente;
-	private JTextField txtcodEmpleado;
-	private JTextField txtcodFuncion;
-	private JTextField txtFecha;
+	private JTextField txtReserva;
+	private JTextField txtCliente;
+	private JTextField txtEmpleado;
+	private JTextField txtFuncion;
+	private JLabel lblFechaReserva;
 	private JLabel lblHoraReserva;
-	private JTextField txtHora;
 	private JLabel lblEstado;
+	private JTextField txtFecha;
+	private JTextField txtHora;
 	private JComboBox cmbEstado;
-	private JButton btnNewButton;
-	private JButton btnNewButton_1;
-	private JButton btnNewButton_2;
 	private JButton btnBuscar;
-	private JButton btnIngresar;
+	private JButton btnAdicionar;
 	private JButton btnModificar;
 	private JButton btnEliminar;
 	private JButton btnSalir;
 	private JScrollPane tblTabla;
 	private JTable table;
+	private JButton btnNewButton;
+	private JButton btnNewButton_1;
+	private JButton btnNewButton_2;
 	private DefaultTableModel m;
 
 	/**
@@ -81,129 +81,126 @@ public class frmReserva extends JFrame implements ActionListener {
 	 */
 	public frmReserva() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 659, 300);
+		setBounds(100, 100, 657, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		lblCodigoReserva = new JLabel("Codigo Reserva:");
-		lblCodigoReserva.setBounds(10, 11, 108, 14);
+		lblCodigoReserva.setBounds(10, 11, 100, 14);
 		contentPane.add(lblCodigoReserva);
 		
 		lblCodigoCliente = new JLabel("Codigo Cliente:");
-		lblCodigoCliente.setBounds(10, 33, 108, 14);
+		lblCodigoCliente.setBounds(10, 36, 100, 14);
 		contentPane.add(lblCodigoCliente);
 		
 		lblCodigoEmpleado = new JLabel("Codigo Empleado:");
-		lblCodigoEmpleado.setBounds(10, 58, 108, 14);
+		lblCodigoEmpleado.setBounds(10, 61, 110, 14);
 		contentPane.add(lblCodigoEmpleado);
 		
 		lblCodigoFuncion = new JLabel("Codigo Funcion:");
-		lblCodigoFuncion.setBounds(10, 83, 108, 14);
+		lblCodigoFuncion.setBounds(10, 86, 100, 14);
 		contentPane.add(lblCodigoFuncion);
 		
-		lblNewLabel = new JLabel("Fecha Reserva:");
-		lblNewLabel.setBounds(243, 14, 108, 14);
-		contentPane.add(lblNewLabel);
+		txtReserva = new JTextField();
+		txtReserva.setBounds(120, 8, 110, 20);
+		contentPane.add(txtReserva);
+		txtReserva.setColumns(10);
 		
-		txtcodReserva = new JTextField();
-		txtcodReserva.setBounds(116, 8, 108, 20);
-		contentPane.add(txtcodReserva);
-		txtcodReserva.setColumns(10);
+		txtCliente = new JTextField();
+		txtCliente.setBounds(120, 33, 86, 20);
+		contentPane.add(txtCliente);
+		txtCliente.setColumns(10);
 		
-		txtcodCliente = new JTextField();
-		txtcodCliente.setColumns(10);
-		txtcodCliente.setBounds(116, 30, 86, 20);
-		contentPane.add(txtcodCliente);
+		txtEmpleado = new JTextField();
+		txtEmpleado.setColumns(10);
+		txtEmpleado.setBounds(120, 58, 86, 20);
+		contentPane.add(txtEmpleado);
 		
-		txtcodEmpleado = new JTextField();
-		txtcodEmpleado.setColumns(10);
-		txtcodEmpleado.setBounds(116, 55, 86, 20);
-		contentPane.add(txtcodEmpleado);
+		txtFuncion = new JTextField();
+		txtFuncion.setColumns(10);
+		txtFuncion.setBounds(120, 83, 86, 20);
+		contentPane.add(txtFuncion);
 		
-		txtcodFuncion = new JTextField();
-		txtcodFuncion.setColumns(10);
-		txtcodFuncion.setBounds(116, 80, 86, 20);
-		contentPane.add(txtcodFuncion);
-		
-		txtFecha = new JTextField();
-		txtFecha.setColumns(10);
-		txtFecha.setBounds(361, 8, 129, 20);
-		contentPane.add(txtFecha);
+		lblFechaReserva = new JLabel("Fecha Reserva:");
+		lblFechaReserva.setBounds(240, 11, 122, 14);
+		contentPane.add(lblFechaReserva);
 		
 		lblHoraReserva = new JLabel("Hora Reserva:");
-		lblHoraReserva.setBounds(243, 36, 108, 14);
+		lblHoraReserva.setBounds(240, 36, 122, 14);
 		contentPane.add(lblHoraReserva);
 		
-		txtHora = new JTextField();
-		txtHora.setBounds(361, 33, 129, 20);
-		contentPane.add(txtHora);
-		txtHora.setColumns(10);
-		
 		lblEstado = new JLabel("Estado:");
-		lblEstado.setBounds(243, 58, 108, 14);
+		lblEstado.setBounds(240, 61, 122, 14);
 		contentPane.add(lblEstado);
+		
+		txtFecha = new JTextField();
+		txtFecha.setBounds(372, 8, 122, 20);
+		contentPane.add(txtFecha);
+		txtFecha.setColumns(10);
+		
+		txtHora = new JTextField();
+		txtHora.setColumns(10);
+		txtHora.setBounds(372, 33, 122, 20);
+		contentPane.add(txtHora);
 		
 		cmbEstado = new JComboBox();
 		cmbEstado.setModel(new DefaultComboBoxModel(new String[] {"Reservada", "Reserva usada", "Reserva cancelada", "Reserva caducada"}));
-		cmbEstado.setBounds(361, 58, 129, 20);
+		cmbEstado.setBounds(372, 61, 122, 20);
 		contentPane.add(cmbEstado);
 		
-		btnNewButton = new JButton("");
-		btnNewButton.addActionListener(this);
-		btnNewButton.setIcon(new ImageIcon(frmReserva.class.getResource("/img/play.png")));
-		btnNewButton.setBounds(204, 29, 20, 23);
-		contentPane.add(btnNewButton);
-		
-		btnNewButton_1 = new JButton("");
-		btnNewButton_1.addActionListener(this);
-		btnNewButton_1.setIcon(new ImageIcon(frmReserva.class.getResource("/img/play.png")));
-		btnNewButton_1.setBounds(204, 54, 20, 23);
-		contentPane.add(btnNewButton_1);
-		
-		btnNewButton_2 = new JButton("");
-		btnNewButton_2.addActionListener(this);
-		btnNewButton_2.setIcon(new ImageIcon(frmReserva.class.getResource("/img/play.png")));
-		btnNewButton_2.setBounds(204, 79, 20, 23);
-		contentPane.add(btnNewButton_2);
-		
 		btnBuscar = new JButton("Buscar");
-		btnBuscar.addActionListener(this);
 		btnBuscar.setIcon(new ImageIcon(frmReserva.class.getResource("/img/buscar.png")));
-		btnBuscar.setBounds(361, 83, 129, 23);
+		btnBuscar.addActionListener(this);
+		btnBuscar.setBounds(372, 86, 122, 23);
 		contentPane.add(btnBuscar);
 		
-		btnIngresar = new JButton("Ingresar");
-		btnIngresar.addActionListener(this);
-		btnIngresar.setIcon(new ImageIcon(frmReserva.class.getResource("/img/add2.png")));
-		btnIngresar.setBounds(525, 5, 108, 23);
-		contentPane.add(btnIngresar);
+		btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.setIcon(new ImageIcon(frmReserva.class.getResource("/img/add2.png")));
+		btnAdicionar.addActionListener(this);
+		btnAdicionar.setBounds(504, 7, 122, 23);
+		contentPane.add(btnAdicionar);
 		
 		btnModificar = new JButton("Modificar");
-		btnModificar.addActionListener(this);
 		btnModificar.setIcon(new ImageIcon(frmReserva.class.getResource("/img/edit2.png")));
-		btnModificar.setBounds(525, 27, 108, 23);
+		btnModificar.addActionListener(this);
+		btnModificar.setBounds(504, 32, 122, 23);
 		contentPane.add(btnModificar);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.addActionListener(this);
 		btnEliminar.setIcon(new ImageIcon(frmReserva.class.getResource("/img/remove2.png")));
-		btnEliminar.setBounds(525, 52, 108, 23);
+		btnEliminar.addActionListener(this);
+		btnEliminar.setBounds(504, 57, 122, 23);
 		contentPane.add(btnEliminar);
 		
 		btnSalir = new JButton("Salir");
-		btnSalir.addActionListener(this);
 		btnSalir.setIcon(new ImageIcon(frmReserva.class.getResource("/img/cancel2.png")));
-		btnSalir.setBounds(525, 77, 108, 23);
+		btnSalir.addActionListener(this);
+		btnSalir.setBounds(504, 82, 122, 23);
 		contentPane.add(btnSalir);
 		
 		tblTabla = new JScrollPane();
-		tblTabla.setBounds(10, 115, 623, 135);
+		tblTabla.setBounds(10, 113, 621, 137);
 		contentPane.add(tblTabla);
 		
 		table = new JTable();
 		tblTabla.setViewportView(table);
+		
+		btnNewButton = new JButton("");
+		btnNewButton.addActionListener(this);
+		btnNewButton.setBounds(209, 32, 21, 23);
+		contentPane.add(btnNewButton);
+		
+		btnNewButton_1 = new JButton("");
+		btnNewButton_1.addActionListener(this);
+		btnNewButton_1.setBounds(209, 57, 21, 23);
+		contentPane.add(btnNewButton_1);
+		
+		btnNewButton_2 = new JButton("");
+		btnNewButton_2.addActionListener(this);
+		btnNewButton_2.setBounds(209, 82, 21, 23);
+		contentPane.add(btnNewButton_2);
 		
 		m = new DefaultTableModel();
 		m.addColumn("Codigo Reserva");
@@ -235,8 +232,8 @@ public class frmReserva extends JFrame implements ActionListener {
 		if (arg0.getSource() == btnModificar) {
 			actionPerformedBtnModificar(arg0);
 		}
-		if (arg0.getSource() == btnIngresar) {
-			actionPerformedBtnIngresar(arg0);
+		if (arg0.getSource() == btnAdicionar) {
+			actionPerformedBtnAdicionar(arg0);
 		}
 		if (arg0.getSource() == btnBuscar) {
 			actionPerformedBtnBuscar(arg0);
@@ -244,12 +241,12 @@ public class frmReserva extends JFrame implements ActionListener {
 	}
 	ArregloReserva ar = new ArregloReserva("Reserva.txt");
 	ArregloCliente ac = new ArregloCliente("Cliente.txt");
-	ArregloEmpleado ae = new ArregloEmpleado("Empleado.txt");
+	ArregloEmpleado ap = new ArregloEmpleado("Empleado.txt");
 	ArregloFuncion af = new ArregloFuncion("Funcion.txt");
 	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
 		buscarReserva();
 	}
-	protected void actionPerformedBtnIngresar(ActionEvent arg0) {
+	protected void actionPerformedBtnAdicionar(ActionEvent arg0) {
 		ingresarReserva();
 	}
 	protected void actionPerformedBtnModificar(ActionEvent arg0) {
@@ -261,43 +258,42 @@ public class frmReserva extends JFrame implements ActionListener {
 	protected void actionPerformedBtnSalir(ActionEvent arg0) {
 		dispose();
 	}
-	//REFERENCIA
+	//REFERENCIAS
 	protected void actionPerformedBtnNewButton(ActionEvent arg0) {
 		Dialogo <Cliente> c = new Dialogo <> (ac.getCliente());
 		c.mostrar();
-		txtcodCliente.setText(c.getSelect());
-		if(!txtcodCliente.getText().trim().equals("")){
-			String cod = txtcodCliente.getText().trim();
+		txtCliente.setText(c.getSelect());
+		if(!txtCliente.getText().trim().equals("")){
+			String cod = txtCliente.getText().trim();
 			cod = c.getSelect().substring(0,cod.indexOf("-"));
-			txtcodCliente.setText(cod);
+			txtCliente.setText(cod);
 		}
 	}
 	protected void actionPerformedBtnNewButton_1(ActionEvent arg0) {
-		Dialogo <Empleado> e = new Dialogo <> (ae.getEmp());
+		Dialogo <Empleado> e = new Dialogo <> (ap.getEmp());
 		e.mostrar();
-		txtcodEmpleado.setText(e.getSelect());
-		if(!txtcodEmpleado.getText().trim().equals("")){
-			String cod = txtcodEmpleado.getText().trim();
+		txtEmpleado.setText(e.getSelect());
+		if(!txtEmpleado.getText().trim().equals("")){
+			String cod = txtEmpleado.getText().trim();
 			cod = e.getSelect().substring(0,cod.indexOf("-"));
-			txtcodEmpleado.setText(cod);
+			txtEmpleado.setText(cod);
 		}
 	}
 	protected void actionPerformedBtnNewButton_2(ActionEvent arg0) {
 		Dialogo <Funcion> f = new Dialogo <> (af.getFu());
 		f.mostrar();
-		txtcodFuncion.setText(f.getSelect());
-		if(!txtcodFuncion.getText().trim().equals("")){
-			String cod = txtcodFuncion.getText().trim();
+		txtFuncion.setText(f.getSelect());
+		if(!txtFuncion.getText().trim().equals("")){
+			String cod = txtFuncion.getText().trim();
 			cod = f.getSelect().substring(0,cod.indexOf("-"));
-			txtcodFuncion.setText(cod);
+			txtFuncion.setText(cod);
 		}
 	}
-	
-	//LIMPIEZA
+	//LIEMPIEZA
 	void limpieza(){
-		txtcodCliente.setText("");
-		txtcodEmpleado.setText("");
-		txtcodFuncion.setText("");
+		txtCliente.setText("");
+		txtEmpleado.setText("");
+		txtFuncion.setText("");
 		txtFecha.setText("");
 		txtHora.setText("");
 	}
@@ -306,17 +302,17 @@ public class frmReserva extends JFrame implements ActionListener {
 		JOptionPane.showMessageDialog(this, s);
 	}
   	//METODOS LEER
-  	int leercodReserva(){
-  		return Integer.parseInt(txtcodReserva.getText().trim());
+  	int leerReserva(){
+  		return Integer.parseInt(txtReserva.getText().trim());
   	}
-  	int leercodCliente(){
-  		return Integer.parseInt(txtcodCliente.getText().trim());
+  	int leerCliente(){
+  		return Integer.parseInt(txtCliente.getText().trim());
   	}
-  	int leercodEmpleado(){
-  		return Integer.parseInt(txtcodEmpleado.getText().trim());
+  	int leerEmpleado(){
+  		return Integer.parseInt(txtEmpleado.getText().trim());
   	}
-  	int leercodFuncion(){
-  		return Integer.parseInt(txtcodFuncion.getText().trim());
+  	int leerFuncion(){
+  		return Integer.parseInt(txtFuncion.getText().trim());
   	}
   	String leerFecha(){
   		return txtFecha.getText().trim();
@@ -327,62 +323,107 @@ public class frmReserva extends JFrame implements ActionListener {
   	int leerEstado(){
   		return cmbEstado.getSelectedIndex();
   	}
+	
   	//METODO LISTAR
    	void listar() {
-   		txtcodReserva.setText(ar.codigoCorrelativo()+"");
+   		txtReserva.setText(ar.codigoCorrelativo()+"");
 		m.setRowCount(0);
 		for (int i=0; i<ar.tamaño(); i++) {
 			Object[] fila = { ar.obtener(i).getCodReserva(),
 					          ar.obtener(i).getCodCliente(),
 					          ar.obtener(i).getCodEmpleado(),
-					          ar.obtener(i).getCodFuncion(),
+					          ar.obtener(i).getCodiFuncion(),
 					          ar.obtener(i).getFechaReserva(),
 					          ar.obtener(i).getHoraReserva(),
-					          ar.obtener(i).estado_Reserva()};
+					          ar.obtener(i).estadoReserva()};
 			m.addRow(fila);
 		}
 	}
-  //BUSCAR
+	  //BUSCAR
   	void buscarReserva() {
   		try {
-  			Reserva x = ar.buscar(leercodReserva());
+  			Reserva x= ar.buscar(leerReserva());
   			if (x != null) {
-  			  	txtcodCliente.setText(x.getCodCliente()+"");
-  			   	txtcodEmpleado.setText(x.getCodEmpleado()+"");
-  			   	txtcodFuncion.setText(x.getCodFuncion()+"");
+  			  	txtCliente.setText(x.getCodCliente()+"");
+  			   	txtEmpleado.setText(x.getCodEmpleado()+"");
+  			   	txtFuncion.setText(x.getCodiFuncion()+"");
   			   	txtFecha.setText(x.getFechaReserva());
   			   	txtHora.setText(x.getHoraReserva());
   			}
   			else {
-  				mensaje("El código " + leercodReserva() + " no existe");
-  				txtcodReserva.setText("");
-  				txtcodReserva.requestFocus();
+  				mensaje("El código " + leerReserva() + " no existe");
+  				txtReserva.setText("");
+  				txtReserva.requestFocus();
   			}
   		}
   		catch (Exception e) {
   			mensaje("ingrese CÓDIGO correcto");
-  			txtcodReserva.setText("");
-  			txtcodReserva.requestFocus();
+  			txtReserva.setText("");
+  			txtReserva.requestFocus();
   		}
   	}
-  	 //INGRESAR
-	void ingresarReserva() {
-		int codReserva = leercodReserva();
-		if(ar.buscar(codReserva)==null){
-		int codCliente = leercodCliente();
+	  //INGRESAR
+		void ingresarReserva() {
+			int codReserva = leerReserva();
+			if(ar.buscar(codReserva)==null){
+			int codCliente = leerCliente();
+				try {
+					int codEmpleado = leerEmpleado();
+						try{
+							int codiFuncion = leerFuncion();
+							try{
+								String  fechaReserva = leerFecha();
+								try{
+									String horaReserva = leerHora();
+									try{
+										int estado = leerEstado();
+									Reserva nueva = new Reserva(codReserva,  codCliente,  codEmpleado,  codiFuncion,  fechaReserva,
+													 horaReserva,  estado);
+												 ar.adicionar(nueva);
+												  ar.grabarReserva();
+														listar();
+													  	limpieza();
+														}
+														catch (Exception e){
+														}
+													}
+													catch (Exception e){
+													}
+												}
+											catch (Exception e){
+											}
+											}
+									catch (Exception e){ 
+								}
+							}	
+					catch(Exception e){
+				}
+			}
+		else {
+		mensaje("El codigo ya existe");			
+		}
+	}
+		//MODIFICAR
+		void modificarReserva() {
+			try{
+			Reserva x = ar.buscar(leerReserva());
+			int codCliente = leerCliente();
 			try {
-				int codEmpleado = leercodEmpleado();
+				int codEmpleado = leerEmpleado();
 					try{
-						int codFuncion = leercodFuncion();
+						int codiFuncion = leerFuncion();
 						try{
 							String  fechaReserva = leerFecha();
 							try{
 								String horaReserva = leerHora();
 								try{
 									int estado = leerEstado();
-										Reserva nueva = new Reserva( codReserva,  codCliente,  codEmpleado,  codFuncion,  estado,  fechaReserva,
-												 horaReserva);
-											 ar.adicionar(nueva);
+											x.setCodCliente(codCliente);
+											x.setCodEmpleado(codEmpleado);
+											x.setCodiFuncion(codiFuncion);
+											x.setFechaReserva(fechaReserva);
+											x.setHoraReserva(horaReserva);
+											x.setEstado(estado);
 											  ar.grabarReserva();
 													listar();
 												  	limpieza();
@@ -401,75 +442,29 @@ public class frmReserva extends JFrame implements ActionListener {
 						}	
 				catch(Exception e){
 			}
-		}
-	else {
-	mensaje("El codigo ya existe");			
-	}
-	}
-	//MODIFICAR
-			void modificarReserva() {
-				try{
-				Reserva x = ar.buscar(leercodReserva());
-				int codCliente = leercodCliente();
-					try {
-						int codEmpleado = leercodEmpleado();
-							try{
-								int codFuncion = leercodFuncion();
-								try{
-									String  fechaReserva = leerFecha();
-									try{
-										String horaReserva = leerHora();
-										try{
-											int estado = leerEstado();
-												x.setCodCliente(codCliente);
-												x.setCodEmpleado(codEmpleado);
-												x.setCodFuncion(codFuncion);
-												x.setFechaReserva(fechaReserva);
-												x.setHoraReserva(horaReserva);
-												x.setEstado(estado);
-												ar.grabarReserva();;
-												listar();
-												limpieza();
-														}
-													catch (Exception e){
-													}
-												}
-												catch (Exception e){
-												}
-											}
-										catch (Exception e){
-									}
-									}
-								catch (Exception e){ 
-								}
-								}	
-						catch(Exception e){
-					}
-				}
-			catch (Exception e) {	
 			}
+		catch (Exception e) {	
 		}
-	//ELIMINAR
-	void eliminarReserva() {
-		try {
-		Reserva x = ar.buscar(leercodReserva());
-			if (x != null) {
-				ar.eliminar(x);
-				ar.grabarReserva();
-				txtcodCliente.setText("");
-				txtcodEmpleado.setText("");
-				txtcodFuncion.setText("");
-				txtFecha.setText("");
-				txtHora.setText("");
-				cmbEstado.setToolTipText("");
-				listar();
+	}
+		//ELIMINAR
+		void eliminarReserva() {
+			try {
+				Reserva x = ar.buscar(leerReserva());
+				if (x != null) {
+					ar.eliminar(x);
+					ar.grabarReserva();
+					txtCliente.setText("");
+					txtEmpleado.setText("");
+					txtFuncion.setText("");
+					txtFecha.setText("");
+					txtHora.setText("");
+					cmbEstado.setToolTipText("");
+					listar();
 				}
 				else {
 				}
 			}
 			catch (Exception e) {
-		}	
-	}
-
-  	
+			}	
+		}
 }

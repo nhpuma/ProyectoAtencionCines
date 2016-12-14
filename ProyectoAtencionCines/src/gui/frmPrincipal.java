@@ -191,14 +191,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		
 	}
 	protected void actionPerformedMntmBoleta(ActionEvent e) {
-		
-		frmControlPago ventana;
-		ventana=new frmControlPago();
-		ventana.setLocationRelativeTo(this);
-		ventana.setVisible(true);
-		
-		
-		
+
 	}
 	protected void actionPerformedMntmFunciones(ActionEvent e) {
 		

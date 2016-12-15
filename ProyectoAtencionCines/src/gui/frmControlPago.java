@@ -251,11 +251,6 @@ public class frmControlPago extends JFrame implements ActionListener {
 						int codPeli = f.getCodCine();
 						Pelicula p = ap.buscar(codPeli); 
 						imprimir("Película\t\t: "+p.getTitDistribucion());
-						imprimir("Butacas Reservadas\t: ");
-						imprimir("Nº de Entradas\t: ");
-						imprimir("Precio\t\t: ");
-						imprimir("Importe Parcial\t: ");
-						
 						listarDetalleReserva(Integer.parseInt(codR));
 						
 					}//Fin if Cine
@@ -356,6 +351,7 @@ public class frmControlPago extends JFrame implements ActionListener {
 					mensaje("Pago de la reserva procesada");
 					r.setEstado(1);
 					ar.grabarReserva();
+					dispose();
 				}else{
 					mensaje("Se Reserva Caducó");
 				}

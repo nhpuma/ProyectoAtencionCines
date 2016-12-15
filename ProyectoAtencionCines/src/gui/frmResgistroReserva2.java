@@ -219,16 +219,6 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		panel_1.add(txtPrecio);
 		txtPrecio.setColumns(10);
 		
-		lblCantidad = new JLabel("Cantidad:");
-		lblCantidad.setBounds(10, 126, 106, 14);
-		panel_1.add(lblCantidad);
-		
-		txtCantidad = new JTextField();
-		txtCantidad.setText("Cantidad");
-		txtCantidad.setBounds(126, 123, 171, 20);
-		panel_1.add(txtCantidad);
-		txtCantidad.setColumns(10);
-		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 288, 711, 142);
 		contentPane.add(scrollPane);
@@ -282,23 +272,37 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 	ArregloButaca aBut = new ArregloButaca("Butacas.txt");
 	ArregloDetalleReserva aDetRes = new ArregloDetalleReserva();
 	int codFuncion;
-	private JLabel lblCantidad;
-	private JTextField txtCantidad;
 	//Métodos complementarios
 	void listarCiudades(){
 		cmbCiudad.removeAllItems();
 		Cine c;
-		for (int i = 0; i < aCine.tamanio(); i++) {
-			c = aCine.obtener(i);
-			cmbCiudad.addItem(c.getCodCine()+"-"+c.getDistrito());
+		Funcion f;
+		int codCine;
+		for (int i = 0; i < af.tamaño(); i++) {
+			f=af.obtener(i);
+			codCine=f.getCodCine();
+			if(aCine.buscar(codCine)!=null){
+				c=aCine.buscar(codCine);
+				cmbCiudad.addItem(c.getCodCine()+"-"+c.getDistrito());
+			}
+			//c = aCine.obtener(i);
+			//cmbCiudad.addItem(c.getCodCine()+"-"+c.getDistrito());
 		}
 	}
 	void listarPelicula(){
 		cmbPeliculas.removeAllItems();
 		Pelicula p;
-		for (int i = 0; i < ap.tamanio(); i++) {
-			p = ap.obtener(i);
-			cmbPeliculas.addItem(p.getCodPeli()+"-"+p.getTitDistribucion());
+		Funcion f;
+		int codCine;
+		for (int i = 0; i < af.tamaño(); i++) {
+			f=af.obtener(i);
+			codCine=f.getCodCine();
+			if(ap.buscar(codCine)!=null){
+				p=ap.buscar(codCine);
+				cmbPeliculas.addItem(p.getCodPeli()+"-"+p.getTitDistribucion());
+			}
+			//p = ap.obtener(i);
+			//cmbPeliculas.addItem(p.getCodPeli()+"-"+p.getTitDistribucion());
 			
 		}
 	}
@@ -421,11 +425,12 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		}
 		
 	}
-	protected void actionPerformedBtnAgregar(ActionEvent arg0) {
+	  protected void actionPerformedBtnAgregar(ActionEvent arg0) {
 		//Para reserva
 		//Falta implementar aquí el reporte hacia la tabla
 		int codRes = Integer.parseInt(txtCodreserva.getText());
-		
+		String cod =""+ cmbButaca.getSelectedItem();
+		cod = cod.substring(0,cod.indexOf("-"));
 		Object fila[] = {
 				/*obtCodReserva(),
 				obtCodCliente(),
@@ -443,8 +448,8 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 				obtFechaReserva(),
 				cmbTipoEntrada.getSelectedIndex(),
 				cmbButaca.getSelectedItem(),
-				cmbButaca.getSelectedIndex(),
-				txtCantidad.getText(),
+				cod,
+				1,
 				txtPrecio.getText()
 				
 		};

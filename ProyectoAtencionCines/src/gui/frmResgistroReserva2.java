@@ -122,6 +122,7 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		contentPane.add(lblCodCliente);
 		
 		cmbCliente = new JComboBox();
+		cmbCliente.addActionListener(this);
 		cmbCliente.setBounds(107, 61, 271, 20);
 		contentPane.add(cmbCliente);
 		
@@ -192,6 +193,7 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		panel_1.add(lblButaca);
 		
 		cmbTipoEntrada = new JComboBox();
+		cmbTipoEntrada.addActionListener(this);
 		cmbTipoEntrada.setModel(new DefaultComboBoxModel(new String[] {"General", "Menores de 11 a\u00F1os", "Mayores de 60 a\u00F1os"}));
 		cmbTipoEntrada.setBounds(126, 20, 171, 20);
 		panel_1.add(cmbTipoEntrada);
@@ -255,6 +257,11 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		
 		txtCodreserva.setText(""+ar.codigoCorrelativo());
 		
+		btnNuevoCliente = new JButton("Nuevo Cliente");
+		btnNuevoCliente.addActionListener(this);
+		btnNuevoCliente.setBounds(388, 60, 113, 23);
+		contentPane.add(btnNuevoCliente);
+		
 		listarEmpleados();
 		listarClientes();
 		listarPelicula();
@@ -272,6 +279,7 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 	ArregloButaca aBut = new ArregloButaca("Butacas.txt");
 	ArregloDetalleReserva aDetRes = new ArregloDetalleReserva();
 	int codFuncion;
+	private JButton btnNuevoCliente;
 	//Métodos complementarios
 	void listarCiudades(){
 		cmbCiudad.removeAllItems();
@@ -296,7 +304,7 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		int codCine;
 		for (int i = 0; i < af.tamaño(); i++) {
 			f=af.obtener(i);
-			codCine=f.getCodCine();
+			codCine=f.getCodPeli();
 			if(ap.buscar(codCine)!=null){
 				p=ap.buscar(codCine);
 				cmbPeliculas.addItem(p.getCodPeli()+"-"+p.getTitDistribucion());
@@ -313,6 +321,7 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 			c = ac.obtener(i);
 			cmbCliente.addItem(c.getCodCliente()+"-"+c.getNombre());
 		}
+
 	}
 	void listarEmpleados(){
 		cmbEmpleado.removeAllItems();
@@ -353,6 +362,12 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		return Integer.parseInt(txtCodreserva.getText());
 	}
 	public void actionPerformed(ActionEvent arg0) {
+		if (arg0.getSource() == btnNuevoCliente) {
+			actionPerformedBtnNuevoCliente(arg0);
+		}
+		if (arg0.getSource() == cmbTipoEntrada) {
+			actionPerformedCmbTipoEntrada(arg0);
+		}
 		if (arg0.getSource() == cmbSala) {
 			actionPerformedCmbSala(arg0);
 		}
@@ -503,5 +518,24 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 				}
 			}
 		}
+	}
+	protected void actionPerformedCmbTipoEntrada(ActionEvent arg0) {
+		switch (cmbTipoEntrada.getSelectedIndex()) {
+		case 0:
+			txtPrecio.setText("11.50");
+			break;
+		case 1:
+			txtPrecio.setText("8.00");
+			break;
+		default:
+			txtPrecio.setText("5.00");
+			break;
+		}
+	}
+	protected void actionPerformedBtnNuevoCliente(ActionEvent arg0) {
+		frmCliente f;
+		f = new frmCliente ();
+		f.setLocationRelativeTo(this);
+		f.setVisible(true);
 	}
 }

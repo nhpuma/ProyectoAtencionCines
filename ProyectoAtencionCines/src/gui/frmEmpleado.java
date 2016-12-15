@@ -71,6 +71,7 @@ public class frmEmpleado extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public frmEmpleado() {
+		setTitle("Empleado");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 684, 435);
 		contentPane = new JPanel();

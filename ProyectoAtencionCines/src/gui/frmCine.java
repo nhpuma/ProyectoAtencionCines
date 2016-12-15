@@ -74,6 +74,7 @@ public class frmCine extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public frmCine() {
+		setTitle("Cine");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 636, 385);
 		contentPane = new JPanel();

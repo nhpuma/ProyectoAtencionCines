@@ -63,6 +63,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		setJMenuBar(menuBar);
 		
 		mnMantenimiento = new JMenu("Mantenimiento");
+		mnMantenimiento.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Mantenimiento.png")));
 		menuBar.add(mnMantenimiento);
 		
 		mntmClientes = new JMenuItem("Clientes");

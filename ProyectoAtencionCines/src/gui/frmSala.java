@@ -68,6 +68,7 @@ public class frmSala extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public frmSala() {
+		setTitle("Salas");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 575, 335);
 		contentPane = new JPanel();

@@ -83,6 +83,7 @@ public class frmPelicula extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public frmPelicula() {
+		setTitle("Pelicula");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1097, 504);
 		contentPane = new JPanel();

@@ -47,6 +47,7 @@ public class frmButaca extends JFrame {
 	 * Create the frame.
 	 */
 	public frmButaca() {
+		setTitle("Butaca");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 627, 300);
 		contentPane = new JPanel();

@@ -3,3 +3,4 @@
 10003;CineStar;Lima;Lima;La victoria;24-dic-2016;0
 10004;Cinepolis;Lima;Lima;Miraflores;15-oct-2016;1
 10005;CinePapaya;Lima;Lima;San Martin de Porres;20-sep-2016;1
+10006;CineMark;Arequipa;Arequipa;Paucarpata;16/12/2016;0

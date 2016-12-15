@@ -33,7 +33,6 @@ public class frmCine extends JFrame implements ActionListener {
 	private JLabel lblCodigo;
 	private JLabel lblNombre;
 	private JLabel lblDepartamento;
-	private JTextField txtDep;
 	private JTextField txtNom;
 	private JTextField txtCod;
 	private JLabel lblProvincia;
@@ -53,6 +52,11 @@ public class frmCine extends JFrame implements ActionListener {
 	//Agregando un modelo
 	private DefaultTableModel modelo;
 	
+	private String depart[] = {"Amazonas", "Ancash", "Apurímac", "Arequipa", 
+	        "Ayacucho", "Cajamarca", "Callao", "Cusco", "Huancavelica", "Huánuco", 
+	        "Ica", "Junín", "La Libertad", "Lambayeque", "Lima", "Loreto", 
+	        "Madre De Dios", "Moquegua", "Pasco", "Piura", "Puno", "San Martin", 
+	        "Tacna", "Tumbes", "Ucayali"};
 
 	/**
 	 * Launch the application.
@@ -91,22 +95,17 @@ public class frmCine extends JFrame implements ActionListener {
 		contentPane.add(lblNombre);
 		
 		lblDepartamento = new JLabel("Departamento:");
-		lblDepartamento.setBounds(10, 61, 91, 14);
+		lblDepartamento.setBounds(10, 64, 91, 14);
 		contentPane.add(lblDepartamento);
-		
-		txtDep = new JTextField();
-		txtDep.setBounds(111, 61, 86, 20);
-		contentPane.add(txtDep);
-		txtDep.setColumns(10);
 		
 		txtNom = new JTextField();
 		txtNom.setColumns(10);
-		txtNom.setBounds(111, 36, 86, 20);
+		txtNom.setBounds(111, 36, 130, 20);
 		contentPane.add(txtNom);
 		
 		txtCod = new JTextField();
 		txtCod.setColumns(10);
-		txtCod.setBounds(111, 11, 86, 20);
+		txtCod.setBounds(111, 11, 130, 20);
 		contentPane.add(txtCod);
 		
 		lblProvincia = new JLabel("Provincia:");
@@ -114,30 +113,30 @@ public class frmCine extends JFrame implements ActionListener {
 		contentPane.add(lblProvincia);
 		
 		lblDistrito = new JLabel("Distrito:");
-		lblDistrito.setBounds(225, 36, 91, 14);
+		lblDistrito.setBounds(264, 32, 91, 14);
 		contentPane.add(lblDistrito);
 		
 		lblFechaInicio = new JLabel("Fecha Inicio:");
-		lblFechaInicio.setBounds(225, 61, 91, 14);
+		lblFechaInicio.setBounds(264, 57, 91, 14);
 		contentPane.add(lblFechaInicio);
 		
 		txtDist = new JTextField();
 		txtDist.setColumns(10);
-		txtDist.setBounds(326, 36, 107, 20);
+		txtDist.setBounds(365, 32, 107, 20);
 		contentPane.add(txtDist);
 		
 		txtProv = new JTextField();
 		txtProv.setColumns(10);
-		txtProv.setBounds(111, 89, 86, 20);
+		txtProv.setBounds(111, 89, 130, 20);
 		contentPane.add(txtProv);
 		
 		lblTipo = new JLabel("Tipo:");
-		lblTipo.setBounds(225, 14, 91, 14);
+		lblTipo.setBounds(264, 10, 91, 14);
 		contentPane.add(lblTipo);
 		
 		cmbTipo = new JComboBox();
 		cmbTipo.setModel(new DefaultComboBoxModel(new String[] {"Estandar", "Prime"}));
-		cmbTipo.setBounds(326, 8, 107, 20);
+		cmbTipo.setBounds(365, 4, 107, 20);
 		contentPane.add(cmbTipo);
 		
 		btnIngresar = new JButton("Ingresar");
@@ -186,13 +185,19 @@ public class frmCine extends JFrame implements ActionListener {
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.setIcon(new ImageIcon(frmCine.class.getResource("/img/buscar.png")));
 		btnBuscar.addActionListener(this);
-		btnBuscar.setBounds(326, 85, 107, 23);
+		btnBuscar.setBounds(365, 81, 107, 23);
 		contentPane.add(btnBuscar);
 		
 		txtFecha = new JDateChooser();
-		txtFecha.setBounds(326, 61, 107, 20);
+		txtFecha.setBounds(365, 57, 107, 20);
 		contentPane.add(txtFecha);
+		
+		cmbDepartamento = new JComboBox();
+		cmbDepartamento.setBounds(111, 61, 130, 20);
+		contentPane.add(cmbDepartamento);
 		listar();
+		
+		listarDepar();
 	}
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == btnBuscar) {
@@ -212,6 +217,7 @@ public class frmCine extends JFrame implements ActionListener {
 		}
 	}
 	ArregloCine ac=new ArregloCine("cine.txt");
+	private JComboBox cmbDepartamento;
 
 	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
 		consultarCine();
@@ -243,7 +249,7 @@ public class frmCine extends JFrame implements ActionListener {
    	void limpieza() {
    	
    		txtNom.setText("");
-   		txtDep.setText("");
+   		//txtDep.setText("");
    		txtProv.setText("");
    		txtDist.setText("");
    		txtFecha.setDateFormatString("");
@@ -292,7 +298,7 @@ public class frmCine extends JFrame implements ActionListener {
 									listar();
 									txtCod.setText("" + ac.codigoCorrelativo());
 									txtNom.setText("");
-									txtDep.setText("");
+									//txtDep.setText("");
 									txtProv.setText("");
 									txtDist.setText("");
 									txtFecha.setDate(null);
@@ -379,7 +385,7 @@ public class frmCine extends JFrame implements ActionListener {
 					ac.grabarCine();
 					txtCod.setText("");
 					txtNom.setText("");
-					txtDep.setText("");
+					//txtDep.setText("");
 					txtProv.setText("");
 					txtDist.setText("");
 					txtFecha.setDateFormatString("");
@@ -399,7 +405,8 @@ public class frmCine extends JFrame implements ActionListener {
 				Cine x= ac.buscar(leerCodigo());
 				if (x != null) {
 					txtNom.setText(x.getNombre());
-					txtDep.setText(x.getDepartamento());
+					cmbDepartamento.setSelectedItem(x.getDepartamento());
+					//txtDep.setText(x.getDepartamento());
 					txtProv.setText(x.getProvincia());
 					txtDist.setText(x.getDistrito());
 					txtFecha.getDateEditor();
@@ -425,7 +432,8 @@ public class frmCine extends JFrame implements ActionListener {
 		return txtNom.getText().trim();
 	}
 	String leerDepartamento() {
-		return txtDep.getText().trim();
+		//return txtDep.getText().trim();
+		return cmbDepartamento.getSelectedItem()+"";
 	}
 	String leerProvincia() {
 		return txtProv.getText().trim();
@@ -438,5 +446,12 @@ public class frmCine extends JFrame implements ActionListener {
 	}
 	int leerTipo(){
 		return cmbTipo.getSelectedIndex();
+	}
+	
+	void listarDepar(){
+		cmbDepartamento.removeAllItems();
+		for (int i = 0; i < depart.length; i++) {
+			cmbDepartamento.addItem(depart[i]);
+		}
 	}
 }

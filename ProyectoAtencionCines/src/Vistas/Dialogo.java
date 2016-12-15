@@ -80,7 +80,7 @@ public class Dialogo<T> extends JDialog {
 		setBackground(Color.WHITE);
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		seleccionado="";
-		setTitle("Seleccione el Cliente");
+		setTitle("Seleccione ");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

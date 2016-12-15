@@ -23,10 +23,13 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import com.toedter.calendar.JDateChooser;
 
 public class frmCliente extends JFrame implements ActionListener {
+	DateFormat df = DateFormat.getDateInstance();
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -45,7 +48,6 @@ public class frmCliente extends JFrame implements ActionListener {
 	private JLabel lblFechaDeNacimiento;
 	private JTextField txtfechanaci;
 	private JLabel lblFechaDeAfiliacion;
-	private JTextField txtfechaafi;
 	private JLabel lblEstadoCivil;
 	private JComboBox cmbestado;
 	private JLabel lblTelefono;
@@ -59,6 +61,11 @@ public class frmCliente extends JFrame implements ActionListener {
 	private JButton btnIngresar;
 	private JButton btnSalir;
 	private DefaultTableModel modelo;
+	private JButton btnBuscar;
+	private JButton btnModificar;
+	private JButton btnEliminar;
+	private JDateChooser txtfechaafi;
+
 	/**
 	 * Launch the application.
 	 */
@@ -152,11 +159,6 @@ public class frmCliente extends JFrame implements ActionListener {
 		lblFechaDeAfiliacion.setBounds(242, 38, 155, 14);
 		contentPane.add(lblFechaDeAfiliacion);
 		
-		txtfechaafi = new JTextField();
-		txtfechaafi.setBounds(393, 38, 86, 20);
-		contentPane.add(txtfechaafi);
-		txtfechaafi.setColumns(10);
-		
 		lblEstadoCivil = new JLabel("estado civil");
 		lblEstadoCivil.setBounds(242, 63, 155, 14);
 		contentPane.add(lblEstadoCivil);
@@ -248,6 +250,10 @@ public class frmCliente extends JFrame implements ActionListener {
 		btnEliminar.addActionListener(this);
 		btnEliminar.setBounds(696, 63, 130, 23);
 		contentPane.add(btnEliminar);
+		
+		txtfechaafi = new JDateChooser();
+		txtfechaafi.setBounds(372, 38, 107, 20);
+		contentPane.add(txtfechaafi);
 		listar();
 	}
 	public void actionPerformed(ActionEvent arg0) {
@@ -268,13 +274,7 @@ public class frmCliente extends JFrame implements ActionListener {
 		}
 	}
 	ArregloCliente ab = new ArregloCliente("Cliente.txt");
-
-	private JButton btnBuscar;
-	private JButton btnModificar;
-	private JButton btnEliminar;
-	
-
-	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
+protected void actionPerformedBtnBuscar(ActionEvent arg0) {
 		buscarCliente();
 	}
 	protected void actionPerformedBtnIngresar(ActionEvent arg0) {
@@ -297,7 +297,7 @@ public class frmCliente extends JFrame implements ActionListener {
    	txtapemat.setText("");
    	txtdirec.setText("");
    	txtfechanaci.setText("");
-   	txtfechaafi.setText("");
+   	txtfechaafi.setDateFormatString("");
    	txttelefono.setText("");
    	txtdni.setText("");
 	txtfechanaci.setText("");
@@ -349,7 +349,7 @@ public class frmCliente extends JFrame implements ActionListener {
 		return txtfechanaci.getText().trim();
 	}
 	String leerFechaAfiliacion() {
-		return txtfechaafi.getText().trim();
+		return df.format(txtfechaafi.getDate());
 	}
 	int leerEstado(){
 		return cmbestado.getSelectedIndex();
@@ -463,7 +463,7 @@ public class frmCliente extends JFrame implements ActionListener {
 				txtapemat.setText(x.getApemat());
 				txtdirec.setText(x.getDireccion());
 				txtfechanaci.setText(x.getFechanacimiento());
-				txtfechaafi.setText(x.getFechaafiliacion());
+				txtfechaafi.getDateEditor();
 				cmbestado.setSelectedIndex(x.getEstadocivil());
 				txttelefono.setText(x.getTelefono());
 				txtdni.setText(x.getDni());
@@ -588,7 +588,7 @@ public class frmCliente extends JFrame implements ActionListener {
 				txtapemat.setText("");
 				txtdirec.setText("");
 				txtfechanaci.setText("");
-				txtfechaafi.setText("");
+				txtfechaafi.setDateFormatString("");
 				cmbestado.setToolTipText("");
 				txttelefono.setText("");
 				txtdni.setText("");
@@ -609,7 +609,5 @@ public class frmCliente extends JFrame implements ActionListener {
 			txtcodigo.requestFocus();
 		}	
 	}
-	
-	
 }
 

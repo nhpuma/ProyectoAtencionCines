@@ -174,8 +174,6 @@ public class frmControlPago extends JFrame implements ActionListener {
 			cod = r.getSelect().substring(0,cod.indexOf("-"));
 			txtcodReserva.setText(cod);
 		}
-	}
-	protected void actionPerformedBtnImprimir(ActionEvent arg0) {
 		imprimir();
 		imprimir("Nombre del Cine	:");
 		imprimir("Codigo Empleado	:");
@@ -184,7 +182,9 @@ public class frmControlPago extends JFrame implements ActionListener {
 		imprimir("Codigo Sala		:");
 		imprimir("Titulo Pelicula		:");
 		imprimir("Butacas Reservadas	:");
-		
+	}
+
+	protected void actionPerformedBtnImprimir(ActionEvent arg0) {	
 	}
 	protected void actionPerformedBtnSalir(ActionEvent arg0) {
 		dispose();

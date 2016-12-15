@@ -15,13 +15,16 @@ import javax.swing.table.DefaultTableModel;
 import clases.Butaca;
 import clases.Cine;
 import clases.Cliente;
+import clases.DetalleReserva;
 import clases.Empleado;
 import clases.Funcion;
 import clases.Pelicula;
+import clases.Reserva;
 import clases.Sala;
 import controlador.ArregloButaca;
 import controlador.ArregloCine;
 import controlador.ArregloCliente;
+import controlador.ArregloDetalleReserva;
 import controlador.ArregloEmpleado;
 import controlador.ArregloFuncion;
 import controlador.ArregloPelicula;
@@ -141,23 +144,23 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		
 		cmbPeliculas = new JComboBox();
 		cmbPeliculas.addActionListener(this);
-		cmbPeliculas.setBounds(95, 21, 239, 20);
+		cmbPeliculas.setBounds(116, 18, 239, 20);
 		panel.add(cmbPeliculas);
 		
 		lblHoraFuncin = new JLabel("Hora Funci\u00F3n:");
-		lblHoraFuncin.setBounds(10, 49, 75, 14);
+		lblHoraFuncin.setBounds(10, 49, 96, 14);
 		panel.add(lblHoraFuncin);
 		
 		lblFechaFuncin = new JLabel("Fecha Funci\u00F3n:");
-		lblFechaFuncin.setBounds(10, 74, 75, 14);
+		lblFechaFuncin.setBounds(10, 74, 96, 14);
 		panel.add(lblFechaFuncin);
 		
 		cmbHora = new JComboBox();
-		cmbHora.setBounds(95, 46, 239, 20);
+		cmbHora.setBounds(116, 43, 239, 20);
 		panel.add(cmbHora);
 		
 		cmbFecha = new JComboBox();
-		cmbFecha.setBounds(95, 71, 239, 20);
+		cmbFecha.setBounds(116, 68, 239, 20);
 		panel.add(cmbFecha);
 		
 		lblCiudad = new JLabel("Ciudad:");
@@ -215,6 +218,16 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		panel_1.add(txtPrecio);
 		txtPrecio.setColumns(10);
 		
+		lblCantidad = new JLabel("Cantidad:");
+		lblCantidad.setBounds(10, 126, 106, 14);
+		panel_1.add(lblCantidad);
+		
+		txtCantidad = new JTextField();
+		txtCantidad.setText("Cantidad");
+		txtCantidad.setBounds(126, 123, 171, 20);
+		panel_1.add(txtCantidad);
+		txtCantidad.setColumns(10);
+		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 288, 711, 142);
 		contentPane.add(scrollPane);
@@ -262,7 +275,10 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 	ArregloCine aCine = new ArregloCine("cine.txt");
 	ArregloSala aSala = new ArregloSala("Sala.txt");
 	ArregloButaca aBut = new ArregloButaca("Butacas.txt");
+	ArregloDetalleReserva aDetRes = new ArregloDetalleReserva();
 	int codFuncion;
+	private JLabel lblCantidad;
+	private JTextField txtCantidad;
 	//Métodos complementarios
 	void listarCiudades(){
 		cmbCiudad.removeAllItems();
@@ -311,7 +327,7 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 	}
 	int obtCodFuncion(){
 		String f = ""+cmbFecha.getSelectedItem();
-		f = f.substring(f.indexOf("-"), f.length()-1);
+		f = f.substring(f.indexOf("-")+1, f.length());
 		return Integer.parseInt(f);
 	}
 	int obtCodEmpleado(){
@@ -351,6 +367,42 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		this.dispose();
 	}
 	protected void actionPerformedBtnGenerarReserva(ActionEvent arg0) {
+		//fichero RESERVA
+		int codR = obtCodReserva();
+		int codC = obtCodCliente();
+		int codE = obtCodEmpleado();
+		int codF = obtCodFuncion();
+		String fR = obtFechaReserva();
+		String hR = obtHoraReserva();
+		int estR= obtEstado();
+		//Grabando en el fichero
+		try{
+			Reserva re = new Reserva(codR, codC, codE, codF, fR, hR, estR);
+			ar.adicionar(re);
+			ar.grabarReserva();
+			System.out.print(""+obtCodFuncion());
+			
+			//Fichero DetalleReserva
+			//int codBR = obtCodButaca();
+			//Se jala el código de reserva
+			int tipoEntrada = 0; //= cmbTipoEntrada.getSelectedIndex();
+			int cantEntrada = 1; //= Integer.parseInt(txtCantidad.getText());
+			double precio = 19.5; //= Double.parseDouble(txtPrecio.getText());
+			
+			//Recorriendo el Jtable
+			DetalleReserva dr;
+			for (int i = 0; i < modelo.getRowCount(); i++) {
+				String codBR = ""+modelo.getValueAt(i, 8);
+				codBR = codBR.substring(0, codBR.indexOf("-"));
+				//COD Reserva
+				dr = new DetalleReserva(Integer.parseInt(codBR), obtCodReserva(), tipoEntrada, cantEntrada, precio);
+				aDetRes.adicionar(dr);
+				aDetRes.grabarDetalleReserva();
+			}
+		}catch(Exception e){
+			System.out.println("Error +"+e);
+		}
+		
 	}
 	protected void actionPerformedBtnAgregar(ActionEvent arg0) {
 		//Para reserva
@@ -397,16 +449,24 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		String codCine = ""+cmbCiudad.getSelectedItem();
 		codCine = codCine.substring(0, codCine.indexOf("-"));
 		Sala s;
+		
+		System.out.println("Cod del Cine: "+codCine);
+		
 		for (int i = 0; i < aSala.tamanho(); i++) {
 			s = aSala.obtener(i);
 			if(s.getCodCine() == Integer.parseInt(codCine)){
-				cmbSala.addItem(s.getCodigo());
+				cmbSala.addItem(s.getCodigo()+"-"+s.getNumSala());
 			}
+//			if(s.getCodCine() == Integer.parseInt(codCine)){
+//				System.out.println("Sala "+i+" "+s.getCodigo()+" "+s.getCodCine());
+//				cmbSala.addItem(""+s.getCodigo());
+//			}
 		}
 	}
 	protected void actionPerformedCmbSala(ActionEvent arg0) {
 		cmbButaca.removeAllItems();
 		String codSala = ""+cmbSala.getSelectedItem();
+		codSala = codSala.substring(0, codSala.indexOf("-"));
 		Butaca b;
 		for (int i = 0; i < aBut.tamaño(); i++) {
 			b = aBut.obtener(i);

@@ -192,12 +192,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		p.setLocationRelativeTo(this);
 		p.setVisible(true);
 	}
-	protected void actionPerformedMnRegistroDeReserva(ActionEvent e) {
-		
-		
-		
-		
-		
+	protected void actionPerformedMnRegistroDeReserva(ActionEvent e) {	
 	}
 	protected void actionPerformedMntmReserva(ActionEvent e) {
 		

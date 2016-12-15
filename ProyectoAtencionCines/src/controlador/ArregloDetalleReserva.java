@@ -18,7 +18,7 @@ public class ArregloDetalleReserva {
 
     public ArregloDetalleReserva() {
         detReserva = new ArrayList<DetalleReserva>();
-        //cargarDetallesReservas();
+        cargarDetallesReservas();
     }
     //Operaciones públicas básicas
     public int tamanho(){

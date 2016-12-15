@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.border.TitledBorder;
@@ -256,6 +257,10 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		modelo.addColumn("Tipo Entrada");
 		modelo.addColumn("Butaca");
 		
+		modelo.addColumn("Cod. Butaca");
+		modelo.addColumn("Cantidad");
+		modelo.addColumn("Precio");		
+		
 		tablaDetalleReserva.setModel(modelo);
 		
 		txtCodreserva.setText(""+ar.codigoCorrelativo());
@@ -367,40 +372,52 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		this.dispose();
 	}
 	protected void actionPerformedBtnGenerarReserva(ActionEvent arg0) {
-		//fichero RESERVA
-		int codR = obtCodReserva();
-		int codC = obtCodCliente();
-		int codE = obtCodEmpleado();
-		int codF = obtCodFuncion();
-		String fR = obtFechaReserva();
-		String hR = obtHoraReserva();
-		int estR= obtEstado();
-		//Grabando en el fichero
-		try{
-			Reserva re = new Reserva(codR, codC, codE, codF, fR, hR, estR);
-			ar.adicionar(re);
-			ar.grabarReserva();
-			System.out.print(""+obtCodFuncion());
-			
-			//Fichero DetalleReserva
-			//int codBR = obtCodButaca();
-			//Se jala el código de reserva
-			int tipoEntrada = 0; //= cmbTipoEntrada.getSelectedIndex();
-			int cantEntrada = 1; //= Integer.parseInt(txtCantidad.getText());
-			double precio = 19.5; //= Double.parseDouble(txtPrecio.getText());
-			
-			//Recorriendo el Jtable
-			DetalleReserva dr;
-			for (int i = 0; i < modelo.getRowCount(); i++) {
-				String codBR = ""+modelo.getValueAt(i, 8);
-				codBR = codBR.substring(0, codBR.indexOf("-"));
-				//COD Reserva
-				dr = new DetalleReserva(Integer.parseInt(codBR), obtCodReserva(), tipoEntrada, cantEntrada, precio);
-				aDetRes.adicionar(dr);
-				aDetRes.grabarDetalleReserva();
+		int rpta = JOptionPane.showConfirmDialog(this, "¿Estás seguro de guardar la Reserva?",
+				"Reserva", JOptionPane.YES_NO_OPTION);
+		if(rpta == JOptionPane.YES_OPTION){
+			//fichero RESERVA
+			int codR = obtCodReserva();
+			int codC = obtCodCliente();
+			int codE = obtCodEmpleado();
+			int codF = obtCodFuncion();
+			String fR = obtFechaReserva();
+			String hR = obtHoraReserva();
+			int estR= obtEstado();
+			//Grabando en el fichero
+			try{
+				Reserva re = new Reserva(codR, codC, codE, codF, fR, hR, estR);
+				ar.adicionar(re);
+				ar.grabarReserva();
+				System.out.print(""+obtCodFuncion());
+				
+				//Fichero DetalleReserva
+				String codBR; //= obtCodButaca();
+				//Se jala el código de reserva
+				int tipoEntrada; //= 0; //= cmbTipoEntrada.getSelectedIndex();
+				int cantEntrada; //= 1; //= Integer.parseInt(txtCantidad.getText());
+				double precio; //= 19.5; //= Double.parseDouble(txtPrecio.getText());
+				
+				//Recorriendo el Jtable
+				DetalleReserva dr;
+				for (int i = 0; i < modelo.getRowCount(); i++) {
+					codBR = ""+modelo.getValueAt(i, 8);
+					codBR = codBR.substring(0, codBR.indexOf("-"));
+					tipoEntrada = Integer.parseInt(""+modelo.getValueAt(i, 7));
+					cantEntrada = Integer.parseInt(""+modelo.getValueAt(i, 10));
+					precio = Double.parseDouble(""+modelo.getValueAt(i, 11));
+					//COD Reserva
+					dr = new DetalleReserva(Integer.parseInt(codBR), codR, tipoEntrada, cantEntrada, precio);
+					aDetRes.adicionar(dr);
+					aDetRes.grabarDetalleReserva();
+					//Cambiando estado de la butaca a Reservada
+					aBut.buscar(Integer.parseInt(codBR)).setEstado(0);
+					aBut.grabarButaca();
+				}
+			}catch(Exception e){
+				System.out.println("Error +"+e);
 			}
-		}catch(Exception e){
-			System.out.println("Error +"+e);
+		}else{
+			this.dispose();
 		}
 		
 	}
@@ -424,8 +441,12 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 				cmbCiudad.getSelectedItem(),
 				obtHoraReserva(),
 				obtFechaReserva(),
-				cmbTipoEntrada.getSelectedItem(),
-				cmbButaca.getSelectedItem()
+				cmbTipoEntrada.getSelectedIndex(),
+				cmbButaca.getSelectedItem(),
+				cmbButaca.getSelectedIndex(),
+				txtCantidad.getText(),
+				txtPrecio.getText()
+				
 		};
 		modelo.addRow(fila);
 	}
@@ -472,7 +493,9 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 			b = aBut.obtener(i);
 			if(b.getCodSala() == Integer.parseInt(codSala)){
 			//if(true){
-				cmbButaca.addItem(b.getCodButaca()+"-("+b.getNumFila()+","+b.getNumColumna()+")-"+b.estadoButaca());
+				if(b.getEstado() == 1){
+					cmbButaca.addItem(b.getCodButaca()+"-("+b.getNumFila()+","+b.getNumColumna()+")-"+b.estadoButaca());
+				}
 			}
 		}
 	}

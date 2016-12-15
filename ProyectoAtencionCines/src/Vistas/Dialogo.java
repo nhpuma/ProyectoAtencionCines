@@ -18,6 +18,7 @@ import clases.Cliente;
 import clases.Empleado;
 import clases.Funcion;
 import clases.Pelicula;
+import clases.Reserva;
 import clases.Sala;
 
 import javax.swing.JList;
@@ -68,6 +69,9 @@ public class Dialogo<T> extends JDialog {
 			} else if(lista.get(i) instanceof Funcion){
 				Funcion p=(Funcion)lista.get(i);
 				m.addElement(p.getCodFuncion()+"-"+p.getCodCine()+", "+p.getCodSala()+" "+p.getCodPeli()+"-"+p.getFecha()+"-"+p.getHora());
+			}else if(lista.get(i) instanceof Reserva){
+				Reserva p=(Reserva)lista.get(i);
+				m.addElement(p.getCodReserva()+"-"+p.getCodCliente()+", "+p.getCodEmpleado()+" "+p.getCodiFuncion()+"-"+p.getFechaReserva()+"-"+p.getHoraReserva());
 			}  
 		} 
 	}

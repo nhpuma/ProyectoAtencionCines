@@ -14,6 +14,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+
+import Vistas.Dialogo;
+import clases.Empleado;
+import clases.Reserva;
+import controlador.ArregloReserva;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ImageIcon;
@@ -38,6 +44,7 @@ public class frmControlPago extends JFrame implements ActionListener {
 	private JTextField txtTotal;
 	private DefaultTableModel m;
 	private JButton btnSalir;
+	private JButton btnNewButton;
 
 	/**
 	 * Launch the application.
@@ -132,6 +139,11 @@ public class frmControlPago extends JFrame implements ActionListener {
 		btnSalir.setBounds(420, 469, 89, 23);
 		contentPane.add(btnSalir);
 		
+		btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(this);
+		btnNewButton.setBounds(254, 7, 23, 23);
+		contentPane.add(btnNewButton);
+		
 		m = new DefaultTableModel();
 		m.addColumn("Cantidad");
 		m.addColumn("Tipo Entrada");
@@ -139,13 +151,28 @@ public class frmControlPago extends JFrame implements ActionListener {
 		m.addColumn("Importe");
 		table.setModel(m);
 
+
 	}
 	public void actionPerformed(ActionEvent arg0) {
+		if (arg0.getSource() == btnNewButton) {
+			actionPerformedBtnNewButton(arg0);
+		}
 		if (arg0.getSource() == btnSalir) {
 			actionPerformedBtnSalir(arg0);
 		}
 		if (arg0.getSource() == btnImprimir) {
 			actionPerformedBtnImprimir(arg0);
+		}
+	}
+	ArregloReserva ar = new ArregloReserva("Reserva.txt");
+	protected void actionPerformedBtnNewButton(ActionEvent arg0) {
+		Dialogo <Reserva> r = new Dialogo <> (ar.getRe());
+		r.mostrar();
+		txtcodReserva.setText(r.getSelect());
+		if(!txtcodReserva.getText().trim().equals("")){
+			String cod = txtcodReserva.getText().trim();
+			cod = r.getSelect().substring(0,cod.indexOf("-"));
+			txtcodReserva.setText(cod);
 		}
 	}
 	protected void actionPerformedBtnImprimir(ActionEvent arg0) {
@@ -170,4 +197,5 @@ public class frmControlPago extends JFrame implements ActionListener {
 		txtS.append(s + "\n");
 	}
 
+	
 }

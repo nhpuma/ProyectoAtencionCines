@@ -19,6 +19,19 @@ public class ArregloReserva {
 		this.archivo = archivo;
 		cargarReserva();
 	}
+	//METODOS SET /GET
+	public ArrayList<Reserva> getRe() {
+		return re;
+	}
+	public String getArchivo() {
+		return archivo;
+	}
+	public void setRe(ArrayList<Reserva> re) {
+		this.re = re;
+	}
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
+	}
 	//OPERACIONES 
 	public int tamaño(){
 		return re.size();

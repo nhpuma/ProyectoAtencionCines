@@ -33,6 +33,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	private JMenuItem mntmReserva;
 	private JLabel label;
 	private JMenuItem mntmBoleta;
+	private JMenuItem mntmReporte;
 
 	/**
 	 * Launch the application.
@@ -63,30 +64,35 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		setJMenuBar(menuBar);
 		
 		mnMantenimiento = new JMenu("Mantenimiento");
-		mnMantenimiento.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Mantenimiento.png")));
 		menuBar.add(mnMantenimiento);
 		
 		mntmClientes = new JMenuItem("Clientes");
+		mntmClientes.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Cliente.png")));
 		mntmClientes.addActionListener(this);
 		
 		mntmEmpleado = new JMenuItem("Empleado");
+		mntmEmpleado.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Empleado.png")));
 		mntmEmpleado.addActionListener(this);
 		mnMantenimiento.add(mntmEmpleado);
 		mnMantenimiento.add(mntmClientes);
 		
 		mntmSalas = new JMenuItem("Salas");
+		mntmSalas.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Salas.png")));
 		mntmSalas.addActionListener(this);
 		
 		mntmCine = new JMenuItem("Cine");
+		mntmCine.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Cine.png")));
 		mntmCine.addActionListener(this);
 		mnMantenimiento.add(mntmCine);
 		mnMantenimiento.add(mntmSalas);
 		
 		mntmPelculas = new JMenuItem("Pelicula");
+		mntmPelculas.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Pelicula.png")));
 		mntmPelculas.addActionListener(this);
 		mnMantenimiento.add(mntmPelculas);
 		
 		mntmFunciones = new JMenuItem("Funciones");
+		mntmFunciones.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Funciones.png")));
 		mntmFunciones.addActionListener(this);
 		mnMantenimiento.add(mntmFunciones);
 		
@@ -95,6 +101,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		menuBar.add(mnRegistroDeReserva);
 		
 		mntmReserva = new JMenuItem("Reserva");
+		mntmReserva.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/RegistroReserva.png")));
 		mntmReserva.addActionListener(this);
 		mnRegistroDeReserva.add(mntmReserva);
 		
@@ -102,11 +109,16 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		menuBar.add(mnControlDePago);
 		
 		mntmBoleta = new JMenuItem("Boleta");
+		mntmBoleta.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Boleta.png")));
 		mntmBoleta.addActionListener(this);
 		mnControlDePago.add(mntmBoleta);
 		
 		mnReportes = new JMenu("Reportes");
 		menuBar.add(mnReportes);
+		
+		mntmReporte = new JMenuItem("Reporte");
+		mntmReporte.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Reportes.png")));
+		mnReportes.add(mntmReporte);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

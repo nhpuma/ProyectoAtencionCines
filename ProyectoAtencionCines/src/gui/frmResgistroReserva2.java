@@ -435,6 +435,7 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 			}catch(Exception e){
 				System.out.println("Error +"+e);
 			}
+			this.dispose();
 		}else{
 			this.dispose();
 		}

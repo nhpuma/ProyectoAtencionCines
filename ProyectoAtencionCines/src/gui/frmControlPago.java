@@ -59,6 +59,7 @@ public class frmControlPago extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public frmControlPago() {
+		setTitle("Control de Pago");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 535, 542);
 		contentPane = new JPanel();

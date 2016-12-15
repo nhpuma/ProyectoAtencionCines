@@ -80,6 +80,7 @@ public class frmReserva extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public frmReserva() {
+		setTitle("Reserva\r\n");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 657, 300);
 		contentPane = new JPanel();

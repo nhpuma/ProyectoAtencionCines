@@ -64,6 +64,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		setJMenuBar(menuBar);
 		
 		mnMantenimiento = new JMenu("Mantenimiento");
+		mnMantenimiento.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Mantenimiento.png")));
 		menuBar.add(mnMantenimiento);
 		
 		mntmClientes = new JMenuItem("Clientes");
@@ -97,6 +98,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		mnMantenimiento.add(mntmFunciones);
 		
 		mnRegistroDeReserva = new JMenu("Registro de Reserva");
+		mnRegistroDeReserva.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Registrar.png")));
 		mnRegistroDeReserva.addActionListener(this);
 		menuBar.add(mnRegistroDeReserva);
 		
@@ -106,6 +108,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		mnRegistroDeReserva.add(mntmReserva);
 		
 		mnControlDePago = new JMenu("Control de Pago");
+		mnControlDePago.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/ControlPago.png")));
 		menuBar.add(mnControlDePago);
 		
 		mntmBoleta = new JMenuItem("Boleta");
@@ -114,6 +117,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		mnControlDePago.add(mntmBoleta);
 		
 		mnReportes = new JMenu("Reportes");
+		mnReportes.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Reportes1.png")));
 		menuBar.add(mnReportes);
 		
 		mntmReporte = new JMenuItem("Reporte");
@@ -126,7 +130,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		
 		label = new JLabel("");
 		label.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/fondo.jpg")));
-		label.setBounds(0, 0, 1280, 720);
+		label.setBounds(0, 0, 1362, 643);
 		contentPane.add(label);
 	}
 

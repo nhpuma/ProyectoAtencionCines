@@ -189,16 +189,19 @@ public class frmReserva extends JFrame implements ActionListener {
 		tblTabla.setViewportView(table);
 		
 		btnNewButton = new JButton("");
+		btnNewButton.setIcon(new ImageIcon(frmReserva.class.getResource("/img/mas.png")));
 		btnNewButton.addActionListener(this);
 		btnNewButton.setBounds(209, 32, 21, 23);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton_1 = new JButton("");
+		btnNewButton_1.setIcon(new ImageIcon(frmReserva.class.getResource("/img/mas.png")));
 		btnNewButton_1.addActionListener(this);
 		btnNewButton_1.setBounds(209, 57, 21, 23);
 		contentPane.add(btnNewButton_1);
 		
 		btnNewButton_2 = new JButton("");
+		btnNewButton_2.setIcon(new ImageIcon(frmReserva.class.getResource("/img/mas.png")));
 		btnNewButton_2.addActionListener(this);
 		btnNewButton_2.setBounds(209, 82, 21, 23);
 		contentPane.add(btnNewButton_2);

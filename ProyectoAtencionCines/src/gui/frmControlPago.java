@@ -102,8 +102,9 @@ public class frmControlPago extends JFrame implements ActionListener {
 		txtcodReserva.setColumns(10);
 		
 		btnImprimir = new JButton("Imprimir");
+		btnImprimir.setIcon(new ImageIcon(frmControlPago.class.getResource("/img/Imprimir.png")));
 		btnImprimir.addActionListener(this);
-		btnImprimir.setBounds(354, 7, 89, 23);
+		btnImprimir.setBounds(354, 7, 111, 23);
 		contentPane.add(btnImprimir);
 		
 		txtS = new JTextArea();
@@ -160,7 +161,8 @@ public class frmControlPago extends JFrame implements ActionListener {
 		btnSalir.setBounds(420, 469, 89, 23);
 		contentPane.add(btnSalir);
 		
-		btnNewButton = new JButton("New button");
+		btnNewButton = new JButton("");
+		btnNewButton.setIcon(new ImageIcon(frmControlPago.class.getResource("/img/mas.png")));
 		btnNewButton.addActionListener(this);
 		btnNewButton.setBounds(254, 7, 23, 23);
 		contentPane.add(btnNewButton);

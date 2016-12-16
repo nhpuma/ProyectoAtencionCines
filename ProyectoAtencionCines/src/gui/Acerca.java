@@ -15,8 +15,8 @@ import java.awt.Font;
 public class Acerca extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
-	private JTextArea txtS;
 	private JButton btnNewButton;
+	private JTextArea txtS;
 
 	/**
 	 * Launch the application.
@@ -45,15 +45,15 @@ public class Acerca extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		txtS = new JTextArea();
-		txtS.setFont(new Font("Myanmar Text", Font.BOLD, 14));
-		txtS.setBounds(10, 24, 414, 194);
-		contentPane.add(txtS);
-		
 		btnNewButton = new JButton("Aceptar");
 		btnNewButton.addActionListener(this);
 		btnNewButton.setBounds(160, 227, 89, 23);
 		contentPane.add(btnNewButton);
+		
+		txtS = new JTextArea();
+		txtS.setFont(new Font("Tahoma", Font.BOLD, 13));
+		txtS.setBounds(10, 11, 414, 211);
+		contentPane.add(txtS);
 		imprimir();
 	}
 	public void actionPerformed(ActionEvent arg0) {

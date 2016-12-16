@@ -170,19 +170,19 @@ public class frmFuncion extends JFrame implements ActionListener {
 		tblTabla.setViewportView(table);
 		
 		btnNewButton = new JButton("");
-		btnNewButton.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/play.png")));
+		btnNewButton.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/mas.png")));
 		btnNewButton.addActionListener(this);
 		btnNewButton.setBounds(198, 55, 27, 23);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton_1 = new JButton("");
-		btnNewButton_1.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/play.png")));
+		btnNewButton_1.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/mas.png")));
 		btnNewButton_1.addActionListener(this);
 		btnNewButton_1.setBounds(198, 82, 27, 23);
 		contentPane.add(btnNewButton_1);
 		
 		btnNewButton_2 = new JButton("");
-		btnNewButton_2.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/play.png")));
+		btnNewButton_2.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/mas.png")));
 		btnNewButton_2.addActionListener(this);
 		btnNewButton_2.setBounds(456, 25, 27, 23);
 		contentPane.add(btnNewButton_2);

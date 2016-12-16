@@ -176,8 +176,9 @@ public class frmControlPago extends JFrame implements ActionListener {
 		table.setModel(m);
 		
 		btnPagar = new JButton("Pagar");
+		btnPagar.setIcon(new ImageIcon(frmControlPago.class.getResource("/img/pagar.png")));
 		btnPagar.addActionListener(this);
-		btnPagar.setBounds(321, 469, 89, 23);
+		btnPagar.setBounds(314, 469, 96, 23);
 		contentPane.add(btnPagar);
 
 

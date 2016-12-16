@@ -53,14 +53,15 @@ public class Acerca extends JFrame implements ActionListener {
 		btnAceptar.addActionListener(this);
 		
 		txtS_1 = new JTextArea();
+		txtS_1.setEditable(false);
 		txtS_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		txtS_1.setBounds(65, 39, 298, 168);
+		txtS_1.setBounds(72, 40, 298, 168);
 		contentPane.add(txtS_1);
 		btnAceptar.setBounds(164, 227, 89, 23);
 		contentPane.add(btnAceptar);
 		
 		txtS = new JLabel("");
-		txtS.setIcon(new ImageIcon(Acerca.class.getResource("/img/about.png")));
+		txtS.setIcon(new ImageIcon(Acerca.class.getResource("/img/fondoa.jpg")));
 		txtS.setBounds(0, 0, 434, 261);
 		contentPane.add(txtS);
 		imprimir();
@@ -75,7 +76,7 @@ public class Acerca extends JFrame implements ActionListener {
 	}
 	//IMPRIMIR
 	void imprimir(){
-		txtS_1.setText("");
+		txtS_1.setText("\n");
 		txtS_1.append("\tIntegrantes\n\n");
 		txtS_1.append("1. Puma Jihuallanca Richard\n");
 		txtS_1.append("2. Solgada Pino Reyder\n");

@@ -153,7 +153,7 @@ public class frmSala extends JFrame implements ActionListener {
 		tblTabla.setViewportView(table);
 		
 		btnNewButton = new JButton("");
-		btnNewButton.setIcon(new ImageIcon(frmSala.class.getResource("/img/play.png")));
+		btnNewButton.setIcon(new ImageIcon(frmSala.class.getResource("/img/mas.png")));
 		btnNewButton.addActionListener(this);
 		btnNewButton.setBounds(168, 30, 26, 23);
 		contentPane.add(btnNewButton);

@@ -34,6 +34,8 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	private JLabel label;
 	private JMenuItem mntmBoleta;
 	private JMenuItem mntmReporte;
+	private JMenu mnAcercaDe;
+	private JMenuItem mntmDesarrolladores;
 
 	/**
 	 * Launch the application.
@@ -123,6 +125,15 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		mntmReporte = new JMenuItem("Reporte");
 		mntmReporte.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Reportes.png")));
 		mnReportes.add(mntmReporte);
+		
+		mnAcercaDe = new JMenu("Acerca de");
+		mnAcercaDe.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Acerca.png")));
+		menuBar.add(mnAcercaDe);
+		
+		mntmDesarrolladores = new JMenuItem("Desarrolladores");
+		mntmDesarrolladores.addActionListener(this);
+		mntmDesarrolladores.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Desarrolladores.png")));
+		mnAcercaDe.add(mntmDesarrolladores);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -135,6 +146,9 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmDesarrolladores) {
+			actionPerformedMntmDesarrolladores(e);
+		}
 		if (e.getSource() == mntmFunciones) {
 			actionPerformedMntmFunciones(e);
 		}
@@ -209,14 +223,15 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		cp.setVisible(true);
 	}
 	protected void actionPerformedMntmFunciones(ActionEvent e) {
-		
-		
 		frmFuncion ventana;
 		ventana=new frmFuncion();
 		ventana.setLocationRelativeTo(this);
 		ventana.setVisible(true);
-		
-		
-		
+	}
+	protected void actionPerformedMntmDesarrolladores(ActionEvent e) {
+		Acerca a;
+		a=new Acerca();
+		a.setLocationRelativeTo(this);
+		a.setVisible(true);
 	}
 }

@@ -40,6 +40,7 @@ import java.io.ObjectStreamException;
 import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 
 public class frmResgistroReserva2 extends JFrame implements ActionListener {
 
@@ -123,7 +124,7 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		
 		cmbCliente = new JComboBox();
 		cmbCliente.addActionListener(this);
-		cmbCliente.setBounds(107, 61, 271, 20);
+		cmbCliente.setBounds(107, 61, 254, 20);
 		contentPane.add(cmbCliente);
 		
 		lblEmpleado = new JLabel("Empleado:");
@@ -131,7 +132,7 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		contentPane.add(lblEmpleado);
 		
 		cmbEmpleado = new JComboBox();
-		cmbEmpleado.setBounds(107, 33, 271, 20);
+		cmbEmpleado.setBounds(107, 33, 254, 20);
 		contentPane.add(cmbEmpleado);
 		
 		panel = new JPanel();
@@ -208,8 +209,9 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		panel_1.add(cmbButaca);
 		
 		btnAgregar = new JButton("Agregar");
+		btnAgregar.setIcon(new ImageIcon(frmResgistroReserva2.class.getResource("/img/agregar.png")));
 		btnAgregar.addActionListener(this);
-		btnAgregar.setBounds(120, 154, 89, 23);
+		btnAgregar.setBounds(109, 154, 100, 23);
 		panel_1.add(btnAgregar);
 		
 		lblPrecio = new JLabel("Precio:");
@@ -229,13 +231,15 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		scrollPane.setViewportView(tablaDetalleReserva);
 		
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setIcon(new ImageIcon(frmResgistroReserva2.class.getResource("/img/Cancelar.png")));
 		btnCancelar.addActionListener(this);
-		btnCancelar.setBounds(632, 454, 89, 23);
+		btnCancelar.setBounds(609, 454, 112, 23);
 		contentPane.add(btnCancelar);
 		
 		btnGenerarReserva = new JButton("Generar Reserva");
+		btnGenerarReserva.setIcon(new ImageIcon(frmResgistroReserva2.class.getResource("/img/GenerarReserva.png")));
 		btnGenerarReserva.addActionListener(this);
-		btnGenerarReserva.setBounds(481, 454, 141, 23);
+		btnGenerarReserva.setBounds(443, 454, 156, 23);
 		contentPane.add(btnGenerarReserva);
 		
 		modelo = new DefaultTableModel();
@@ -258,8 +262,9 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		txtCodreserva.setText(""+ar.codigoCorrelativo());
 		
 		btnNuevoCliente = new JButton("Nuevo Cliente");
+		btnNuevoCliente.setIcon(new ImageIcon(frmResgistroReserva2.class.getResource("/img/NuevoCliente.png")));
 		btnNuevoCliente.addActionListener(this);
-		btnNuevoCliente.setBounds(388, 60, 113, 23);
+		btnNuevoCliente.setBounds(388, 60, 135, 23);
 		contentPane.add(btnNuevoCliente);
 		
 		listarEmpleados();

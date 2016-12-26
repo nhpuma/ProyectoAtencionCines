@@ -88,7 +88,7 @@ public class frmCliente extends JFrame implements ActionListener {
 	public frmCliente() {
 		setTitle("ingreso de cliente");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 852, 386);
+		setBounds(100, 100, 852, 421);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -151,7 +151,7 @@ public class frmCliente extends JFrame implements ActionListener {
 		contentPane.add(lblFechaDeNacimiento);
 		
 		txtfechanaci = new JTextField();
-		txtfechanaci.setBounds(393, 11, 86, 20);
+		txtfechanaci.setBounds(372, 11, 107, 20);
 		contentPane.add(txtfechanaci);
 		txtfechanaci.setColumns(10);
 		
@@ -165,7 +165,7 @@ public class frmCliente extends JFrame implements ActionListener {
 		
 		cmbestado = new JComboBox();
 		cmbestado.setModel(new DefaultComboBoxModel(new String[] {" Soltero", "Casado", "Viudo", "Divorciado "}));
-		cmbestado.setBounds(392, 63, 87, 20);
+		cmbestado.setBounds(372, 63, 107, 20);
 		contentPane.add(cmbestado);
 		
 		lblTelefono = new JLabel("telefono");
@@ -173,7 +173,7 @@ public class frmCliente extends JFrame implements ActionListener {
 		contentPane.add(lblTelefono);
 		
 		txttelefono = new JTextField();
-		txttelefono.setBounds(393, 88, 86, 20);
+		txttelefono.setBounds(372, 88, 107, 20);
 		contentPane.add(txttelefono);
 		txttelefono.setColumns(10);
 		
@@ -182,7 +182,7 @@ public class frmCliente extends JFrame implements ActionListener {
 		contentPane.add(lblDni);
 		
 		txtdni = new JTextField();
-		txtdni.setBounds(393, 117, 86, 20);
+		txtdni.setBounds(372, 117, 107, 20);
 		contentPane.add(txtdni);
 		txtdni.setColumns(10);
 		
@@ -207,13 +207,13 @@ public class frmCliente extends JFrame implements ActionListener {
 		btnIngresar = new JButton("Ingresar");
 		btnIngresar.setIcon(new ImageIcon(frmCliente.class.getResource("/img/add2.png")));
 		btnIngresar.addActionListener(this);
-		btnIngresar.setBounds(696, 11, 130, 23);
+		btnIngresar.setBounds(696, 11, 130, 33);
 		contentPane.add(btnIngresar);
 		
 		btnSalir = new JButton("salir");
 		btnSalir.setIcon(new ImageIcon(frmCliente.class.getResource("/img/cancel2.png")));
 		btnSalir.addActionListener(this);
-		btnSalir.setBounds(696, 106, 130, 23);
+		btnSalir.setBounds(715, 348, 111, 23);
 		contentPane.add(btnSalir);
 		
 		//gloval
@@ -236,19 +236,19 @@ public class frmCliente extends JFrame implements ActionListener {
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.setIcon(new ImageIcon(frmCliente.class.getResource("/img/buscar.png")));
 		btnBuscar.addActionListener(this);
-		btnBuscar.setBounds(510, 81, 130, 23);
+		btnBuscar.setBounds(10, 348, 111, 23);
 		contentPane.add(btnBuscar);
 		
 		btnModificar = new JButton("Modificar");
 		btnModificar.setIcon(new ImageIcon(frmCliente.class.getResource("/img/edit2.png")));
 		btnModificar.addActionListener(this);
-		btnModificar.setBounds(696, 38, 130, 23);
+		btnModificar.setBounds(696, 55, 130, 27);
 		contentPane.add(btnModificar);
 		
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setIcon(new ImageIcon(frmCliente.class.getResource("/img/remove2.png")));
 		btnEliminar.addActionListener(this);
-		btnEliminar.setBounds(696, 63, 130, 23);
+		btnEliminar.setBounds(696, 96, 130, 33);
 		contentPane.add(btnEliminar);
 		
 		txtfechaafi = new JDateChooser();

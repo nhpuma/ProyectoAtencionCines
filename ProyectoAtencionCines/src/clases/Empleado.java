@@ -74,6 +74,9 @@ public class Empleado {
 			return "Cajero";
 		}
 	}
+	public String Usuario(){
+		return nombre.charAt(0)+"";
+	}
 	
 	
 

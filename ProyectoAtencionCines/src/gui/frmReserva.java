@@ -82,7 +82,7 @@ public class frmReserva extends JFrame implements ActionListener {
 	public frmReserva() {
 		setTitle("Reserva\r\n");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 657, 300);
+		setBounds(100, 100, 657, 328);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -154,7 +154,7 @@ public class frmReserva extends JFrame implements ActionListener {
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.setIcon(new ImageIcon(frmReserva.class.getResource("/img/buscar.png")));
 		btnBuscar.addActionListener(this);
-		btnBuscar.setBounds(372, 86, 122, 23);
+		btnBuscar.setBounds(10, 255, 122, 23);
 		contentPane.add(btnBuscar);
 		
 		btnAdicionar = new JButton("Adicionar");
@@ -178,7 +178,7 @@ public class frmReserva extends JFrame implements ActionListener {
 		btnSalir = new JButton("Salir");
 		btnSalir.setIcon(new ImageIcon(frmReserva.class.getResource("/img/cancel2.png")));
 		btnSalir.addActionListener(this);
-		btnSalir.setBounds(504, 82, 122, 23);
+		btnSalir.setBounds(504, 255, 122, 23);
 		contentPane.add(btnSalir);
 		
 		tblTabla = new JScrollPane();

@@ -37,7 +37,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.io.ObjectStreamException;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -272,6 +274,33 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		listarPelicula();
 		listarCiudades();
 	}
+
+	public void actionPerformed(ActionEvent arg0) {
+		if (arg0.getSource() == btnNuevoCliente) {
+			actionPerformedBtnNuevoCliente(arg0);
+		}
+		if (arg0.getSource() == cmbTipoEntrada) {
+			actionPerformedCmbTipoEntrada(arg0);
+		}
+		if (arg0.getSource() == cmbSala) {
+			actionPerformedCmbSala(arg0);
+		}
+		if (arg0.getSource() == cmbCiudad) {
+			actionPerformedCmbCiudad(arg0);
+		}
+		if (arg0.getSource() == cmbPeliculas) {
+			actionPerformedCmbPeliculas(arg0);
+		}
+		if (arg0.getSource() == btnAgregar) {
+			actionPerformedBtnAgregar(arg0);
+		}
+		if (arg0.getSource() == btnGenerarReserva) {
+			actionPerformedBtnGenerarReserva(arg0);
+		}
+		if (arg0.getSource() == btnCancelar) {
+			actionPerformedBtnCancelar(arg0);
+		}
+	}
 	
 	//Arreglos
 	ArregloReserva ar = new ArregloReserva("Reserva.txt");
@@ -298,8 +327,6 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 				c=aCine.buscar(codCine);
 				cmbCiudad.addItem(c.getCodCine()+"-"+c.getDistrito());
 			}
-			//c = aCine.obtener(i);
-			//cmbCiudad.addItem(c.getCodCine()+"-"+c.getDistrito());
 		}
 	}
 	void listarPelicula(){
@@ -314,9 +341,6 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 				p=ap.buscar(codCine);
 				cmbPeliculas.addItem(p.getCodPeli()+"-"+p.getTitDistribucion());
 			}
-			//p = ap.obtener(i);
-			//cmbPeliculas.addItem(p.getCodPeli()+"-"+p.getTitDistribucion());
-			
 		}
 	}
 	void listarClientes(){
@@ -324,16 +348,15 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		Cliente c;
 		for (int i = 0; i < ac.tamanio(); i++) {
 			c = ac.obtener(i);
-			cmbCliente.addItem(c.getCodCliente()+"-"+c.getNombre());
+			cmbCliente.addItem(c.getCodCliente()+"-"+c.getNombre()+" "+c.getApepat());
 		}
-
 	}
 	void listarEmpleados(){
 		cmbEmpleado.removeAllItems();
 		Empleado e;
 		for (int i = 0; i < ae.tamanio(); i++) {
 			e = ae.obtener(i);
-			cmbEmpleado.addItem(e.getCodEmpleado()+"-"+e.getNombre());
+			cmbEmpleado.addItem(e.getCodEmpleado()+"-"+e.getNombre()+" "+e.getApePater());
 		}
 	}
 	//Obteniendo de las componentes
@@ -341,12 +364,27 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 		return 0;
 	}
 	String obtHoraReserva(){
-		Date hora = new Date();
-		return hora.getHours()+":"+hora.getMinutes()+" h";
+		int hh,mn,ss;
+		Calendar calendario = new GregorianCalendar();
+		
+		hh = calendario.get(Calendar.HOUR_OF_DAY);
+		mn = calendario.get(Calendar.MINUTE);
+		ss = calendario.get(Calendar.SECOND);
+		return hh+":"+mn+" "+ss+"s";
+		//Date hora = new Date();
+		//return hora.getHours()+":"+hora.getMinutes()+" h";
 	}
 	String obtFechaReserva(){
-		Date fecha = new Date();
-		return fecha.getDay()+"/"+fecha.getMonth()+"/"+fecha.getYear();
+		int dd,mm,aa;
+		Calendar calendario = new GregorianCalendar();
+		
+		dd = calendario.get(Calendar.DAY_OF_MONTH);
+		mm = calendario.get(Calendar.MONTH)+1;
+		aa = calendario.get(Calendar.YEAR);
+		
+		return dd+"/"+mm+"/"+aa;
+		//Date fecha = new Date();
+		//return fecha.getDay()+"/"+fecha.getMonth()+"/"+fecha.getYear();
 	}
 	int obtCodFuncion(){
 		String f = ""+cmbFecha.getSelectedItem();
@@ -365,32 +403,6 @@ public class frmResgistroReserva2 extends JFrame implements ActionListener {
 	}
 	int obtCodReserva(){
 		return Integer.parseInt(txtCodreserva.getText());
-	}
-	public void actionPerformed(ActionEvent arg0) {
-		if (arg0.getSource() == btnNuevoCliente) {
-			actionPerformedBtnNuevoCliente(arg0);
-		}
-		if (arg0.getSource() == cmbTipoEntrada) {
-			actionPerformedCmbTipoEntrada(arg0);
-		}
-		if (arg0.getSource() == cmbSala) {
-			actionPerformedCmbSala(arg0);
-		}
-		if (arg0.getSource() == cmbCiudad) {
-			actionPerformedCmbCiudad(arg0);
-		}
-		if (arg0.getSource() == cmbPeliculas) {
-			actionPerformedCmbPeliculas(arg0);
-		}
-		if (arg0.getSource() == btnAgregar) {
-			actionPerformedBtnAgregar(arg0);
-		}
-		if (arg0.getSource() == btnGenerarReserva) {
-			actionPerformedBtnGenerarReserva(arg0);
-		}
-		if (arg0.getSource() == btnCancelar) {
-			actionPerformedBtnCancelar(arg0);
-		}
 	}
 	protected void actionPerformedBtnCancelar(ActionEvent arg0) {
 		this.dispose();

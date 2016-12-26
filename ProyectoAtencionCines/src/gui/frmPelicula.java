@@ -85,7 +85,7 @@ public class frmPelicula extends JFrame implements ActionListener {
 	public frmPelicula() {
 		setTitle("Pelicula");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 1097, 504);
+		setBounds(100, 100, 1097, 404);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -128,104 +128,104 @@ public class frmPelicula extends JFrame implements ActionListener {
 		contentPane.add(txtFechaestreno);
 		
 		lblTipoProyeccion = new JLabel("Tipo Proyeccion:");
-		lblTipoProyeccion.setBounds(280, 11, 112, 14);
+		lblTipoProyeccion.setBounds(344, 11, 112, 14);
 		contentPane.add(lblTipoProyeccion);
 		
 		lblGnero = new JLabel("G\u00E9nero:");
-		lblGnero.setBounds(280, 36, 112, 14);
+		lblGnero.setBounds(344, 36, 112, 14);
 		contentPane.add(lblGnero);
 		
 		lblPaisOrigen = new JLabel("Pais Origen:");
-		lblPaisOrigen.setBounds(280, 64, 112, 14);
+		lblPaisOrigen.setBounds(344, 64, 112, 14);
 		contentPane.add(lblPaisOrigen);
 		
 		lblSinopsis = new JLabel("Sinopsis:");
-		lblSinopsis.setBounds(280, 89, 112, 14);
+		lblSinopsis.setBounds(344, 89, 112, 14);
 		contentPane.add(lblSinopsis);
 		
 		cmbTipoproyeccion = new JComboBox();
 		cmbTipoproyeccion.setModel(new DefaultComboBoxModel(new String[] {"Estreno", "Fuera de Estreno"}));
-		cmbTipoproyeccion.setBounds(402, 11, 123, 20);
+		cmbTipoproyeccion.setBounds(466, 11, 123, 20);
 		contentPane.add(cmbTipoproyeccion);
 		
 		txtPaisorigen = new JTextField();
 		txtPaisorigen.setColumns(10);
-		txtPaisorigen.setBounds(402, 61, 123, 20);
+		txtPaisorigen.setBounds(466, 61, 123, 20);
 		contentPane.add(txtPaisorigen);
 		
 		txtSinopsis = new JTextField();
 		txtSinopsis.setColumns(10);
-		txtSinopsis.setBounds(402, 83, 123, 20);
+		txtSinopsis.setBounds(466, 83, 123, 20);
 		contentPane.add(txtSinopsis);
 		
 		lblDuracion = new JLabel("Duracion:");
-		lblDuracion.setBounds(547, 14, 112, 14);
+		lblDuracion.setBounds(669, 14, 112, 14);
 		contentPane.add(lblDuracion);
 		
 		lblTipoCensura = new JLabel("Tipo Censura:");
-		lblTipoCensura.setBounds(547, 39, 112, 14);
+		lblTipoCensura.setBounds(669, 39, 112, 14);
 		contentPane.add(lblTipoCensura);
 		
 		lblEstadoProyeccion = new JLabel("Estado Proyeccion:");
-		lblEstadoProyeccion.setBounds(547, 67, 112, 14);
+		lblEstadoProyeccion.setBounds(669, 67, 112, 14);
 		contentPane.add(lblEstadoProyeccion);
 		
 		lblRecaudacion = new JLabel("Recaudacion:");
-		lblRecaudacion.setBounds(547, 92, 112, 14);
+		lblRecaudacion.setBounds(669, 92, 112, 14);
 		contentPane.add(lblRecaudacion);
 		
 		txtDuracion = new JTextField();
 		txtDuracion.setColumns(10);
-		txtDuracion.setBounds(669, 11, 123, 20);
+		txtDuracion.setBounds(791, 11, 123, 20);
 		contentPane.add(txtDuracion);
 		
 		cmbTipocensura = new JComboBox();
 		cmbTipocensura.setModel(new DefaultComboBoxModel(new String[] {"Apta para todos", "Mayores de 14 a\u00F1os", "Mayores de 18 a\u00F1os"}));
-		cmbTipocensura.setBounds(669, 36, 123, 20);
+		cmbTipocensura.setBounds(791, 36, 123, 20);
 		contentPane.add(cmbTipocensura);
 		
 		cmbEstadoproyeccion = new JComboBox();
 		cmbEstadoproyeccion.setModel(new DefaultComboBoxModel(new String[] {"En cartelera", "Fuera de Cartelera"}));
-		cmbEstadoproyeccion.setBounds(669, 64, 123, 20);
+		cmbEstadoproyeccion.setBounds(791, 64, 123, 20);
 		contentPane.add(cmbEstadoproyeccion);
 		
 		txtRecaudacion = new JTextField();
-		txtRecaudacion.setBounds(669, 89, 123, 20);
+		txtRecaudacion.setBounds(791, 89, 123, 20);
 		contentPane.add(txtRecaudacion);
 		txtRecaudacion.setColumns(10);
 		
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(this);
 		btnBuscar.setIcon(new ImageIcon(frmPelicula.class.getResource("/img/buscar.png")));
-		btnBuscar.setBounds(820, 36, 120, 23);
+		btnBuscar.setBounds(10, 340, 120, 23);
 		contentPane.add(btnBuscar);
 		
 		btnIngresa = new JButton("Ingresar");
 		btnIngresa.addActionListener(this);
 		btnIngresa.setIcon(new ImageIcon(frmPelicula.class.getResource("/img/add2.png")));
-		btnIngresa.setBounds(820, 65, 120, 23);
+		btnIngresa.setBounds(951, 7, 120, 33);
 		contentPane.add(btnIngresa);
 		
 		btnModificar = new JButton("Modificar");
 		btnModificar.addActionListener(this);
 		btnModificar.setIcon(new ImageIcon(frmPelicula.class.getResource("/img/edit2.png")));
-		btnModificar.setBounds(951, 32, 120, 23);
+		btnModificar.setBounds(951, 42, 120, 33);
 		contentPane.add(btnModificar);
 		
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.addActionListener(this);
 		btnEliminar.setIcon(new ImageIcon(frmPelicula.class.getResource("/img/remove2.png")));
-		btnEliminar.setBounds(951, 57, 120, 23);
+		btnEliminar.setBounds(951, 77, 120, 33);
 		contentPane.add(btnEliminar);
 		
 		btnSalir = new JButton("Salir");
 		btnSalir.addActionListener(this);
 		btnSalir.setIcon(new ImageIcon(frmPelicula.class.getResource("/img/cancel2.png")));
-		btnSalir.setBounds(951, 82, 120, 23);
+		btnSalir.setBounds(951, 340, 120, 23);
 		contentPane.add(btnSalir);
 		
 		tblTabla = new JScrollPane();
-		tblTabla.setBounds(10, 127, 1061, 327);
+		tblTabla.setBounds(10, 127, 1061, 202);
 		contentPane.add(tblTabla);
 		
 		table = new JTable();
@@ -248,7 +248,7 @@ public class frmPelicula extends JFrame implements ActionListener {
 		
 		cmbGenero = new JComboBox();
 		cmbGenero.setModel(new DefaultComboBoxModel(new String[] {"Accion", "Animacion", "Aventura", "Ciencia ficcion", "Comedia", "Drama", "Musical", "Rom\u00E1ntico", "Terror"}));
-		cmbGenero.setBounds(402, 33, 123, 20);
+		cmbGenero.setBounds(466, 33, 123, 20);
 		contentPane.add(cmbGenero);
 		listar();
 	}

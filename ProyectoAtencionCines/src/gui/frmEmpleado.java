@@ -131,61 +131,61 @@ public class frmEmpleado extends JFrame implements ActionListener {
 		
 		lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblUsuario.setBounds(281, 14, 100, 14);
+		lblUsuario.setBounds(285, 14, 100, 14);
 		contentPane.add(lblUsuario);
 		
 		lblContrasea = new JLabel("Contrase\u00F1a:");
 		lblContrasea.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblContrasea.setBounds(281, 39, 100, 14);
+		lblContrasea.setBounds(285, 39, 100, 14);
 		contentPane.add(lblContrasea);
 		
 		txtUsuario = new JTextField();
-		txtUsuario.setBounds(392, 11, 107, 20);
+		txtUsuario.setBounds(396, 11, 107, 20);
 		contentPane.add(txtUsuario);
 		txtUsuario.setColumns(10);
 		
 		txtContrasena = new JPasswordField();
 		txtContrasena.setColumns(10);
-		txtContrasena.setBounds(392, 36, 107, 20);
+		txtContrasena.setBounds(396, 36, 107, 20);
 		contentPane.add(txtContrasena);
 		
 		btnNewButton = new JButton("Buscar");
 		btnNewButton.setFont(new Font("Century751 No2 BT", Font.BOLD, 11));
 		btnNewButton.addActionListener(this);
 		btnNewButton.setIcon(new ImageIcon(frmEmpleado.class.getResource("/img/buscar.png")));
-		btnNewButton.setBounds(392, 82, 107, 23);
+		btnNewButton.setBounds(10, 362, 107, 23);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton_1 = new JButton("Ingresar");
 		btnNewButton_1.setFont(new Font("Century751 No2 BT", Font.BOLD, 11));
 		btnNewButton_1.addActionListener(this);
 		btnNewButton_1.setIcon(new ImageIcon(frmEmpleado.class.getResource("/img/add2.png")));
-		btnNewButton_1.setBounds(392, 110, 107, 23);
+		btnNewButton_1.setBounds(551, 32, 107, 23);
 		contentPane.add(btnNewButton_1);
 		
 		btnModificar = new JButton("Modificar");
 		btnModificar.setFont(new Font("Century751 No2 BT", Font.BOLD, 11));
 		btnModificar.addActionListener(this);
 		btnModificar.setIcon(new ImageIcon(frmEmpleado.class.getResource("/img/edit2.png")));
-		btnModificar.setBounds(537, 11, 107, 23);
+		btnModificar.setBounds(551, 63, 107, 23);
 		contentPane.add(btnModificar);
 		
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setFont(new Font("Century751 No2 BT", Font.BOLD, 11));
 		btnEliminar.addActionListener(this);
 		btnEliminar.setIcon(new ImageIcon(frmEmpleado.class.getResource("/img/remove2.png")));
-		btnEliminar.setBounds(537, 40, 107, 23);
+		btnEliminar.setBounds(551, 92, 107, 23);
 		contentPane.add(btnEliminar);
 		
 		btnNewButton_2 = new JButton("Salir");
 		btnNewButton_2.setFont(new Font("Century751 No2 BT", Font.BOLD, 11));
 		btnNewButton_2.addActionListener(this);
 		btnNewButton_2.setIcon(new ImageIcon(frmEmpleado.class.getResource("/img/cancel2.png")));
-		btnNewButton_2.setBounds(537, 114, 107, 23);
+		btnNewButton_2.setBounds(551, 362, 107, 23);
 		contentPane.add(btnNewButton_2);
 		
 		tblTabla = new JScrollPane();
-		tblTabla.setBounds(10, 152, 648, 233);
+		tblTabla.setBounds(10, 152, 648, 203);
 		contentPane.add(tblTabla);
 		
 		table = new JTable();
@@ -261,6 +261,16 @@ public class frmEmpleado extends JFrame implements ActionListener {
 					          ae.obtener(i).getContraseña()};
 			modelo.addRow(fila);
 		}
+   		Empleado e;
+   		int codemp;
+   		for(int j=0; j<ae.tamanio(); j++){
+   			e=ae.obtener(j);
+   			codemp=e.getCodEmpleado();
+   			if(ae.buscar(codemp)!=null){
+   				e=ae.buscar(codemp);
+   				txtUsuario.setText(e.Usuario()+leerCodigo()+"");
+   			}
+   		}
 	}
 	//MENSAJE
   	void mensaje(String s) {

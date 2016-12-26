@@ -63,6 +63,7 @@ public class frmControlPago extends JFrame implements ActionListener {
 	private DefaultTableModel m;
 	private JButton btnSalir;
 	private JButton btnNewButton;
+	private JButton btnPagar;
 
 	/**
 	 * Launch the application.
@@ -182,16 +183,7 @@ public class frmControlPago extends JFrame implements ActionListener {
 		contentPane.add(btnPagar);
 
 
-	}
-	//Instancias a las ArrayList
-	ArregloFuncion af = new ArregloFuncion("Funcion.txt");
-	ArregloCine ac = new ArregloCine("cine.txt");
-	ArregloCliente aCli = new ArregloCliente("Cliente.txt");
-	ArregloDetalleReserva aDR = new ArregloDetalleReserva();
-	ArregloPelicula ap = new ArregloPelicula("Pelicula.txt");
-	ArregloSala as = new ArregloSala("Sala.txt");
-	ArregloButaca ab = new ArregloButaca("Butacas.txt");
-	
+	}	
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == btnPagar) {
 			actionPerformedBtnPagar(arg0);
@@ -206,8 +198,16 @@ public class frmControlPago extends JFrame implements ActionListener {
 			actionPerformedBtnImprimir(arg0);
 		}
 	}
+	//Instancias a las ArrayList
+	ArregloFuncion af = new ArregloFuncion("Funcion.txt");
+	ArregloCine ac = new ArregloCine("cine.txt");
+	ArregloCliente aCli = new ArregloCliente("Cliente.txt");
+	ArregloDetalleReserva aDR = new ArregloDetalleReserva();
+	ArregloPelicula ap = new ArregloPelicula("Pelicula.txt");
+	ArregloSala as = new ArregloSala("Sala.txt");
+	ArregloButaca ab = new ArregloButaca("Butacas.txt");
+	
 	ArregloReserva ar = new ArregloReserva("Reserva.txt");
-	private JButton btnPagar;
 	protected void actionPerformedBtnNewButton(ActionEvent arg0) {
 		Dialogo <Reserva> r = new Dialogo <> (ar.getRe());
 		r.mostrar();
@@ -217,14 +217,6 @@ public class frmControlPago extends JFrame implements ActionListener {
 			cod = r.getSelect().substring(0,cod.indexOf("-"));
 			txtcodReserva.setText(cod);
 		}
-//		imprimir();
-//		imprimir("Nombre del Cine	:");
-//		imprimir("Codigo Empleado	:");
-//		imprimir("Codigo Cliente		:");
-//		imprimir("Nombre Cliente		:");
-//		imprimir("Codigo Sala		:");
-//		imprimir("Titulo Pelicula		:");
-//		imprimir("Butacas Reservadas	:");
 	}
 
 	protected void actionPerformedBtnImprimir(ActionEvent arg0) {
@@ -246,14 +238,15 @@ public class frmControlPago extends JFrame implements ActionListener {
 						imprimir("Cod. Empleado\t\t: "+r.getCodEmpleado());
 						imprimir("Cod. Cliente\t\t: "+r.getCodCliente());
 						//Buscando Cliente
-						Cliente cli = aCli.buscar(r.getCodEmpleado());
+						Cliente cli = aCli.buscar(r.getCodCliente());
 						imprimir("Nombre Cliente\t\t: "+cli.getNombre());
 						imprimir("Apellidos Cliente\t: "+cli.getApepat()+" "+cli.getApemat());
 						imprimir("Cod.Sala\t\t: "+f.getCodSala());
 						//Buscando Pelìcula
-						int codPeli = f.getCodCine();
+						int codPeli = f.getCodPeli();
 						Pelicula p = ap.buscar(codPeli); 
 						imprimir("Película\t\t: "+p.getTitDistribucion());
+						imprimir("Genero Película\t: "+p.GeneroPelicula());
 						listarDetalleReserva(Integer.parseInt(codR));
 						
 					}//Fin if Cine

@@ -72,98 +72,98 @@ public class frmFuncion extends JFrame implements ActionListener {
 	public frmFuncion() {
 		setTitle("Funcion");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 754, 350);
+		setBounds(100, 100, 754, 373);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblCdigoDePelicula = new JLabel("C\u00F3digo de pel\u00EDcula:");
-		lblCdigoDePelicula.setBounds(235, 34, 143, 14);
+		lblCdigoDePelicula.setBounds(324, 31, 143, 14);
 		contentPane.add(lblCdigoDePelicula);
 		
 		JLabel lblCdigoDeCine = new JLabel("C\u00F3digo de cine :");
-		lblCdigoDeCine.setBounds(10, 59, 95, 14);
+		lblCdigoDeCine.setBounds(10, 59, 132, 14);
 		contentPane.add(lblCdigoDeCine);
 		
 		JLabel lblCdigoDeSala = new JLabel("C\u00F3digo de  sala:");
-		lblCdigoDeSala.setBounds(10, 86, 95, 14);
+		lblCdigoDeSala.setBounds(10, 86, 132, 14);
 		contentPane.add(lblCdigoDeSala);
 		
 		JLabel lblCdigoDeFuncin = new JLabel("C\u00F3digo de funci\u00F3n:");
-		lblCdigoDeFuncin.setBounds(10, 34, 95, 14);
+		lblCdigoDeFuncin.setBounds(10, 34, 132, 14);
 		contentPane.add(lblCdigoDeFuncin);
 		
 		JLabel lblFechaDeLa = new JLabel("Fecha de la funci\u00F3n:");
-		lblFechaDeLa.setBounds(235, 59, 143, 14);
+		lblFechaDeLa.setBounds(324, 56, 143, 14);
 		contentPane.add(lblFechaDeLa);
 		
 		JLabel lblHoraDeLa = new JLabel("Hora de la funci\u00F3n:");
-		lblHoraDeLa.setBounds(235, 86, 143, 14);
+		lblHoraDeLa.setBounds(324, 83, 143, 14);
 		contentPane.add(lblHoraDeLa);
 		
 		txtFuncion = new JTextField();
-		txtFuncion.setBounds(108, 31, 117, 20);
+		txtFuncion.setBounds(152, 26, 117, 20);
 		contentPane.add(txtFuncion);
 		txtFuncion.setColumns(10);
 		
 		txtCine = new JTextField();
-		txtCine.setBounds(108, 56, 86, 20);
+		txtCine.setBounds(152, 51, 86, 20);
 		contentPane.add(txtCine);
 		txtCine.setColumns(10);
 		
 		txtSala = new JTextField();
-		txtSala.setBounds(108, 84, 86, 20);
+		txtSala.setBounds(152, 79, 86, 20);
 		contentPane.add(txtSala);
 		txtSala.setColumns(10);
 		
 		txtPelicula = new JTextField();
-		txtPelicula.setBounds(367, 26, 86, 20);
+		txtPelicula.setBounds(456, 23, 86, 20);
 		contentPane.add(txtPelicula);
 		txtPelicula.setColumns(10);
 		
 		txtFecha = new JTextField();
-		txtFecha.setBounds(368, 56, 115, 20);
+		txtFecha.setBounds(457, 53, 115, 20);
 		contentPane.add(txtFecha);
 		txtFecha.setColumns(10);
 		
 		txtHora = new JTextField();
-		txtHora.setBounds(367, 83, 117, 20);
+		txtHora.setBounds(456, 80, 117, 20);
 		contentPane.add(txtHora);
 		txtHora.setColumns(10);
 		
 		btnIngresar = new JButton("INGRESAR");
 		btnIngresar.addActionListener(this);
 		btnIngresar.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/add2.png")));
-		btnIngresar.setBounds(493, 11, 121, 33);
+		btnIngresar.setBounds(604, 11, 121, 33);
 		contentPane.add(btnIngresar);
 		
 		btnBuscar = new JButton("BUSCAR");
 		btnBuscar.addActionListener(this);
 		btnBuscar.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/buscar.png")));
-		btnBuscar.setBounds(493, 45, 121, 33);
+		btnBuscar.setBounds(10, 303, 121, 22);
 		contentPane.add(btnBuscar);
 		
 		btnModificar = new JButton("MODIFICAR");
 		btnModificar.addActionListener(this);
 		btnModificar.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/edit2.png")));
-		btnModificar.setBounds(494, 82, 120, 33);
+		btnModificar.setBounds(604, 50, 120, 33);
 		contentPane.add(btnModificar);
 		
 		btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.addActionListener(this);
 		btnEliminar.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/remove2.png")));
-		btnEliminar.setBounds(624, 11, 101, 33);
+		btnEliminar.setBounds(604, 86, 121, 33);
 		contentPane.add(btnEliminar);
 		
 		btnSalir = new JButton("SALIR");
 		btnSalir.addActionListener(this);
 		btnSalir.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/cancel2.png")));
-		btnSalir.setBounds(624, 50, 101, 33);
+		btnSalir.setBounds(608, 303, 117, 23);
 		contentPane.add(btnSalir);
 		
 		tblTabla = new JScrollPane();
-		tblTabla.setBounds(10, 121, 715, 179);
+		tblTabla.setBounds(10, 121, 715, 171);
 		contentPane.add(tblTabla);
 		
 		table = new JTable();
@@ -172,19 +172,19 @@ public class frmFuncion extends JFrame implements ActionListener {
 		btnNewButton = new JButton("");
 		btnNewButton.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/mas.png")));
 		btnNewButton.addActionListener(this);
-		btnNewButton.setBounds(198, 55, 27, 23);
+		btnNewButton.setBounds(242, 50, 27, 23);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton_1 = new JButton("");
 		btnNewButton_1.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/mas.png")));
 		btnNewButton_1.addActionListener(this);
-		btnNewButton_1.setBounds(198, 82, 27, 23);
+		btnNewButton_1.setBounds(242, 77, 27, 23);
 		contentPane.add(btnNewButton_1);
 		
 		btnNewButton_2 = new JButton("");
 		btnNewButton_2.setIcon(new ImageIcon(frmFuncion.class.getResource("/img/mas.png")));
 		btnNewButton_2.addActionListener(this);
-		btnNewButton_2.setBounds(456, 25, 27, 23);
+		btnNewButton_2.setBounds(545, 22, 27, 23);
 		contentPane.add(btnNewButton_2);
 		
 		m = new DefaultTableModel();

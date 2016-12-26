@@ -36,6 +36,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	private JMenuItem mntmReporte;
 	private JMenu mnAcercaDe;
 	private JMenuItem mntmDesarrolladores;
+	private JMenuItem mntmReserva_1;
 
 	/**
 	 * Launch the application.
@@ -104,9 +105,14 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		mnRegistroDeReserva.addActionListener(this);
 		menuBar.add(mnRegistroDeReserva);
 		
-		mntmReserva = new JMenuItem("Reserva");
+		mntmReserva = new JMenuItem("Registro");
 		mntmReserva.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/RegistroReserva.png")));
 		mntmReserva.addActionListener(this);
+		
+		mntmReserva_1 = new JMenuItem("Reserva");
+		mntmReserva_1.addActionListener(this);
+		mntmReserva_1.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/save.png")));
+		mnRegistroDeReserva.add(mntmReserva_1);
 		mnRegistroDeReserva.add(mntmReserva);
 		
 		mnControlDePago = new JMenu("Control de Pago");
@@ -123,6 +129,7 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		menuBar.add(mnReportes);
 		
 		mntmReporte = new JMenuItem("Reporte");
+		mntmReporte.addActionListener(this);
 		mntmReporte.setIcon(new ImageIcon(frmPrincipal.class.getResource("/img/Reportes.png")));
 		mnReportes.add(mntmReporte);
 		
@@ -146,6 +153,12 @@ public class frmPrincipal extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmReporte) {
+			actionPerformedMntmReporte(e);
+		}
+		if (e.getSource() == mntmReserva_1) {
+			actionPerformedMntmReserva_1(e);
+		}
 		if (e.getSource() == mntmDesarrolladores) {
 			actionPerformedMntmDesarrolladores(e);
 		}
@@ -233,5 +246,17 @@ public class frmPrincipal extends JFrame implements ActionListener {
 		a=new Acerca();
 		a.setLocationRelativeTo(this);
 		a.setVisible(true);
+	}
+	protected void actionPerformedMntmReserva_1(ActionEvent e) {
+		frmReserva fr;
+		fr=new frmReserva();
+		fr.setLocationRelativeTo(this);
+		fr.setVisible(true);
+	}
+	protected void actionPerformedMntmReporte(ActionEvent e) {
+		Reporte r;
+		r=new Reporte();
+		r.setLocationRelativeTo(this);
+		r.setVisible(true);
 	}
 }

@@ -49,6 +49,7 @@ public class frmCine extends JFrame implements ActionListener {
 	private JButton btnEliminar;
 	private JButton btnBuscar;
 	private JDateChooser txtFecha;
+	private JComboBox cmbDepartamento;
 	//Agregando un modelo
 	private DefaultTableModel modelo;
 	
@@ -80,7 +81,7 @@ public class frmCine extends JFrame implements ActionListener {
 	public frmCine() {
 		setTitle("Cine");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 636, 385);
+		setBounds(100, 100, 636, 421);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -148,7 +149,7 @@ public class frmCine extends JFrame implements ActionListener {
 		btnSalir = new JButton("Salir");
 		btnSalir.setIcon(new ImageIcon(frmCine.class.getResource("/img/cancel2.png")));
 		btnSalir.addActionListener(this);
-		btnSalir.setBounds(492, 85, 118, 23);
+		btnSalir.setBounds(492, 352, 118, 23);
 		contentPane.add(btnSalir);
 		
 		JScrollPane tblTabla = new JScrollPane();
@@ -185,7 +186,7 @@ public class frmCine extends JFrame implements ActionListener {
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.setIcon(new ImageIcon(frmCine.class.getResource("/img/buscar.png")));
 		btnBuscar.addActionListener(this);
-		btnBuscar.setBounds(365, 81, 107, 23);
+		btnBuscar.setBounds(10, 352, 107, 23);
 		contentPane.add(btnBuscar);
 		
 		txtFecha = new JDateChooser();
@@ -217,16 +218,13 @@ public class frmCine extends JFrame implements ActionListener {
 		}
 	}
 	ArregloCine ac=new ArregloCine("cine.txt");
-	private JComboBox cmbDepartamento;
 
 	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
 		consultarCine();
 	}
 	protected void do_btnIngresar_actionPerformed(ActionEvent arg0) {
 		adicionarCine();
-		
 	}
-	
 	protected void actionPerformedBtnModificar(ActionEvent arg0) {
 			modificarCine();
 		limpieza();

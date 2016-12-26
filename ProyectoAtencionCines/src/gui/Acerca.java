@@ -55,7 +55,7 @@ public class Acerca extends JFrame implements ActionListener {
 		txtS_1 = new JTextArea();
 		txtS_1.setEditable(false);
 		txtS_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		txtS_1.setBounds(72, 40, 298, 168);
+		txtS_1.setBounds(94, 58, 264, 133);
 		contentPane.add(txtS_1);
 		btnAceptar.setBounds(164, 227, 89, 23);
 		contentPane.add(btnAceptar);

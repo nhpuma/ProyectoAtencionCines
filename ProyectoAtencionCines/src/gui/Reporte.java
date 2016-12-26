@@ -125,6 +125,7 @@ public class Reporte extends JFrame implements ActionListener, ItemListener {
 		panel.add(lblCliente);
 		
 		cmbCliente = new JComboBox();
+		cmbCliente.addActionListener(this);
 		cmbCliente.setBounds(46, 83, 172, 20);
 		panel.add(cmbCliente);
 		
@@ -198,9 +199,9 @@ public class Reporte extends JFrame implements ActionListener, ItemListener {
 		btnSalir.setBounds(428, 315, 89, 23);
 		contentPane.add(btnSalir);
 		
-		btnProcesar = new JButton("Procesar");
+		btnProcesar = new JButton("Limpiar");
 		btnProcesar.addActionListener(this);
-		btnProcesar.setIcon(new ImageIcon(Reporte.class.getResource("/img/ingresar.png")));
+		btnProcesar.setIcon(new ImageIcon(Reporte.class.getResource("/img/Limpiar.png")));
 		btnProcesar.setBounds(10, 315, 109, 23);
 		contentPane.add(btnProcesar);
 		
@@ -236,6 +237,9 @@ public class Reporte extends JFrame implements ActionListener, ItemListener {
 		listarClientes();
 	}
 	public void actionPerformed(ActionEvent arg0) {
+		if (arg0.getSource() == cmbCliente) {
+			actionPerformedCmbCliente(arg0);
+		}
 		if (arg0.getSource() == btnProcesar) {
 			actionPerformedBtnProcesar(arg0);
 		}
@@ -279,26 +283,6 @@ public class Reporte extends JFrame implements ActionListener, ItemListener {
 		seleccionar();
 	}
 	protected void actionPerformedCmbDesdedia(ActionEvent arg0) {
-		listadoReserva();
-	}
-	protected void actionPerformedCmbDesdemes(ActionEvent arg0) {
-		listadoReserva();
-	}
-	protected void actionPerformedCmbDesdeaño(ActionEvent arg0) {
-		listadoReserva();
-	}
-	protected void actionPerformedCmbHastadia(ActionEvent arg0) {
-		listadoReserva();
-	}
-	protected void actionPerformedCmbHastames(ActionEvent arg0) {
-		listadoReserva();
-	}
-	protected void actionPerformedCmbHastaaño(ActionEvent arg0) {
-		listadoReserva();
-	}
-	protected void actionPerformedCmbEmpleado(ActionEvent arg0) {
-	}
-	protected void actionPerformedBtnProcesar(ActionEvent arg0) {
 		switch(cmbTipoReporte.getSelectedIndex()){
 		case 0:
 			taquillera();
@@ -312,6 +296,90 @@ public class Reporte extends JFrame implements ActionListener, ItemListener {
 		default:
 			reservaPorCliente();
 		}
+	}
+	protected void actionPerformedCmbDesdemes(ActionEvent arg0) {
+		switch(cmbTipoReporte.getSelectedIndex()){
+		case 0:
+			taquillera();
+			break;
+		case 1:
+			listadoReserva();
+			break;
+		case 2:
+			reservaPorEmpleado();
+			break;
+		default:
+			reservaPorCliente();
+		}
+	}
+	protected void actionPerformedCmbDesdeaño(ActionEvent arg0) {
+		switch(cmbTipoReporte.getSelectedIndex()){
+		case 0:
+			taquillera();
+			break;
+		case 1:
+			listadoReserva();
+			break;
+		case 2:
+			reservaPorEmpleado();
+			break;
+		default:
+			reservaPorCliente();
+		}
+	}
+	protected void actionPerformedCmbHastadia(ActionEvent arg0) {
+		switch(cmbTipoReporte.getSelectedIndex()){
+		case 0:
+			taquillera();
+			break;
+		case 1:
+			listadoReserva();
+			break;
+		case 2:
+			reservaPorEmpleado();
+			break;
+		default:
+			reservaPorCliente();
+		}
+	}
+	protected void actionPerformedCmbHastames(ActionEvent arg0) {
+		switch(cmbTipoReporte.getSelectedIndex()){
+		case 0:
+			taquillera();
+			break;
+		case 1:
+			listadoReserva();
+			break;
+		case 2:
+			reservaPorEmpleado();
+			break;
+		default:
+			reservaPorCliente();
+		}
+	}
+	protected void actionPerformedCmbHastaaño(ActionEvent arg0) {
+		switch(cmbTipoReporte.getSelectedIndex()){
+		case 0:
+			taquillera();
+			break;
+		case 1:
+			listadoReserva();
+			break;
+		case 2:
+			reservaPorEmpleado();
+			break;
+		default:
+			reservaPorCliente();
+		}
+	}
+	protected void actionPerformedCmbEmpleado(ActionEvent arg0) {
+		reservaPorEmpleado();
+	}
+	protected void actionPerformedCmbCliente(ActionEvent arg0) {
+		reservaPorCliente();
+	}
+	protected void actionPerformedBtnProcesar(ActionEvent arg0) {
+		limpiar();
 	}
 	protected void actionPerformedBtnSalir(ActionEvent arg0) {
 		dispose();
@@ -461,30 +529,23 @@ public class Reporte extends JFrame implements ActionListener, ItemListener {
 		int desde = leerDesde();
 		int hasta = leerHasta();
 		int fecha;
-		Funcion f;
-		Pelicula p;
+		
 		for(int i=0; i<ar.tamaño(); i++){
+			int codReserva = ar.obtener(i).getCodReserva();
+			//Convertir fecha a entero
 			String dato = ar.obtener(i).getFechaReserva();
 			dato = dato.substring(6,10)+dato.substring(3,5)+dato.substring(0,2);
 			fecha = Integer.parseInt(dato);
-			for(int j=0; j<af.tamaño(); j++){
-				f = af.obtener(i);
-				int codCine = f.getCodPeli();
-				if(ap.buscar(codCine)!=null){
-					p = ap.buscar(codCine);
+			
+			Reserva r = ar.buscar(codReserva);
+			Funcion f = af.buscar(r.getCodiFuncion());
+			Pelicula p = ap.buscar(f.getCodPeli());
 					if(fecha >=desde && fecha <=hasta){
 						txtS.setText("");
 						imprimir("La pelicula mas taquilera	:"+p.getTitOriginal());
 						imprimir("Genero de Pelicula	:"+p.GeneroPelicula());
 					}
-					else{
-						mensaje("No se encontaron Pelicula taquillera dentro de la fecha");
-					}
-				}
-				else{
-				}
-			}
-			
+				
 		}
 	}
 	//LISTADO DE RESERVA POR RANGO DE FECHA
@@ -588,6 +649,13 @@ public class Reporte extends JFrame implements ActionListener, ItemListener {
 	void mensaje(String s){
 		JOptionPane.showMessageDialog(this, s);
 	}
+	//Limpiar
+	void limpiar(){
+		txtS.setText("");
+		m.setRowCount(0);
+		me.setRowCount(0);
+	}
+
 }
 
 
